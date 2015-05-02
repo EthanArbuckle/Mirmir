@@ -94,9 +94,9 @@ static __attribute__((constructor)) void Lamo_SBUIController_Init() {
 - (void)activateApplicationAnimated:(id)animated {
     NSLog(@"%@ - %@", self, animated);
     //an app is opening, make sure it close its window
-   // [[CDTLamo sharedInstance] appWantsToOpen:animated withBlock:^{
+    [[CDTLamo sharedInstance] appWantsToOpen:animated withBlock:^{
 		ZKOrig(void, animated);
-  //  }];
+    }];
 
 }
 
