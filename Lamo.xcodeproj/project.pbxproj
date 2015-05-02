@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5FB454291AF364350020FC56 /* Lamo.h */; };
+		5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
+		5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454441AF3657C0020FC56 /* CDTContextHostProvider.mm */; };
+		5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454461AF3657C0020FC56 /* CDTLamo.mm */; };
+		5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454481AF3657C0020FC56 /* CDTLamoBarView.mm */; };
+		5FB454521AF3657C0020FC56 /* CDTMissionControl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544A1AF3657C0020FC56 /* CDTMissionControl.mm */; };
+		5FB454531AF3657C0020FC56 /* CDTMissionControlPane.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544C1AF3657C0020FC56 /* CDTMissionControlPane.mm */; };
+		5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544D1AF3657C0020FC56 /* SBAppSliderController.m */; };
+		5FB454561AF366B10020FC56 /* SBUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544E1AF3657C0020FC56 /* SBUIController.m */; };
+		5FE039921AF36FEA004F9098 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE039911AF36FEA004F9098 /* CoreGraphics.framework */; };
+		5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE039931AF37001004F9098 /* UIKit.framework */; };
+		5FE039E61AF44AD6004F9098 /* UIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE039E51AF44AD6004F9098 /* UIApplication.m */; };
+		5FE039E71AF44E8F004F9098 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5FE039E31AF44A4C004F9098 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5FB4541E1AF364350020FC56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5FE039CB1AF447EB004F9098;
+			remoteInfo = lamoClient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5FB454241AF364350020FC56 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FE039CA1AF447EB004F9098 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5FB454261AF364350020FC56 /* Lamo.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Lamo.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FB454291AF364350020FC56 /* Lamo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lamo.h; sourceTree = "<group>"; };
+		5FB454401AF364920020FC56 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
+		5FB454411AF364920020FC56 /* ZKSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKSwizzle.m; sourceTree = "<group>"; };
+		5FB454431AF3657B0020FC56 /* CDTContextHostProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTContextHostProvider.h; sourceTree = "<group>"; };
+		5FB454441AF3657C0020FC56 /* CDTContextHostProvider.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDTContextHostProvider.mm; sourceTree = "<group>"; };
+		5FB454451AF3657C0020FC56 /* CDTLamo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamo.h; sourceTree = "<group>"; };
+		5FB454461AF3657C0020FC56 /* CDTLamo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDTLamo.mm; sourceTree = "<group>"; };
+		5FB454471AF3657C0020FC56 /* CDTLamoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoBarView.h; sourceTree = "<group>"; };
+		5FB454481AF3657C0020FC56 /* CDTLamoBarView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDTLamoBarView.mm; sourceTree = "<group>"; };
+		5FB454491AF3657C0020FC56 /* CDTMissionControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTMissionControl.h; sourceTree = "<group>"; };
+		5FB4544A1AF3657C0020FC56 /* CDTMissionControl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDTMissionControl.mm; sourceTree = "<group>"; };
+		5FB4544B1AF3657C0020FC56 /* CDTMissionControlPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTMissionControlPane.h; sourceTree = "<group>"; };
+		5FB4544C1AF3657C0020FC56 /* CDTMissionControlPane.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDTMissionControlPane.mm; sourceTree = "<group>"; };
+		5FB4544D1AF3657C0020FC56 /* SBAppSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAppSliderController.m; sourceTree = "<group>"; };
+		5FB4544E1AF3657C0020FC56 /* SBUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUIController.m; sourceTree = "<group>"; };
+		5FE039911AF36FEA004F9098 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5FE039931AF37001004F9098 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5FE039CC1AF447EB004F9098 /* lamoClient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = lamoClient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FE039E51AF44AD6004F9098 /* UIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplication.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FB454231AF364350020FC56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */,
+				5FE039921AF36FEA004F9098 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FE039C91AF447EB004F9098 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5FB4541D1AF364350020FC56 = {
+			isa = PBXGroup;
+			children = (
+				5FE039931AF37001004F9098 /* UIKit.framework */,
+				5FE039911AF36FEA004F9098 /* CoreGraphics.framework */,
+				5FB454281AF364350020FC56 /* Lamo */,
+				5FE039CD1AF447EB004F9098 /* lamoClient */,
+				5FB454271AF364350020FC56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5FB454271AF364350020FC56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5FB454261AF364350020FC56 /* Lamo.dylib */,
+				5FE039CC1AF447EB004F9098 /* lamoClient.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5FB454281AF364350020FC56 /* Lamo */ = {
+			isa = PBXGroup;
+			children = (
+				5FB454431AF3657B0020FC56 /* CDTContextHostProvider.h */,
+				5FB454441AF3657C0020FC56 /* CDTContextHostProvider.mm */,
+				5FB454451AF3657C0020FC56 /* CDTLamo.h */,
+				5FB454461AF3657C0020FC56 /* CDTLamo.mm */,
+				5FB454471AF3657C0020FC56 /* CDTLamoBarView.h */,
+				5FB454481AF3657C0020FC56 /* CDTLamoBarView.mm */,
+				5FB454491AF3657C0020FC56 /* CDTMissionControl.h */,
+				5FB4544A1AF3657C0020FC56 /* CDTMissionControl.mm */,
+				5FB4544B1AF3657C0020FC56 /* CDTMissionControlPane.h */,
+				5FB4544C1AF3657C0020FC56 /* CDTMissionControlPane.mm */,
+				5FB4544D1AF3657C0020FC56 /* SBAppSliderController.m */,
+				5FB4544E1AF3657C0020FC56 /* SBUIController.m */,
+				5FB454401AF364920020FC56 /* ZKSwizzle.h */,
+				5FB454411AF364920020FC56 /* ZKSwizzle.m */,
+				5FB454291AF364350020FC56 /* Lamo.h */,
+			);
+			path = Lamo;
+			sourceTree = "<group>";
+		};
+		5FE039CD1AF447EB004F9098 /* lamoClient */ = {
+			isa = PBXGroup;
+			children = (
+				5FE039E51AF44AD6004F9098 /* UIApplication.m */,
+			);
+			path = lamoClient;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5FB454251AF364350020FC56 /* Lamo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FB4543A1AF364350020FC56 /* Build configuration list for PBXNativeTarget "Lamo" */;
+			buildPhases = (
+				5FB454221AF364350020FC56 /* Sources */,
+				5FB454231AF364350020FC56 /* Frameworks */,
+				5FB454241AF364350020FC56 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5FE039E41AF44A4C004F9098 /* PBXTargetDependency */,
+			);
+			name = Lamo;
+			productName = Lamo;
+			productReference = 5FB454261AF364350020FC56 /* Lamo.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		5FE039CB1AF447EB004F9098 /* lamoClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5FE039DD1AF447EB004F9098 /* Build configuration list for PBXNativeTarget "lamoClient" */;
+			buildPhases = (
+				5FE039C81AF447EB004F9098 /* Sources */,
+				5FE039C91AF447EB004F9098 /* Frameworks */,
+				5FE039CA1AF447EB004F9098 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = lamoClient;
+			productName = lamoClient;
+			productReference = 5FE039CC1AF447EB004F9098 /* lamoClient.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5FB4541E1AF364350020FC56 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = CortexDevTeam;
+				TargetAttributes = {
+					5FB454251AF364350020FC56 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					5FE039CB1AF447EB004F9098 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 5FB454211AF364350020FC56 /* Build configuration list for PBXProject "Lamo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5FB4541D1AF364350020FC56;
+			productRefGroup = 5FB454271AF364350020FC56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5FB454251AF364350020FC56 /* Lamo */,
+				5FE039CB1AF447EB004F9098 /* lamoClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5FB454221AF364350020FC56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */,
+				5FB454561AF366B10020FC56 /* SBUIController.m in Sources */,
+				5FB454521AF3657C0020FC56 /* CDTMissionControl.mm in Sources */,
+				5FB454531AF3657C0020FC56 /* CDTMissionControlPane.mm in Sources */,
+				5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */,
+				5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */,
+				5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */,
+				5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FE039C81AF447EB004F9098 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FE039E61AF44AD6004F9098 /* UIApplication.m in Sources */,
+				5FE039E71AF44E8F004F9098 /* ZKSwizzle.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5FE039E41AF44A4C004F9098 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5FE039CB1AF447EB004F9098 /* lamoClient */;
+			targetProxy = 5FE039E31AF44A4C004F9098 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5FB454381AF364350020FC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_LOCATION = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = dylib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = /Users/ethanarbuckle/Desktop/LAMO_DYLIB/;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MACH_O_TYPE = mh_dylib;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		5FB454391AF364350020FC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_LOCATION = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_EXTENSION = dylib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = /Users/ethanarbuckle/Desktop/LAMO_DYLIB/;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MACH_O_TYPE = mh_dylib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Release;
+		};
+		5FB4543B1AF364350020FC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					i386,
+				);
+				DSTROOT = "";
+				INSTALL_PATH = /Users/ethanarbuckle/Desktop/LAMO_DYLIB/;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+			};
+			name = Debug;
+		};
+		5FB4543C1AF364350020FC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					i386,
+				);
+				DSTROOT = "";
+				INSTALL_PATH = /Users/ethanarbuckle/Desktop/LAMO_DYLIB/;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+			};
+			name = Release;
+		};
+		5FE039DE1AF447EB004F9098 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = "";
+				DYLIB_INSTALL_NAME_BASE = "$(INSTALL_PATH)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LD_DYLIB_INSTALL_NAME = "$(INSTALL_PATH)/lamoClient.dylib";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+			};
+			name = Debug;
+		};
+		5FE039DF1AF447EB004F9098 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = "";
+				DYLIB_INSTALL_NAME_BASE = "$(INSTALL_PATH)";
+				LD_DYLIB_INSTALL_NAME = "$(INSTALL_PATH)/lamoClient.dylib";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5FB454211AF364350020FC56 /* Build configuration list for PBXProject "Lamo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FB454381AF364350020FC56 /* Debug */,
+				5FB454391AF364350020FC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FB4543A1AF364350020FC56 /* Build configuration list for PBXNativeTarget "Lamo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FB4543B1AF364350020FC56 /* Debug */,
+				5FB4543C1AF364350020FC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5FE039DD1AF447EB004F9098 /* Build configuration list for PBXNativeTarget "lamoClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5FE039DE1AF447EB004F9098 /* Debug */,
+				5FE039DF1AF447EB004F9098 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5FB4541E1AF364350020FC56 /* Project object */;
+}
