@@ -23,9 +23,8 @@
 		//create host view provider
 		_contextHostProvider = [[CDTContextHostProvider alloc] init];
 
-		//create arrays to hold hosted apps
-		_hostedApplications = [[NSMutableArray alloc] init];
-		_hostedContextViews = [[NSMutableArray alloc] init];
+		//create dict to hold hosted apps
+		_windows = [[NSMutableDictionary alloc] init];
 
 	}
 
@@ -85,20 +84,11 @@
 
 - (void)beginWindowModeForTopApplication {
 
-	if (![[self topmostApplication] isKindOfClass:NSClassFromString(@"SBApplication")]) {
-
-		NSLog(@"You're killin me smalls");
-		return;
-	}
-
 	//get bundle identifier for application
 	NSString *bundleID = [[self topmostApplication] valueForKey:@"_bundleIdentifier"];
 
 	//close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
-
-	//add application to hosted apps array
-	[_hostedApplications addObject:bundleID];
 
 	//create live context host
 	UIView *contextHost = [_contextHostProvider hostViewForApplicationWithBundleID:bundleID];
@@ -107,8 +97,9 @@
 	[_contextHostProvider setStatusBarHidden:@(1) onApplicationWithBundleID:bundleID];
 
 	//create container view
-	UIView *appWindow = [[UIView alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
-
+	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
+    [appWindow setIdentifier:bundleID];
+    
 	//add host to window
 	[appWindow addSubview:contextHost];
 
@@ -118,12 +109,11 @@
 
 	//create the 'title bar' window that holds the gestures
 	CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
-	[gestureView setTag:[_hostedApplications indexOfObject:bundleID]];
 	[appWindow addSubview:gestureView];
 
 	
-	//add it to array
-	[_hostedContextViews addObject:appWindow];
+	//add it to dict
+	[_windows setValue:appWindow forKey:bundleID];
 
 	//add context window to springboard window
     [_springboardWindow addSubview:appWindow];
@@ -159,28 +149,40 @@
 
 }
 
-- (void)unwindowApplicationAtIndex:(int)indexOfApp {
-
-	//show statusbar
-	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:[_hostedApplications objectAtIndex:indexOfApp]];
+- (void)unwindowApplicationWithBundleID:(NSString *)bundleID {
+    
+    //get window instance, if exists
+    CDTLamoWindow *window;
+    if ([_windows valueForKey:bundleID]) {
+        
+        window = [_windows valueForKey:bundleID];
+    }
+    
+    else {
+        
+        //stop if it doesnt exist
+        return;
+    }
+    
+    //show statusbar
+	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
 
 	//animate it out
 	[UIView animateWithDuration:0.3 animations:^{
 
 		//fade it out
-		[[_hostedContextViews objectAtIndex:indexOfApp] setAlpha:0];
-		[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] setTransform:CGAffineTransformMakeScale(.1, .1)];
+		[window setAlpha:0];
+		[window setTransform:CGAffineTransformMakeScale(.1, .1)];
 
 	} completion:^(BOOL completed){
 
 		//end hosting
-		NSString *bundleID = [_hostedApplications objectAtIndex:indexOfApp];
 		SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 		[_contextHostProvider disableBackgroundingForApplication:appToHost];
 		[_contextHostProvider stopHostingForBundleID:bundleID];
 
 		//remove the view
-		[[_hostedContextViews objectAtIndex:indexOfApp] removeFromSuperview];
+		[window removeFromSuperview];
 
 		//remove it from arrays
 		//[_hostedApplications removeObjectAtIndex:indexOfApp];
@@ -192,12 +194,6 @@
 
 - (void)appWantsToOpen:(SBApplication *)app withBlock:(void(^)(void))completion {
 
-	if (![app isKindOfClass:NSClassFromString(@"SBApplication")]) {
-
-		NSLog(@"You're killin me smalls");
-		return;
-	}
-
 	//get bundle id
 	NSString *bundleID = [app valueForKey:@"_bundleIdentifier"];
 
@@ -205,15 +201,16 @@
 	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
 
 	//close the window if its currently context hosted
-	if ([_hostedApplications containsObject:bundleID]) {
+	if ([_windows valueForKey:bundleID]) {
 
 		[_contextHostProvider disableBackgroundingForApplication:app];
 		[_contextHostProvider stopHostingForBundleID:bundleID];
 
-		int indexOfApp = [_hostedApplications indexOfObject:bundleID];
+		//get window so we can remove it
+        CDTLamoWindow *window = [_windows valueForKey:bundleID];
 		
 		//remove the view
-		[[_hostedContextViews objectAtIndex:indexOfApp] removeFromSuperview];
+		[window removeFromSuperview];
 
 		//remove it from arrays
 		//[_hostedApplications removeObjectAtIndex:indexOfApp];
@@ -227,34 +224,39 @@
 
 - (void)launchFullModeFromWindowForApplication:(SBApplication *)appToOpen {
 
-	if (![appToOpen isKindOfClass:NSClassFromString(@"SBApplication")]) {
-
-		NSLog(@"You're killin me smalls");
-		return;
-	}
-
 	//get bundle id
 	NSString *bundleID = [appToOpen valueForKey:@"_bundleIdentifier"];
-	int indexOfApp = [_hostedApplications indexOfObject:bundleID];
 
+    //get window so we can remove it
+    CDTLamoWindow *window;
+    if ([_windows valueForKey:bundleID]) {
+        
+        window = [_windows valueForKey:bundleID];
+    }
+    else {
+        
+        //stop, no window
+        return;
+    }
+    
 	//show statusbar
 	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
 
 	[UIView animateWithDuration:0.4f animations:^{
 
-		[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] setTransform:CGAffineTransformIdentity];
-		[[_hostedContextViews objectAtIndex:indexOfApp] setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+		[window setTransform:CGAffineTransformIdentity];
+		[window setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
 
 	} completion:^(BOOL completed) {
 
 		//close the window if its currently context hosted
-		if ([_hostedApplications containsObject:bundleID]) {
+		if ([_windows valueForKey:bundleID]) {
 
 			[_contextHostProvider disableBackgroundingForApplication:appToOpen];
 			[_contextHostProvider stopHostingForBundleID:bundleID];
 
 			//remove the view
-			[[_hostedContextViews objectAtIndex:indexOfApp] removeFromSuperview];
+			[window removeFromSuperview];
 
 			//remove it from arrays
 			//[_hostedApplications removeObjectAtIndex:indexOfApp];
@@ -278,8 +280,19 @@
 
 	//get bundle id
 	NSString *bundleID = [application valueForKey:@"_bundleIdentifier"];
-	int indexOfApp = [_hostedApplications indexOfObject:bundleID];
-
+    
+    //get window so we can remove it
+    CDTLamoWindow *window;
+    if ([_windows valueForKey:bundleID]) {
+        
+        window = [_windows valueForKey:bundleID];
+    }
+    else {
+        
+        //stop, no window
+        return;
+    }
+    
 	//put app in landscape mode
 	[_contextHostProvider sendLandscapeRotationNotificationToBundleID:bundleID];
 
@@ -289,7 +302,7 @@
 		//rotatw 90 and keep scale of .6
 		CGAffineTransform scale = CGAffineTransformMakeScale(.6, .6);
 		CGAffineTransform rotate = CGAffineTransformMakeRotation(M_PI * -90 / 180);
-		[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] setTransform:CGAffineTransformConcat(scale, rotate)];
+		[window setTransform:CGAffineTransformConcat(scale, rotate)];
 
 		//hide gesture view of window
 		//[[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] subviews][1] setAlpha:0];

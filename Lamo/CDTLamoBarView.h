@@ -1,5 +1,6 @@
 #import "Lamo.h"
 #import "CDTLamo.h"
+#import "CDTLamoWindow.h"
 
 @interface CDTLamoBarView : UIView
 

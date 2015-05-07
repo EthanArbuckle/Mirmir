@@ -73,7 +73,7 @@
 - (void)handleClose {
 
 	//close window
-	[[CDTLamo sharedInstance] unwindowApplicationAtIndex:[self tag]];
+	[[CDTLamo sharedInstance] unwindowApplicationWithBundleID:[(CDTLamoWindow *)[self superview] identifier]];
 
 }
 
@@ -91,7 +91,7 @@
 - (void)handleMax {
 
 	//get sbapp
-	SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[[[CDTLamo sharedInstance] hostedApplications] objectAtIndex:[self tag]]];
+	SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[(CDTLamoWindow *)[self superview] identifier]];
 
 	//launch it fullscreen
 	[[CDTLamo sharedInstance] launchFullModeFromWindowForApplication:app];
@@ -101,7 +101,7 @@
 - (void)handleOrientation {
 
 	//get app
-	SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[[[CDTLamo sharedInstance] hostedApplications] objectAtIndex:[self tag]]];
+	SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[(CDTLamoWindow *)[self superview] identifier]];
 
 	//trigger landscape
 	[[CDTLamo sharedInstance] triggerLandscapeForApplication:app];

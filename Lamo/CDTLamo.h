@@ -1,13 +1,13 @@
 #import "Lamo.h"
 #import "CDTContextHostProvider.h"
 #import "CDTLamoBarView.h"
+#import "CDTLamoWindow.h"
 
 @interface CDTLamo : NSObject
 
 @property (nonatomic, retain) UIView *sharedScalingWrapperView;
 @property (nonatomic, retain) CDTContextHostProvider *contextHostProvider;
-@property (nonatomic, retain) NSMutableArray *hostedApplications;
-@property (nonatomic, retain) NSMutableArray *hostedContextViews;
+@property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;
 
 @property CGPoint offset;
@@ -22,7 +22,7 @@
 - (void)addTopBarToWrapperWindow;
 - (void)beginWindowModeForTopApplication;
 - (void)doPopAnimationForView:(UIView *)viewToPop;
-- (void)unwindowApplicationAtIndex:(int)indexOfApp;
+- (void)unwindowApplicationWithBundleID:(NSString *)bundleID;
 - (void)appWantsToOpen:(SBApplication *)app withBlock:(void(^)(void))completion;
 - (void)launchFullModeFromWindowForApplication:(SBApplication *)appToOpen;
 - (void)triggerLandscapeForApplication:(SBApplication *)application;
