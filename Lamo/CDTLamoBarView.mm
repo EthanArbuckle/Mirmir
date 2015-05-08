@@ -108,7 +108,7 @@
         
         //in landscape, trigger portrait
         [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
-        [[CDTLamo sharedInstance] triggerPortraitForApplication:app];NSLog(@"hitdd");
+        [[CDTLamo sharedInstance] triggerPortraitForApplication:app];
         
     }
     else {
