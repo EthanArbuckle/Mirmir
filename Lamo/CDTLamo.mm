@@ -256,10 +256,8 @@
 			//remove the view
 			[window removeFromSuperview];
 
-			SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
-
 			//disable animated launch
-			[app setFlag:1 forActivationSetting:1];
+			[appToOpen setFlag:1 forActivationSetting:1];
 
 			//open
 			[[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleID suspended:NO];
