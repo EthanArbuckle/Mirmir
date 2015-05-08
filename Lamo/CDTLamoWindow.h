@@ -11,5 +11,6 @@
 @interface CDTLamoWindow : UIView
 
 @property (nonatomic, retain) NSString *identifier;
+@property UIInterfaceOrientation *activeOrientation;
 
 @end

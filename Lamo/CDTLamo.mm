@@ -100,6 +100,9 @@
 	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
     [appWindow setIdentifier:bundleID];
     
+    //naivly assume portrait for the time being
+    [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+    
 	//add host to window
 	[appWindow addSubview:contextHost];
 
@@ -166,7 +169,7 @@
     
     //show statusbar
 	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
-
+    
 	//animate it out
 	[UIView animateWithDuration:0.3 animations:^{
 
@@ -180,13 +183,12 @@
 		SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 		[_contextHostProvider disableBackgroundingForApplication:appToHost];
 		[_contextHostProvider stopHostingForBundleID:bundleID];
-
+        
+        //switch it to portrait so it doesnt open in landscape
+        [self triggerPortraitForApplication:appToHost];
+        
 		//remove the view
 		[window removeFromSuperview];
-
-		//remove it from arrays
-		//[_hostedApplications removeObjectAtIndex:indexOfApp];
-		//[_hostedContextViews removeObjectAtIndex:indexOfApp];
 
 	}];
 
@@ -211,10 +213,6 @@
 		
 		//remove the view
 		[window removeFromSuperview];
-
-		//remove it from arrays
-		//[_hostedApplications removeObjectAtIndex:indexOfApp];
-		//[_hostedContextViews removeObjectAtIndex:indexOfApp];
 
 	}
 
@@ -258,10 +256,6 @@
 			//remove the view
 			[window removeFromSuperview];
 
-			//remove it from arrays
-			//[_hostedApplications removeObjectAtIndex:indexOfApp];
-			//[_hostedContextViews removeObjectAtIndex:indexOfApp];
-
 			SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 
 			//disable animated launch
@@ -293,30 +287,61 @@
         return;
     }
     
+    //stop if already in landscape
+    if ([window activeOrientation] == (UIInterfaceOrientation *)UIInterfaceOrientationLandscapeRight) {
+        
+        return;
+    }
+    
+    //update window orientation
+    [window setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft];
+    
 	//put app in landscape mode
 	[_contextHostProvider sendLandscapeRotationNotificationToBundleID:bundleID];
 
 	//rotate context view
 	[UIView animateWithDuration:0.45f animations:^{
 
-		//rotatw 90 and keep scale of .6
+		//rotate 90 and keep scale of .6
 		CGAffineTransform scale = CGAffineTransformMakeScale(.6, .6);
 		CGAffineTransform rotate = CGAffineTransformMakeRotation(M_PI * -90 / 180);
 		[window setTransform:CGAffineTransformConcat(scale, rotate)];
 
-		//hide gesture view of window
-		//[[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] subviews][1] setAlpha:0];
-		//[[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] subviews][1] setFrame:CGRectMake(0, 40, kScreenWidth, 40)];
-
-	} completion:^(BOOL completed) {
-
-		//show gesture view of window (only want scale transform, not rotation)
-		//[[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] subviews][1] setFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-		//[(UIView *)[[_hostedContextViews objectAtIndex:indexOfApp] subviews][1] setTransform:CGAffineTransformMakeRotation(M_PI * 90 / 180)];
-		//[[(UIView *)[_hostedContextViews objectAtIndex:indexOfApp] subviews][1] setAlpha:0.7];
-
 	}];
 
+}
+
+- (void)triggerPortraitForApplication:(SBApplication *)application {
+    
+    //get bundle id
+    NSString *bundleID = [application valueForKey:@"_bundleIdentifier"];
+    
+    //get window so we can remove it
+    CDTLamoWindow *window;
+    if ([_windows valueForKey:bundleID]) {
+        
+        window = [_windows valueForKey:bundleID];
+    }
+    else {
+        
+        //stop, no window
+        return;
+    }
+    
+    //update window orientation
+    [window setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+    
+    //put app in landscape mode
+    [_contextHostProvider sendPortraitRotationNotificationToBundleID:bundleID];
+    
+    //rotate context view
+    [UIView animateWithDuration:0.45f animations:^{
+        
+        //scale of .6, this will also revert the 90 degree rotation
+        [window setTransform:CGAffineTransformMakeScale(.6, .6)];
+        
+    }];
+    
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {

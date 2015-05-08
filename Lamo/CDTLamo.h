@@ -26,6 +26,7 @@
 - (void)appWantsToOpen:(SBApplication *)app withBlock:(void(^)(void))completion;
 - (void)launchFullModeFromWindowForApplication:(SBApplication *)appToOpen;
 - (void)triggerLandscapeForApplication:(SBApplication *)application;
+- (void)triggerPortraitForApplication:(SBApplication *)application;
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture;
 - (void)handlePinch:(UIPinchGestureRecognizer *)gestureRecognizer;
 

@@ -18,7 +18,7 @@ ZKSwizzleInterface($_Lamo_UIApplication, UIApplication, NSObject);
     //we dont want to register springboard for notifications
     NSString *dispident = [(UIApplication *)self displayIdentifier];
     if (![dispident isEqualToString:@"com.apple.springboard"]) {
-        NSLog(@"%@", dispident);
+
         //if we get here, we're inside an app. register notification for rotation
         //notification will be appidentifierLamoRotate
         NSString *rotationLandscapeNotification = [NSString stringWithFormat:@"%@LamoLandscapeRotate", dispident];

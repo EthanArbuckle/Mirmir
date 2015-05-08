@@ -103,8 +103,21 @@
 	//get app
 	SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[(CDTLamoWindow *)[self superview] identifier]];
 
-	//trigger landscape
-	[[CDTLamo sharedInstance] triggerLandscapeForApplication:app];
+	//trigger portrait opposite of current one
+    if ([(CDTLamoWindow *)[self superview] activeOrientation] == (UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft) {
+        
+        //in landscape, trigger portrait
+        [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+        [[CDTLamo sharedInstance] triggerPortraitForApplication:app];NSLog(@"hitdd");
+        
+    }
+    else {
+        
+        //in portrait, trigger landscape
+        [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft];
+        [[CDTLamo sharedInstance] triggerLandscapeForApplication:app];
+        
+    }
 	
 }
 
