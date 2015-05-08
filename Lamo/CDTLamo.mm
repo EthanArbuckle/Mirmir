@@ -306,6 +306,16 @@
 		CGAffineTransform scale = CGAffineTransformMakeScale(.6, .6);
 		CGAffineTransform rotate = CGAffineTransformMakeRotation(M_PI * -90 / 180);
 		[window setTransform:CGAffineTransformConcat(scale, rotate)];
+        
+        //set frame to ensure window bar isnt out of screen bounds
+        CGRect appWindowFrame = [window frame];
+        if (appWindowFrame.origin.x <= 0) {
+            
+            //off of screen, bounce it back
+            appWindowFrame.origin.x = 5;
+            [window setFrame:appWindowFrame];
+            
+        }
 
 	}];
 
