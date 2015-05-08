@@ -9,7 +9,7 @@
 		//create the bar
 		[self setFrame:CGRectMake(0, 0, kScreenWidth, 40)];
 		[self setBackgroundColor:[UIColor grayColor]];
-		[self setAlpha:0.7];
+		[self setAlpha:0.9];
 		[self setUserInteractionEnabled:YES];
 
 		//setup gestures

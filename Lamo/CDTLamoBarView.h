@@ -2,7 +2,7 @@
 #import "CDTLamo.h"
 #import "CDTLamoWindow.h"
 
-@interface CDTLamoBarView : UIView
+@interface CDTLamoBarView : UIToolbar
 
 - (void)handleClose;
 - (void)handleMin;
