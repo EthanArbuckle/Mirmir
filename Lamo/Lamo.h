@@ -92,6 +92,7 @@ void receivedPortraitRotate();
 
 @interface FBWindowContextHostManager : NSObject
 - (void)enableHostingForRequester:(id)arg1 orderFront:(BOOL)arg2;
+- (void)enableHostingForRequester:(id)arg1 priority:(int)arg2;
 - (void)disableHostingForRequester:(id)arg1;
 - (id)hostViewForRequester:(id)arg1 enableAndOrderFront:(BOOL)arg2;
 @end

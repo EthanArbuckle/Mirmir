@@ -6,8 +6,14 @@
 - (id)init {
 
 	if (self = [super init]) {
-
-	
+        
+        //On ipads >8.3, context host views stop hosting when another context begins hosting.
+        //To get around this, everytime we begin hosting a new context we'll cycle through all
+        //the other ones and force them to host as well.
+        if (NEED_IPAD_HAX) {
+            _onlyIpad_runningIdentifiers = [[NSMutableArray alloc] init];
+        }
+        
 	}
 
 	return self;
@@ -17,7 +23,16 @@
 
 	//open it
 	[self launchSuspendedApplicationWithBundleID:[(SBApplication *)sbapplication bundleIdentifier]];
+    
+    //add current identifier
+    if (NEED_IPAD_HAX) {
+        
+        if (![_onlyIpad_runningIdentifiers containsObject:[(SBApplication *)sbapplication bundleIdentifier]]) {
 
+            [_onlyIpad_runningIdentifiers addObject:[(SBApplication *)sbapplication bundleIdentifier]];
+        }
+    }
+    
 	//let the app run in the background
 	[self enableBackgroundingForApplication:sbapplication];
 
@@ -26,6 +41,12 @@
 
 	//get our fancy new hosting view
 	UIView *hostView = [[self contextManagerForApplication:sbapplication] hostViewForRequester:[(SBApplication *)sbapplication bundleIdentifier] enableAndOrderFront:YES];
+    
+    //now that new host is created, cycle through all other ones (including new) and reenable hosting for ipads.
+    if (NEED_IPAD_HAX) {
+        
+        [self _ipad_only_update_hosting];
+    }
 
 	return hostView;
 }
@@ -88,6 +109,26 @@
 	SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 	FBWindowContextHostManager *contextManager = [self contextManagerForApplication:appToHost];
 	[contextManager disableHostingForRequester:bundleID];
+    
+    if (NEED_IPAD_HAX) {
+        
+        if ([_onlyIpad_runningIdentifiers containsObject:bundleID]) {
+            
+            [_onlyIpad_runningIdentifiers removeObject:bundleID];
+        }
+    }
+    
+}
+
+- (void)_ipad_only_update_hosting {
+    
+    for (NSString *_ipad_app_bundleid in _onlyIpad_runningIdentifiers) {
+        
+        SBApplication *_ipad_application = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:_ipad_app_bundleid];
+        FBWindowContextHostManager *_ipad_context_manager = [self contextManagerForApplication:_ipad_application];
+        [_ipad_context_manager enableHostingForRequester:_ipad_app_bundleid priority:1];NSLog(@"enabled %@", _ipad_app_bundleid);
+    }
+    
 }
 
 - (void)sendLandscapeRotationNotificationToBundleID:(NSString *)bundleID {
@@ -110,4 +151,5 @@
 	CFNotificationCenterPostNotification(CFNotificationCenterGetDistributedCenter(), (CFStringRef)changeStatusBarNotification, NULL, (__bridge CFDictionaryRef) @{@"isHidden" : hidden } , YES);
 
 }
+
 @end

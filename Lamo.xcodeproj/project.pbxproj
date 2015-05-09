@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F0A84B01AFEB20D001BB466 /* UIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A84AF1AFEB20D001BB466 /* UIApplicationDelegate.m */; };
 		5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5FB454291AF364350020FC56 /* Lamo.h */; };
 		5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
 		5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454441AF3657C0020FC56 /* CDTContextHostProvider.mm */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F0A84AF1AFEB20D001BB466 /* UIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplicationDelegate.m; sourceTree = "<group>"; };
 		5FB454261AF364350020FC56 /* Lamo.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Lamo.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB454291AF364350020FC56 /* Lamo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lamo.h; sourceTree = "<group>"; };
 		5FB454401AF364920020FC56 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				5FE039E51AF44AD6004F9098 /* UIApplication.m */,
+				5F0A84AF1AFEB20D001BB466 /* UIApplicationDelegate.m */,
 			);
 			path = lamoClient;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F0A84B01AFEB20D001BB466 /* UIApplicationDelegate.m in Sources */,
 				5FE039E61AF44AD6004F9098 /* UIApplication.m in Sources */,
 				5FE039E71AF44E8F004F9098 /* ZKSwizzle.m in Sources */,
 			);

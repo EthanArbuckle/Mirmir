@@ -31,7 +31,7 @@ ZKSwizzleInterface($_Lamo_UIApplication, UIApplication, NSObject);
         //create statusbar notification
         NSString *changeStatusBarNotification = [NSString stringWithFormat:@"%@LamoStatusBarChange", dispident];
         CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), (__bridge const void *)(self), (CFNotificationCallback)receivedStatusBarChange, (CFStringRef)changeStatusBarNotification, NULL, CFNotificationSuspensionBehaviorDrop);
-        
+                
     }
     
     return ZKOrig(id);

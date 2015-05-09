@@ -59,7 +59,8 @@ ZKIMP ZKOriginalImplementation(id self, SEL sel, const char *info) {
         [NSException raise:@"Failed to get implementation" format:@"The objective-c runtime could not get the implementation for %@ on the class %@. There is no fix for this", NSStringFromClass(cls), NSStringFromSelector(sel)];
     }
     
-    return implementation;}
+    return implementation;
+}
 
 ZKIMP ZKSuperImplementation(id object, SEL sel) {
     if (sel == NULL || object == NULL) {
