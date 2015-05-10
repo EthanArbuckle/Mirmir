@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 CortexDevTeam. All rights reserved.
 //
 /*
+
 #import "../Lamo/ZKSwizzle.h"
 #import "../Lamo/Lamo.h"
 
@@ -29,4 +30,5 @@ ZKSwizzleInterface($_Lamo_UIApplicationDelegate, UIResponder, NSObject);
 }
 
 @end
+
 */

@@ -5,11 +5,6 @@
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
-static __attribute__((constructor)) void Lamo_SBUIController_Init() {
-    
-    //ZKSwizzleClass($_Lamo_SBUIController);
-}
-
 @implementation $_Lamo_SBUIController
 
 - (void)_showNotificationsGestureBeganWithLocation:(CGPoint)location {
