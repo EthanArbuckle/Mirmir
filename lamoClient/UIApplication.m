@@ -34,7 +34,7 @@ ZKSwizzleInterface($_Lamo_UIApplication, UIApplication, NSObject);
                 
     }
     
-    return ZKSuper(id);
+    return ZKOrig(id);
 }
 
 void receivedStatusBarChange(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
