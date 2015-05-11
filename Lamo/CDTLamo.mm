@@ -48,8 +48,7 @@
 	FBScene *appScene = [[self topmostApplication] mainScene];
 	FBWindowContextHostManager *appContextManager = [appScene contextHostManager];
 	_sharedScalingWrapperView = [[appContextManager valueForKey:@"_hostView"] superview];
-	_springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
-
+    _springboardWindow = [[[[appContextManager valueForKey:@"_hostView"] superview] window] subviews][0];
 }
 
 - (void)seamlesslyCloseTopApp {
