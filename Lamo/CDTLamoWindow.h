@@ -13,4 +13,6 @@
 @property (nonatomic, retain) NSString *identifier;
 @property UIInterfaceOrientation *activeOrientation;
 
+- (float)level;
+
 @end
