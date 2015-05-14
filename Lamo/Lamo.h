@@ -133,3 +133,7 @@ void receivedPortraitRotate();
 @interface UIKeyboard
 + (id)activeKeyboard;
 @end
+
+@interface SBLaunchAppListener : NSObject
+- (id)initWithBundleIdentifier:(id)arg1 handlerBlock:(id)arg2;
+@end

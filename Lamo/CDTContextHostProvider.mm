@@ -126,7 +126,7 @@
         
         SBApplication *_ipad_application = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:_ipad_app_bundleid];
         FBWindowContextHostManager *_ipad_context_manager = [self contextManagerForApplication:_ipad_application];
-        [_ipad_context_manager enableHostingForRequester:_ipad_app_bundleid priority:1];NSLog(@"enabled %@", _ipad_app_bundleid);
+        [_ipad_context_manager enableHostingForRequester:_ipad_app_bundleid priority:1];
     }
     
 }

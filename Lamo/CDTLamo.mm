@@ -48,7 +48,7 @@
 	FBScene *appScene = [[self topmostApplication] mainScene];
 	FBWindowContextHostManager *appContextManager = [appScene contextHostManager];
 	_sharedScalingWrapperView = [[appContextManager valueForKey:@"_hostView"] superview];
-    _springboardWindow = [[[[appContextManager valueForKey:@"_hostView"] superview] window] subviews][0];
+    _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
 }
 
 - (void)seamlesslyCloseTopApp {
@@ -214,7 +214,21 @@
 		[window removeFromSuperview];
 
 	}
+    
+    //if on ipad, reenable hosting for each context when app is done launching
+    if (NEED_IPAD_HAX) {
+        
+        (void)[[NSClassFromString(@"SBLaunchAppListener") alloc] initWithBundleIdentifier:bundleID handlerBlock:^(void) {
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                
+                [_contextHostProvider _ipad_only_update_hosting];
 
+            });
+            
+        }];
+    }
+    
 	completion();
 
 }

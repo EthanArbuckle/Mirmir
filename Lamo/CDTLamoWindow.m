@@ -14,7 +14,7 @@
 //not crash out randomly on us
 - (float)level {
 
-    return 5;
+    return 99999;
 }
 
 @end
