@@ -82,6 +82,7 @@ void receivedPortraitRotate();
 - (void)notifyResumeActiveForReason:(int)reason;
 - (void)activate;
 - (void)setFlag:(long long)arg1 forActivationSetting:(unsigned int)arg2;
+- (BOOL)statusBarHidden;
 @end
 
 @interface FBScene

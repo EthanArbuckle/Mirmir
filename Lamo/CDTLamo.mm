@@ -92,19 +92,21 @@
 	//create live context host
 	UIView *contextHost = [_contextHostProvider hostViewForApplicationWithBundleID:bundleID];
 
-	//hide statusbar
-	[_contextHostProvider setStatusBarHidden:@(1) onApplicationWithBundleID:bundleID];
-
 	//create container view
 	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
+    
     [appWindow setIdentifier:bundleID];
+    [appWindow setStatusBarHidden:[(SBApplication *)[self topmostApplication] statusBarHidden]];
     
     //naivly assume portrait for the time being
     [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     
 	//add host to window
 	[appWindow addSubview:contextHost];
-
+    
+    //hide statusbar
+    [_contextHostProvider setStatusBarHidden:@(1) onApplicationWithBundleID:bundleID];
+    
 	//shrink it down and update frame
 	[appWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
 	[contextHost setFrame:CGRectMake(0, 40, contextHost.frame.size.width, contextHost.frame.size.height)];
@@ -167,7 +169,7 @@
     }
     
     //show statusbar
-	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
+	[_contextHostProvider setStatusBarHidden:@([window statusBarHidden]) onApplicationWithBundleID:bundleID];
     
 	//animate it out
 	[UIView animateWithDuration:0.3 animations:^{
@@ -198,18 +200,18 @@
 	//get bundle id
 	NSString *bundleID = [app valueForKey:@"_bundleIdentifier"];
 
-	//show statusbar
-	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
-
 	//close the window if its currently context hosted
 	if ([_windows valueForKey:bundleID]) {
-
+        
 		[_contextHostProvider disableBackgroundingForApplication:app];
 		[_contextHostProvider stopHostingForBundleID:bundleID];
 
 		//get window so we can remove it
         CDTLamoWindow *window = [_windows valueForKey:bundleID];
 		
+        //restore statusbar
+        [_contextHostProvider setStatusBarHidden:@([window statusBarHidden]) onApplicationWithBundleID:bundleID];
+        
 		//remove the view
 		[window removeFromSuperview];
 
@@ -222,6 +224,7 @@
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
                 
+                //this cycles our windows apps, and renabled hosting for each context view with priority 1
                 [_contextHostProvider _ipad_only_update_hosting];
 
             });
@@ -251,7 +254,7 @@
     }
     
 	//show statusbar
-	[_contextHostProvider setStatusBarHidden:@(0) onApplicationWithBundleID:bundleID];
+	[_contextHostProvider setStatusBarHidden:@([window statusBarHidden]) onApplicationWithBundleID:bundleID];
 
 	[UIView animateWithDuration:0.4f animations:^{
 

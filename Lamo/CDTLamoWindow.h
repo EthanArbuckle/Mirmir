@@ -12,6 +12,7 @@
 
 @property (nonatomic, retain) NSString *identifier;
 @property UIInterfaceOrientation *activeOrientation;
+@property BOOL statusBarHidden;
 
 - (float)level;
 
