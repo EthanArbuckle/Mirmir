@@ -85,8 +85,16 @@
 
 	//get bundle identifier for application
 	NSString *bundleID = [[self topmostApplication] valueForKey:@"_bundleIdentifier"];
+    
+    //make sure app is _there_ and running
+    if (!bundleID || [(SBApplication *)[self topmostApplication] pid] <= 0) {
+        
+        //if not throw a message and stop
+        [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+        return;
+    }
 
-	//close the app now that we grabbed its bundle id
+    //close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
 
 	//create live context host
