@@ -92,6 +92,7 @@
         }
         else {
             [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationMaskLandscapeLeft];
+            [[CDTLamo sharedInstance] sendLandscapeRotationNotificationToBundleID:identifier];
         }
         
         //add host to window
