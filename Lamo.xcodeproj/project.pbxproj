@@ -17,6 +17,7 @@
 		5FB454531AF3657C0020FC56 /* CDTMissionControlPane.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544C1AF3657C0020FC56 /* CDTMissionControlPane.mm */; };
 		5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544D1AF3657C0020FC56 /* SBAppSliderController.m */; };
 		5FB454561AF366B10020FC56 /* SBUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB4544E1AF3657C0020FC56 /* SBUIController.m */; };
+		5FDF09191B091CFC0094306F /* CDTLamoStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDF09181B091CFC0094306F /* CDTLamoStateManager.m */; };
 		5FE039921AF36FEA004F9098 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE039911AF36FEA004F9098 /* CoreGraphics.framework */; };
 		5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE039931AF37001004F9098 /* UIKit.framework */; };
 		5FE039E61AF44AD6004F9098 /* UIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE039E51AF44AD6004F9098 /* UIApplication.m */; };
@@ -74,6 +75,8 @@
 		5FB4544C1AF3657C0020FC56 /* CDTMissionControlPane.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CDTMissionControlPane.mm; sourceTree = "<group>"; };
 		5FB4544D1AF3657C0020FC56 /* SBAppSliderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBAppSliderController.m; sourceTree = "<group>"; };
 		5FB4544E1AF3657C0020FC56 /* SBUIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBUIController.m; sourceTree = "<group>"; };
+		5FDF09171B091CFC0094306F /* CDTLamoStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoStateManager.h; sourceTree = "<group>"; };
+		5FDF09181B091CFC0094306F /* CDTLamoStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoStateManager.m; sourceTree = "<group>"; };
 		5FE039911AF36FEA004F9098 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5FE039931AF37001004F9098 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5FE039CC1AF447EB004F9098 /* LamoClient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LamoClient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +136,8 @@
 				5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */,
 				5FB454471AF3657C0020FC56 /* CDTLamoBarView.h */,
 				5FB454481AF3657C0020FC56 /* CDTLamoBarView.mm */,
+				5FDF09171B091CFC0094306F /* CDTLamoStateManager.h */,
+				5FDF09181B091CFC0094306F /* CDTLamoStateManager.m */,
 				5FB454491AF3657C0020FC56 /* CDTMissionControl.h */,
 				5FB4544A1AF3657C0020FC56 /* CDTMissionControl.mm */,
 				5FB4544B1AF3657C0020FC56 /* CDTMissionControlPane.h */,
@@ -241,6 +246,7 @@
 				5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */,
 				5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */,
 				5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */,
+				5FDF09191B091CFC0094306F /* CDTLamoStateManager.m in Sources */,
 				5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,7 +15,6 @@
 @property BOOL wrapperViewIsTracking;
 
 + (id)sharedInstance;
-
 - (void)beginShowingHomescreen;
 - (void)updateWrapperView;
 - (void)seamlesslyCloseTopApp;
@@ -29,7 +28,7 @@
 - (void)triggerPortraitForApplication:(SBApplication *)application;
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture;
 - (void)handlePinch:(UIPinchGestureRecognizer *)gestureRecognizer;
-
 - (id)topmostApplication;
+- (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
 
 @end

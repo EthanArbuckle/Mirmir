@@ -443,4 +443,9 @@
 
 }
 
+- (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID {
+    
+    [_windows setObject:view forKey:bundleID];
+}
+
 @end 

@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Lamo.h"
 #import "CDTLamoWindow.h"
+#import "CDTContextHostProvider.h"
+#import "CDTLamoWindow.h"
+#import "CDTLamoBarView.h"
 
 @interface CDTLamoStateManager : NSObject
 
-+ (void)saveWindowStatesFromDictionary:(NSDictionary *)dictionary;
++ (void)saveWindowStatesFromDictionary:(NSDictionary *)dictionary andRemove:(BOOL)remove;
 + (void)restoreWindowsOntoView:(UIView *)view;
 
 @end
