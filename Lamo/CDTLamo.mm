@@ -198,6 +198,9 @@
         
 		//remove the view
 		[window removeFromSuperview];
+        
+        //remove value from dict
+        [_windows removeObjectForKey:bundleID];
 
 	}];
 
@@ -222,6 +225,9 @@
         
 		//remove the view
 		[window removeFromSuperview];
+        
+        //remove value from dict
+        [_windows removeObjectForKey:bundleID];
 
 	}
     
@@ -285,6 +291,9 @@
 
 			//open
 			[[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleID suspended:NO];
+            
+            //remove value from dict
+            [_windows removeObjectForKey:bundleID];
 			
 		}
 
