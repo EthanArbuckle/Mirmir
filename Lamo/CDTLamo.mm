@@ -381,6 +381,16 @@
         //scale of .6, this will also revert the 90 degree rotation
         [window setTransform:CGAffineTransformMakeScale(.6, .6)];
         
+        //set frame to ensure window bar isnt out of screen bounds
+        CGRect appWindowFrame = [window frame];
+        if (appWindowFrame.origin.y <= 0) {
+            
+            //off of screen, bounce it back
+            appWindowFrame.origin.y = 5;
+            [window setFrame:appWindowFrame];
+            
+        }
+        
     }];
     
 }
