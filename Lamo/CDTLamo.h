@@ -30,5 +30,6 @@
 - (void)handlePinch:(UIPinchGestureRecognizer *)gestureRecognizer;
 - (id)topmostApplication;
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
+- (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 
 @end

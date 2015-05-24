@@ -458,4 +458,74 @@
     [_windows setObject:view forKey:bundleID];
 }
 
+- (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position {
+    
+    //if the app window exists, cycle through each possible snap position
+    if ([_windows valueForKey:identifier]) {
+        
+        CDTLamoWindow *windowToSnap = [_windows valueForKey:identifier];
+        
+        switch (position) {
+            case CDTLamoSnapLeft:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(.5, 1)];
+                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapRight:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(.5, 1)];
+                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, 0, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapTopLeft:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
+                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapTopRight:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
+                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, 0, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapBottomLeft:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
+                [windowToSnap setFrame:CGRectMake(0, kScreenHeight / 2, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapBottomRight:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
+                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, kScreenHeight / 2, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapTop:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(1, .5)];
+                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            case CDTLamoSnapBottom:
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(1, .5)];
+                [windowToSnap setFrame:CGRectMake(0, kScreenHeight / 2, kScreenWidth, kScreenHeight)];
+                
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
+
 @end 

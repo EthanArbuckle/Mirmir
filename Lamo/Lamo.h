@@ -14,6 +14,18 @@ CFNotificationCenterRef CFNotificationCenterGetDistributedCenter(void);
 }
 #endif
 
+//snapping postitions
+typedef enum CDTLamoSnapPosition {
+    CDTLamoSnapLeft = 0,
+    CDTLamoSnapRight,
+    CDTLamoSnapTopLeft,
+    CDTLamoSnapTopRight,
+    CDTLamoSnapBottomLeft,
+    CDTLamoSnapBottomRight,
+    CDTLamoSnapTop,
+    CDTLamoSnapBottom
+ } CDTLamoSnapPosition;
+
 @interface SBApplicationController
 + (id)sharedInstance;
 - (id)applicationWithBundleIdentifier:(NSString *)bid;
