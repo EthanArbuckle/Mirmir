@@ -373,7 +373,8 @@
 					i386,
 				);
 				DSTROOT = "";
-				INSTALL_PATH = /Users/ethanarbuckle/Desktop/LAMO_DYLIB/;
+				DYLIB_INSTALL_NAME_BASE = Builds/;
+				INSTALL_PATH = Builds/;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -389,7 +390,8 @@
 					i386,
 				);
 				DSTROOT = "";
-				INSTALL_PATH = /Users/ethanarbuckle/Desktop/LAMO_DYLIB/;
+				DYLIB_INSTALL_NAME_BASE = Builds/;
+				INSTALL_PATH = Builds/;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,6 +408,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				INSTALL_PATH = Builds/;
 				LD_DYLIB_INSTALL_NAME = "$(INSTALL_PATH)/LamoClient.dylib";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -420,6 +423,7 @@
 			buildSettings = {
 				DSTROOT = "";
 				DYLIB_INSTALL_NAME_BASE = "$(INSTALL_PATH)";
+				INSTALL_PATH = Builds/;
 				LD_DYLIB_INSTALL_NAME = "$(INSTALL_PATH)/LamoClient.dylib";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
