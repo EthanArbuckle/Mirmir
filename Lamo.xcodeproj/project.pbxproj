@@ -83,6 +83,7 @@
 		5FE039E51AF44AD6004F9098 /* UIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplication.m; sourceTree = "<group>"; };
 		5FF1277F1AFB06C8001EE496 /* CDTLamoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoWindow.h; sourceTree = "<group>"; };
 		5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoWindow.m; sourceTree = "<group>"; };
+		5FF275211B1A91AC006CC312 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +109,7 @@
 		5FB4541D1AF364350020FC56 = {
 			isa = PBXGroup;
 			children = (
+				5FF275211B1A91AC006CC312 /* .travis.yml */,
 				5FE039931AF37001004F9098 /* UIKit.framework */,
 				5FE039911AF36FEA004F9098 /* CoreGraphics.framework */,
 				5FB454281AF364350020FC56 /* Lamo */,
