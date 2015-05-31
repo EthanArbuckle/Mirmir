@@ -1,2 +1,4 @@
 language: objective-c
 xcode_project: Lamo.xcodeproj
+script:
+    - xctool -sdk iphonesimulator -project Lamo.xcodeproj/ -scheme Lamo CODE_SIGNING_REQUIRED=NO
