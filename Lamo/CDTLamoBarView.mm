@@ -24,7 +24,7 @@
 		UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[closeButton setFrame:CGRectMake(5, 5, 30, 30)];
 #if TARGET_IPHONE_SIMULATOR
-		[closeButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/lamo/layout/Library/Application Support/Lamo/close.png"] forState:UIControlStateNormal];
+		[closeButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/_lamo/layout/Library/Application Support/Lamo/close.png"] forState:UIControlStateNormal];
 #else
 		[closeButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/close.png"] forState:UIControlStateNormal];
 #endif	
@@ -35,7 +35,7 @@
 		UIButton *minButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[minButton setFrame:CGRectMake(40, 5, 30, 30)];
 #if TARGET_IPHONE_SIMULATOR
-		[minButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/lamo/layout/Library/Application Support/Lamo/min.png"] forState:UIControlStateNormal];
+		[minButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/_lamo/layout/Library/Application Support/Lamo/min.png"] forState:UIControlStateNormal];
 #else
 		[minButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/min.png"] forState:UIControlStateNormal];
 #endif	
@@ -46,7 +46,7 @@
 		UIButton *maxButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[maxButton setFrame:CGRectMake(75, 5, 30, 30)];
 #if TARGET_IPHONE_SIMULATOR
-		[maxButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/lamo/layout/Library/Application Support/Lamo/full.png"] forState:UIControlStateNormal];
+		[maxButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/_lamo/layout/Library/Application Support/Lamo/full.png"] forState:UIControlStateNormal];
 #else
 		[maxButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/full.png"] forState:UIControlStateNormal];
 #endif
@@ -57,7 +57,7 @@
 		UIButton *orientButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[orientButton setFrame:CGRectMake(kScreenWidth - 35, 5, 30, 30)];
 #if TARGET_IPHONE_SIMULATOR
-		[orientButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/lamo/layout/Library/Application Support/Lamo/min.png"] forState:UIControlStateNormal];
+		[orientButton setImage:[UIImage imageWithContentsOfFile:@"/Users/ethanarbuckle/Desktop/_lamo/layout/Library/Application Support/Lamo/min.png"] forState:UIControlStateNormal];
 #else
 		[orientButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/min.png"] forState:UIControlStateNormal];
 #endif	
