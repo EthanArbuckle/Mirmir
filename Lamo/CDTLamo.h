@@ -9,10 +9,12 @@
 @property (nonatomic, retain) CDTContextHostProvider *contextHostProvider;
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;
+@property (nonatomic, copy) void (^primedSnapAction)();
 
 @property CGPoint offset;
 @property CGFloat lastScale;
 @property BOOL wrapperViewIsTracking;
+@property BOOL isPrimedForSnapping;
 
 + (id)sharedInstance;
 - (void)beginShowingHomescreen;
@@ -30,6 +32,7 @@
 - (void)handlePinch:(UIPinchGestureRecognizer *)gestureRecognizer;
 - (id)topmostApplication;
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
+- (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 - (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 
 @end

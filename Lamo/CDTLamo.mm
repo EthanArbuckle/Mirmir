@@ -407,6 +407,33 @@
     if ([panGesture state] == UIGestureRecognizerStateChanged) {
 
         CGPoint translation = [panGesture translationInView:[self springboardWindow]];
+        
+        NSLog(@"%f, %f", translation.x + _offset.x, translation.y + _offset.y);
+        
+        //window snapping shit
+        
+        if (translation.x + _offset.x <= -5 && translation.y + _offset.y <= -5) { //top left
+            
+            //this makes the window a bit clear, and sets up the snapping action block
+            if (!_isPrimedForSnapping) {
+                [self primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
+            }
+        }
+        else {
+            
+            //window is out of snap region, unprime the shit
+            if (_isPrimedForSnapping) {
+                
+                _isPrimedForSnapping = NO;
+                
+                //restore alpha
+                [[_windows valueForKey:[(CDTLamoWindow *)[[panGesture view] superview] identifier]] setAlpha:1];
+                
+                _primedSnapAction = nil;
+            }
+        }
+        
+        
         if (_offset.x + translation.x <= 0 - ((kScreenWidth * .6) / 2) || _offset.y + translation.y >= kScreenHeight - ((kScreenHeight * .6) / 2) || _offset.y + translation.y <= 0 || _offset.x + translation.x >= kScreenWidth - ((kScreenWidth * .6) / 2)) {
 
         	//outside of screen bounds
@@ -415,6 +442,20 @@
 
         [[[panGesture view] superview] setFrame:CGRectMake(_offset.x + translation.x, _offset.y + translation.y, [[panGesture view] superview].frame.size.width, [[panGesture view] superview].frame.size.height)];
 
+    }
+    
+    if ([panGesture state] == UIGestureRecognizerStateEnded) {
+        
+        //check if we're primed to snap
+        if (_isPrimedForSnapping) {
+            
+            //we're primed, execute the snapz
+            _primedSnapAction();
+            
+            //and cancel it out so we dont double snapz
+            _isPrimedForSnapping = NO;
+            _primedSnapAction = nil;
+        }
     }
 
 }
@@ -456,6 +497,26 @@
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID {
     
     [_windows setObject:view forKey:bundleID];
+}
+
+- (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position {
+    
+    //get window
+    __block CDTLamoWindow *windowToSnap = [_windows valueForKey:identifier];
+    
+    //prime da snappies
+    _isPrimedForSnapping = YES;
+    _primedSnapAction = ^{
+        [UIView animateWithDuration:0.3 animations:^{
+            [[CDTLamo sharedInstance] snapApplication:identifier toPosition:position];
+            [windowToSnap setAlpha:1];
+        }];
+        
+    };
+    
+    //make it transparent
+    [windowToSnap setAlpha:0.5];
+    
 }
 
 - (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position {
