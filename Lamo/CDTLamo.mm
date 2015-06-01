@@ -415,10 +415,14 @@
         if (translation.x + _offset.x <= -5 && translation.y + _offset.y <= -5) { //top left
             
             //this makes the window a bit clear, and sets up the snapping action block
-            if (!_isPrimedForSnapping) {
-                [self primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
-            }
+            [self primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
         }
+        
+        else if (_offset.x + translation.x >= kScreenWidth - ((kScreenWidth * .6) / 2) && translation.y + _offset.y <= -5) { //top right
+            
+            [self primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopRight];
+        }
+        
         else {
             
             //window is out of snap region, unprime the shit
@@ -500,6 +504,12 @@
 }
 
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position {
+    
+    //stop if already primed
+    if (_isPrimedForSnapping) {
+        
+        return;
+    }
     
     //get window
     __block CDTLamoWindow *windowToSnap = [_windows valueForKey:identifier];
