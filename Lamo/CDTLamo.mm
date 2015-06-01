@@ -397,18 +397,20 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
 
-	//bring it to front
-    [[[[panGesture view] superview] superview] bringSubviewToFront:[[panGesture view] superview]];
-
     if ([panGesture state] == UIGestureRecognizerStateBegan) {
+        
         _offset = [[[panGesture view] superview] frame].origin;
+        
+        //bring it to front
+        [[[[panGesture view] superview] superview] bringSubviewToFront:[[panGesture view] superview]];
+        
     } else
 
     if ([panGesture state] == UIGestureRecognizerStateChanged) {
 
         CGPoint translation = [panGesture translationInView:[self springboardWindow]];
         
-        NSLog(@"%f, %f", translation.x + _offset.x, translation.y + _offset.y);
+       // NSLog(@"%f, %f", translation.x + _offset.x, translation.y + _offset.y);
         
         //window snapping shit
         
