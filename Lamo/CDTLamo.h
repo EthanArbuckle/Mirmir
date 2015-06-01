@@ -34,5 +34,6 @@
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 - (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
+- (BOOL)shouldBlockNotificationCenter;
 
 @end

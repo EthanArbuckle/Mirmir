@@ -25,7 +25,13 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 		
 		return;
 	}
-
+    
+    //getting pissed off at notification center stealing my window pans
+    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
+        
+        return;
+    }
+    
 	ZKOrig(void, location);
 
 }
