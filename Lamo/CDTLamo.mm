@@ -546,56 +546,56 @@
             case CDTLamoSnapLeft:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(.5, 1)];
-                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth * .5, kScreenHeight)];
                 
                 break;
                 
             case CDTLamoSnapRight:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(.5, 1)];
-                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, 0, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, 0, kScreenWidth * .5, kScreenHeight)];
                 
                 break;
                 
             case CDTLamoSnapTopLeft:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
-                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth * .5, kScreenHeight * .5)];
                 
                 break;
                 
             case CDTLamoSnapTopRight:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
-                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, 0, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, 0, kScreenWidth * .5, kScreenHeight * .5)];
                 
                 break;
                 
             case CDTLamoSnapBottomLeft:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
-                [windowToSnap setFrame:CGRectMake(0, kScreenHeight / 2, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(0, kScreenHeight / 2, kScreenWidth * .5, kScreenHeight * .5)];
                 
                 break;
                 
             case CDTLamoSnapBottomRight:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(.5, .5)];
-                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, kScreenHeight / 2, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(kScreenWidth / 2, kScreenHeight / 2, kScreenWidth * .5, kScreenHeight * .5)];
                 
                 break;
                 
             case CDTLamoSnapTop:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(1, .5)];
-                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight * .5)];
                 
                 break;
                 
             case CDTLamoSnapBottom:
                 
                 [windowToSnap setTransform:CGAffineTransformMakeScale(1, .5)];
-                [windowToSnap setFrame:CGRectMake(0, kScreenHeight / 2, kScreenWidth, kScreenHeight)];
+                [windowToSnap setFrame:CGRectMake(0, kScreenHeight / 2, kScreenWidth, kScreenHeight * .5)];
                 
                 break;
                 
