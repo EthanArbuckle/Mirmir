@@ -83,6 +83,24 @@
 	[UIView animateWithDuration:0.3f animations:^{
 
 		[[self superview] setTransform:CGAffineTransformMakeScale(.6, .6)];
+        
+        //set frame to ensure window bar isnt out of screen bounds
+        CGRect appWindowFrame = [[self superview] frame];
+        
+        if (appWindowFrame.origin.y <= 0) {
+            
+            //off of screen, bounce it back
+            appWindowFrame.origin.y = 5;
+        }
+        
+        if (appWindowFrame.origin.x <= 0) {
+            
+            //bounce this back too
+            appWindowFrame.origin.x = 5;
+        }
+        
+        [[self superview] setFrame:appWindowFrame];
+
 
 	}];
 
