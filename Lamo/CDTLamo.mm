@@ -610,7 +610,7 @@
     //cycle through windows and return YES if any of them are within 20points of top
     for (NSString *windowID in [_windows allKeys]) {
         
-        if ([[_windows valueForKey:windowID] frame].origin.y <= 20) {
+        if ([[_windows valueForKey:windowID] frame].origin.y <= 40) {
             
             return YES;
         }
