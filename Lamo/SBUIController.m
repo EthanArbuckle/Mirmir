@@ -29,6 +29,7 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
     //getting pissed off at notification center stealing my window pans
     if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
         
+        [self _showNotificationsGestureCancelled];
         return;
     }
     
@@ -36,9 +37,20 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
 }
 
+- (void)_showNotificationsGestureCancelled {
+    ZKOrig(void);
+}
+
 - (void)_showNotificationsGestureChangedWithLocation:(CGPoint)location velocity:(CGPoint)velocity {
 
-	//if we're tracking
+    //stop our touches from getting jacked
+    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
+        
+        [self _showNotificationsGestureCancelled];
+        return;
+    }
+    
+    //if we're tracking
 	if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView] && location.y <= 100) {
 
 		//100 point tracking zone, with min final transform being .6
@@ -56,8 +68,15 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 }
 
 - (void)_showNotificationsGestureEndedWithLocation:(CGPoint)location velocity:(CGPoint)velocity {
-	
-	//touch ended and we were tracking
+
+    //stop our touches from getting jacked
+    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
+        
+        [self _showNotificationsGestureCancelled];
+        return;
+    }
+    
+    //touch ended and we were tracking
 	if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView]) {
 
 		//stop tracking
