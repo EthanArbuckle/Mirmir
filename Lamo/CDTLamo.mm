@@ -443,14 +443,17 @@
             }
         }
         
+        CGFloat x = _offset.x + translation.x;
+        CGFloat y = _offset.y + translation.y;
+        CGFloat w = [[panGesture view] superview].frame.size.width;
+        CGFloat h = [[panGesture view] superview].frame.size.height;
         
-        if (_offset.x + translation.x <= 0 - ((kScreenWidth * .6) / 2) || _offset.y + translation.y >= kScreenHeight - ((kScreenHeight * .6) / 2) || _offset.y + translation.y <= 0 || _offset.x + translation.x >= kScreenWidth - ((kScreenWidth * .6) / 2)) {
-
-        	//outside of screen bounds
-        	return; 
-        }
-
-        [[[panGesture view] superview] setFrame:CGRectMake(_offset.x + translation.x, _offset.y + translation.y, [[panGesture view] superview].frame.size.width, [[panGesture view] superview].frame.size.height)];
+        if (x <= -((kScreenWidth * .6) / 2)) x = -((kScreenWidth *.6) / 2);
+        if (y >= kScreenHeight - ((kScreenHeight * .6) / 2)) y = kScreenHeight - ((kScreenHeight * .6) / 2);
+        if (y <= 0) y = 0;
+        if (x >= kScreenWidth - ((kScreenWidth * .6) / 2)) x = kScreenWidth - ((kScreenWidth * .6) / 2);
+        
+        [[[panGesture view] superview] setFrame:CGRectMake(x, y, w, h)];
 
     }
     
