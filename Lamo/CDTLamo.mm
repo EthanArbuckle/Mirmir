@@ -93,7 +93,7 @@
         [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
         return;
     }
-
+    
     //close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
 
@@ -104,7 +104,11 @@
 	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
     
     [appWindow setIdentifier:bundleID];
-    [appWindow setStatusBarHidden:[(SBApplication *)[self topmostApplication] statusBarHidden]];
+    
+    if ([[self topmostApplication] respondsToSelector:@selector(statusBarHidden)]) {
+        
+        [appWindow setStatusBarHidden:[(SBApplication *)[self topmostApplication] statusBarHidden]];
+    }
     
     //naivly assume portrait for the time being
     [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
