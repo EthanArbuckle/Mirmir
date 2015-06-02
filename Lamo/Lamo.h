@@ -124,6 +124,7 @@ void receivedPortraitRotate();
 @end
 
 @interface SBAppSwitcherController : NSObject
+- (id)_flattenedArrayOfDisplayItemsFromDisplayLayouts:(id)arg1;
 @end
 
 @interface _UIBackdropView : UIView
