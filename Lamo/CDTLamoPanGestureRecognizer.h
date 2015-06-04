@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
+#import "Lamo.h"
+#import "CDTLamoBarView.h"
 
 @interface CDTLamoPanGestureRecognizer : UIPanGestureRecognizer
 

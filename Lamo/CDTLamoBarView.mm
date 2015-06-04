@@ -64,7 +64,10 @@
 		[orientButton setAlpha:.7];
 		[orientButton addTarget:self action:@selector(handleOrientation) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:orientButton];
-		
+        
+        //define area pan is allowed, and wont confict with buttons
+        _panBounds = CGPointMake([maxButton frame].origin.x + 35, [orientButton frame].origin.x - 5);
+        NSLog(@"CC: %@", NSStringFromCGPoint(_panBounds));
 	}
 
 	return self;

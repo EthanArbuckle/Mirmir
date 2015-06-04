@@ -5,6 +5,8 @@
 
 @interface CDTLamoBarView : UIToolbar
 
+@property CGPoint panBounds;
+
 - (void)handleClose;
 - (void)handleMin;
 - (void)handleMax;
