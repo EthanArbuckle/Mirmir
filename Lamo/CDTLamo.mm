@@ -504,7 +504,25 @@
 }
 
 - (void)longPress_panWithGesture:(UIPanGestureRecognizer *)panGesture {
-    NSLog(@"long press with pan");
+    
+    //get finger y origin position
+    CGFloat yScale = [panGesture translationInView:_springboardWindow].y;
+    CGFloat scale;
+    
+    //so we dont get weird stuffs
+    if (yScale <= 0) {
+        
+        yScale = 0;
+    }
+    
+    CGFloat base = .6 / 50;
+    scale = base * yScale;
+    
+    [UIView animateWithDuration:.3 animations:^{
+        
+        [(UIView *)[_windows valueForKey:[(CDTLamoWindow *)[[panGesture view] superview] identifier]] setTransform:CGAffineTransformMakeScale(1 - scale, 1 - scale)];
+    }];
+    
 }
 //ok end hacks
 
