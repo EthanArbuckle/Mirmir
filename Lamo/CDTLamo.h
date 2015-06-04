@@ -34,7 +34,6 @@
 - (void)longPress_beginTimer;
 - (void)longPress_timerFired;
 - (void)longPress_panWithGesture:(UIPanGestureRecognizer *)panGesture;
-- (void)handlePinch:(UIPinchGestureRecognizer *)gestureRecognizer;
 - (id)topmostApplication;
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;

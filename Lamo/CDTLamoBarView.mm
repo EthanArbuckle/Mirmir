@@ -17,10 +17,6 @@
 		CDTLamoPanGestureRecognizer *panTrack = [[CDTLamoPanGestureRecognizer alloc] initWithTarget:[CDTLamo sharedInstance] action:@selector(handlePan:)];
 		[self addGestureRecognizer:panTrack];
 
-		//pinch gesture to resize
-		UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:[CDTLamo sharedInstance] action:@selector(handlePinch:)];
-		[self addGestureRecognizer:pinch];
-
 		UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[closeButton setFrame:CGRectMake(5, 5, 30, 30)];
 #if TARGET_IPHONE_SIMULATOR
