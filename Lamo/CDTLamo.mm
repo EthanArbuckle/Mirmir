@@ -400,8 +400,36 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
+    
+    if ([panGesture state] == UIGestureRecognizerStateEnded) {
+
+        //check if we're primed to snap
+        if (_isPrimedForSnapping) {
+            
+            //we're primed, execute the snapz
+            _primedSnapAction();
+            
+            //and cancel it out so we dont double snapz
+            _isPrimedForSnapping = NO;
+            _primedSnapAction = nil;
+            
+        }
+        
+        [_longPress_timer invalidate];
+        _longPress_isPressed = NO;
+    }
+    
+    //hacky, but we're piggybacking a longpress gesture on this pan gesture
+    if (_longPress_isPressed) {
+        
+        [self longPress_panWithGesture:panGesture];
+        
+        return;
+    }
 
     if ([panGesture state] == UIGestureRecognizerStateBegan) {
+        
+        [self longPress_beginTimer];
         
         _offset = [[[panGesture view] superview] frame].origin;
         
@@ -411,7 +439,9 @@
     } else
 
     if ([panGesture state] == UIGestureRecognizerStateChanged) {
-
+        
+        [self longPress_beginTimer];
+        
         CGPoint translation = [panGesture translationInView:[self springboardWindow]];
         
        // NSLog(@"%f, %f", translation.x + _offset.x, translation.y + _offset.y);
@@ -453,26 +483,34 @@
         [[[panGesture view] superview] setFrame:bounds];
 
     }
-    
-    if ([panGesture state] == UIGestureRecognizerStateEnded) {
-        
-        //check if we're primed to snap
-        if (_isPrimedForSnapping) {
-            
-            //we're primed, execute the snapz
-            _primedSnapAction();
-            
-            //and cancel it out so we dont double snapz
-            _isPrimedForSnapping = NO;
-            _primedSnapAction = nil;
-        }
-    }
 
 }
 
+//these methods are a hacky way to piggypack on the windows pangesture to achieve a long press gesture recognizer
+- (void)longPress_beginTimer {
+
+    //invalidate timer just in case we're called twice consecutively
+    _longPress_isPressed = NO;
+    [_longPress_timer invalidate];
+    
+    //recreate it with our long press interval
+    _longPress_timer = [NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(longPress_timerFired) userInfo:nil repeats:NO];
+    [[NSRunLoop mainRunLoop] addTimer:_longPress_timer forMode:NSDefaultRunLoopMode];
+}
+
+- (void)longPress_timerFired {
+
+    _longPress_isPressed = YES;
+}
+
+- (void)longPress_panWithGesture:(UIPanGestureRecognizer *)panGesture {
+    NSLog(@"long press with pan");
+}
+//ok end hacks
+
 - (void)handlePinch:(UIPinchGestureRecognizer *)gestureRecognizer {
 
-	if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
         
         // Reset the last scale, necessary if there are multiple objects with different scales
         _lastScale = [gestureRecognizer scale];
