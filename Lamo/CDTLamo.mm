@@ -494,7 +494,7 @@
     [_longPress_timer invalidate];
     
     //recreate it with our long press interval
-    _longPress_timer = [NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(longPress_timerFired) userInfo:nil repeats:NO];
+    _longPress_timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(longPress_timerFired) userInfo:nil repeats:NO];
     [[NSRunLoop mainRunLoop] addTimer:_longPress_timer forMode:NSDefaultRunLoopMode];
 }
 
