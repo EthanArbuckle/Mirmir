@@ -14,7 +14,7 @@
 
 		//setup gestures
 		//add pangesture to make it movable
-		UIPanGestureRecognizer *panTrack = [[UIPanGestureRecognizer alloc] initWithTarget:[CDTLamo sharedInstance] action:@selector(handlePan:)];
+		CDTLamoPanGestureRecognizer *panTrack = [[CDTLamoPanGestureRecognizer alloc] initWithTarget:[CDTLamo sharedInstance] action:@selector(handlePan:)];
 		[self addGestureRecognizer:panTrack];
 
 		//pinch gesture to resize

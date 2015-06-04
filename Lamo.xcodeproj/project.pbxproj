@@ -21,6 +21,7 @@
 		5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE039931AF37001004F9098 /* UIKit.framework */; };
 		5FE039E61AF44AD6004F9098 /* UIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE039E51AF44AD6004F9098 /* UIApplication.m */; };
 		5FE039E71AF44E8F004F9098 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
+		5FEBA7461B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */; };
 		5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		5FE039CC1AF447EB004F9098 /* LamoClient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LamoClient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE039E51AF44AD6004F9098 /* UIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplication.m; sourceTree = "<group>"; };
 		5FEBA71A1B1C1F6700BACB25 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5FEBA7441B210D0400BACB25 /* CDTLamoPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoPanGestureRecognizer.h; sourceTree = "<group>"; };
+		5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoPanGestureRecognizer.m; sourceTree = "<group>"; };
 		5FF1277F1AFB06C8001EE496 /* CDTLamoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoWindow.h; sourceTree = "<group>"; };
 		5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoWindow.m; sourceTree = "<group>"; };
 		5FF275211B1A91AC006CC312 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
@@ -138,6 +141,8 @@
 				5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */,
 				5FB454471AF3657C0020FC56 /* CDTLamoBarView.h */,
 				5FB454481AF3657C0020FC56 /* CDTLamoBarView.mm */,
+				5FEBA7441B210D0400BACB25 /* CDTLamoPanGestureRecognizer.h */,
+				5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */,
 				5FDF09171B091CFC0094306F /* CDTLamoStateManager.h */,
 				5FDF09181B091CFC0094306F /* CDTLamoStateManager.m */,
 				5FB454491AF3657C0020FC56 /* CDTMissionControl.h */,
@@ -244,6 +249,7 @@
 				5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */,
 				5FB454521AF3657C0020FC56 /* CDTMissionControl.mm in Sources */,
 				5FB454531AF3657C0020FC56 /* CDTMissionControlPane.mm in Sources */,
+				5FEBA7461B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m in Sources */,
 				5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */,
 				5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */,
 				5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */,

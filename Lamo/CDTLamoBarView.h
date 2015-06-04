@@ -1,6 +1,7 @@
 #import "Lamo.h"
 #import "CDTLamo.h"
 #import "CDTLamoWindow.h"
+#import "CDTLamoPanGestureRecognizer.h"
 
 @interface CDTLamoBarView : UIToolbar
 
