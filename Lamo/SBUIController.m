@@ -2,6 +2,7 @@
 #import "CDTLamo.h"
 #import "CDTMissionControl.h"
 #import "ZKSwizzle.h"
+#import "CDTLamoSettings.h"
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
@@ -9,7 +10,7 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
 - (void)_showNotificationsGestureBeganWithLocation:(CGPoint)location {
 
-	if (location.x <= 100 && [[UIApplication sharedApplication] _accessibilityFrontMostApplication]) {
+	if (location.x <= 100 && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
 
 		//we've started tracking the wrapper view
 		[[CDTLamo sharedInstance] setWrapperViewIsTracking:YES];
@@ -51,7 +52,7 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
     }
     
     //if we're tracking
-	if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView] && location.y <= 100) {
+	if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView] && location.y <= 100 && [[CDTLamoSettings sharedSettings] isEnabled]) {
 
 		//100 point tracking zone, with min final transform being .6
 		CGFloat base = .4 / 100;
@@ -77,7 +78,7 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
     }
     
     //touch ended and we were tracking
-	if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView]) {
+	if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView] && [[CDTLamoSettings sharedSettings] isEnabled]) {
 
 		//stop tracking
 		[[CDTLamo sharedInstance] setWrapperViewIsTracking:NO];
@@ -118,14 +119,6 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 		ZKOrig(void, animated);
     }];
 
-}
-
-- (BOOL)_activateAppSwitcher {
-
-	//add our mission control
-	//[[[UIApplication sharedApplication] keyWindow] addSubview:[CDTMissionControl sharedInstance]];
-
-    return ZKOrig(BOOL);// YES;
 }
 
 @end

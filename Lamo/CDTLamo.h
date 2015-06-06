@@ -2,6 +2,7 @@
 #import "CDTContextHostProvider.h"
 #import "CDTLamoBarView.h"
 #import "CDTLamoWindow.h"
+#import "CDTLamoSettings.h"
 
 @interface CDTLamo : NSObject
 

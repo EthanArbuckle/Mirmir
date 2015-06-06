@@ -636,6 +636,11 @@
 
 - (BOOL)shouldBlockNotificationCenter {
     
+    if (![[CDTLamoSettings sharedSettings] isEnabled]) {
+        
+        return NO;
+    }
+    
     //cycle through windows and return YES if any of them are within 20points of top
     for (NSString *windowID in [_windows allKeys]) {
         
