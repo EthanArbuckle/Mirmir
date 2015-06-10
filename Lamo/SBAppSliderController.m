@@ -4,11 +4,6 @@
 
 ZKSwizzleInterface($_Lamo_SBAppSwitcherController, SBAppSwitcherController, NSObject);
 
-static __attribute__((constructor)) void Lamo_SBAppSwitcherController_Init() {
-
-    //ZKSwizzleClass($_Lamo_SBAppSwitcherController);
-}
-
 @implementation $_Lamo_SBAppSwitcherController
 
 - (void)switcherScroller:(id)arg1 itemTapped:(id)arg2 {

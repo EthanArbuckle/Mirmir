@@ -10,7 +10,7 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
 - (void)_showNotificationsGestureBeganWithLocation:(CGPoint)location {
 
-	if (location.x <= 100 && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
+    if (location.x <= 100 && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
 
 		//we've started tracking the wrapper view
 		[[CDTLamo sharedInstance] setWrapperViewIsTracking:YES];
@@ -43,7 +43,7 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 }
 
 - (void)_showNotificationsGestureChangedWithLocation:(CGPoint)location velocity:(CGPoint)velocity {
-
+    
     //stop our touches from getting jacked
     if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
         

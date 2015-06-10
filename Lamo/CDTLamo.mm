@@ -2,6 +2,12 @@
 
 @implementation CDTLamo
 
+static SBWorkspaceApplicationTransitionContext *transitionContext;
+static SBWorkspaceDeactivatingEntity *deactivatingEntity;
+static SBWorkspaceHomeScreenEntity *homescreenEntity;
+static SBMainWorkspaceTransitionRequest *transitionRequest;
+static SBAppToAppWorkspaceTransaction *transaction;
+
 + (id)sharedInstance {
 	static dispatch_once_t p = 0;
 	__strong static id _sharedObject = nil;
@@ -48,19 +54,59 @@
 	FBScene *appScene = [[self topmostApplication] mainScene];
 	FBWindowContextHostManager *appContextManager = [appScene contextHostManager];
 	_sharedScalingWrapperView = [[appContextManager valueForKey:@"_hostView"] superview];
+    
+    //window arangment changed a bit on ios 9
+    if (GTEiOS9) {
+        
+       // _sharedScalingWrapperView = [_sharedScalingWrapperView superview];
+    }
+    
     _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
 }
 
 - (void)seamlesslyCloseTopApp {
-
+    
 	//create even to deactivate the application
 	FBWorkspaceEvent *event = [NSClassFromString(@"FBWorkspaceEvent") eventWithName:@"ActivateSpringBoard" handler:^{
         SBDeactivationSettings *deactiveSets = [[NSClassFromString(@"SBDeactivationSettings") alloc] init];
         [deactiveSets setFlag:YES forDeactivationSetting:20];
         [deactiveSets setFlag:NO forDeactivationSetting:2];
         [[self topmostApplication] _setDeactivationSettings:deactiveSets];
-        SBAppToAppWorkspaceTransaction *transaction = [[NSClassFromString(@"SBAppToAppWorkspaceTransaction") alloc] initWithAlertManager:nil exitedApp:[self topmostApplication]];
-        [transaction begin];
+        
+        //very different ways to close apps between iOS 8 and 9
+        if (GTEiOS9) {
+            
+            transitionContext = [[NSClassFromString(@"SBWorkspaceApplicationTransitionContext") alloc] init];
+            
+            //set layout role to 'side' (deactivating)
+            deactivatingEntity = [NSClassFromString(@"SBWorkspaceDeactivatingEntity") entity];
+            [deactivatingEntity setLayoutRole:3];
+            [transitionContext setEntity:deactivatingEntity forLayoutRole:3];
+            
+            //set layout role for 'primary' (activating)
+            homescreenEntity = [[NSClassFromString(@"SBWorkspaceHomeScreenEntity") alloc] init];
+            [transitionContext setEntity:homescreenEntity forLayoutRole:2];
+            
+            [transitionContext setAnimationDisabled:YES];
+            
+            //create transititon request
+            transitionRequest = [[NSClassFromString(@"SBMainWorkspaceTransitionRequest") alloc] initWithDisplay:[[UIScreen mainScreen] valueForKey:@"_fbsDisplay"]];
+            [transitionRequest setValue:transitionContext forKey:@"_applicationContext"];
+            
+            //create apptoapp transaction
+            transaction = [[NSClassFromString(@"SBAppToAppWorkspaceTransaction") alloc] initWithTransitionRequest:transitionRequest];
+            
+            [transaction begin];
+            
+        }
+        
+        else {
+            
+        
+            SBAppToAppWorkspaceTransaction *transaction = [[NSClassFromString(@"SBAppToAppWorkspaceTransaction") alloc] initWithAlertManager:nil exitedApp:[self topmostApplication]];
+            
+            [transaction begin];
+        }
 
 	}];
 
@@ -97,7 +143,7 @@
     //close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
 
-	//create live context host
+    //create live context host
 	UIView *contextHost = [_contextHostProvider hostViewForApplicationWithBundleID:bundleID];
 
 	//create container view

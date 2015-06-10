@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026311B22B02000257C45 /* CDTLamoSettings.m */; };
 		5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */; };
+		5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */; };
 		5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5FB454291AF364350020FC56 /* Lamo.h */; };
 		5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
 		5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454441AF3657C0020FC56 /* CDTContextHostProvider.mm */; };
@@ -23,6 +24,7 @@
 		5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FE039931AF37001004F9098 /* UIKit.framework */; };
 		5FE039E61AF44AD6004F9098 /* UIApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE039E51AF44AD6004F9098 /* UIApplication.m */; };
 		5FE039E71AF44E8F004F9098 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
+		5FE9009C1B26DE0B00ACCB1C /* SBNotificationCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9009B1B26DE0B00ACCB1C /* SBNotificationCenterController.m */; };
 		5FEBA7461B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */; };
 		5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,8 @@
 		5F1026311B22B02000257C45 /* CDTLamoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettings.m; sourceTree = "<group>"; };
 		5F1026331B22B5AD00257C45 /* CDTLamoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSettingsViewController.h; sourceTree = "<group>"; };
 		5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsViewController.m; sourceTree = "<group>"; };
+		5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsIcon.m; sourceTree = "<group>"; };
+		5F742F781B23BFB800E92C5D /* CDTLamoSettingsIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDTLamoSettingsIcon.h; sourceTree = "<group>"; };
 		5FB454261AF364350020FC56 /* Lamo.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Lamo.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB454291AF364350020FC56 /* Lamo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lamo.h; sourceTree = "<group>"; };
 		5FB454401AF364920020FC56 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		5FE039931AF37001004F9098 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5FE039CC1AF447EB004F9098 /* LamoClient.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = LamoClient.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE039E51AF44AD6004F9098 /* UIApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIApplication.m; sourceTree = "<group>"; };
+		5FE9009B1B26DE0B00ACCB1C /* SBNotificationCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBNotificationCenterController.m; sourceTree = "<group>"; };
 		5FEBA71A1B1C1F6700BACB25 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5FEBA7441B210D0400BACB25 /* CDTLamoPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoPanGestureRecognizer.h; sourceTree = "<group>"; };
 		5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoPanGestureRecognizer.m; sourceTree = "<group>"; };
@@ -153,6 +158,8 @@
 				5F1026311B22B02000257C45 /* CDTLamoSettings.m */,
 				5F1026331B22B5AD00257C45 /* CDTLamoSettingsViewController.h */,
 				5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */,
+				5F742F781B23BFB800E92C5D /* CDTLamoSettingsIcon.h */,
+				5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */,
 				5FDF09171B091CFC0094306F /* CDTLamoStateManager.h */,
 				5FDF09181B091CFC0094306F /* CDTLamoStateManager.m */,
 				5FB454491AF3657C0020FC56 /* CDTMissionControl.h */,
@@ -161,6 +168,7 @@
 				5FB4544C1AF3657C0020FC56 /* CDTMissionControlPane.mm */,
 				5FB4544D1AF3657C0020FC56 /* SBAppSliderController.m */,
 				5FB4544E1AF3657C0020FC56 /* SBUIController.m */,
+				5FE9009B1B26DE0B00ACCB1C /* SBNotificationCenterController.m */,
 				5FB454401AF364920020FC56 /* ZKSwizzle.h */,
 				5FB454411AF364920020FC56 /* ZKSwizzle.m */,
 				5FB454291AF364350020FC56 /* Lamo.h */,
@@ -254,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */,
 				5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */,
 				5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */,
 				5FB454561AF366B10020FC56 /* SBUIController.m in Sources */,
@@ -265,6 +274,7 @@
 				5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */,
 				5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */,
 				5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */,
+				5FE9009C1B26DE0B00ACCB1C /* SBNotificationCenterController.m in Sources */,
 				5FDF09191B091CFC0094306F /* CDTLamoStateManager.m in Sources */,
 				5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */,
 			);

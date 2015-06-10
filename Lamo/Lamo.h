@@ -4,6 +4,8 @@
 #define kScreenHeight 			[[UIScreen mainScreen] bounds].size.height
 #define kScreenWidth 			[[UIScreen mainScreen] bounds].size.width
 
+#define GTEiOS9 [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -44,6 +46,7 @@ typedef enum CDTLamoSnapPosition {
 - (void)begin;
 - (id)initWithAlertManager:(id)alertManager exitedApp:(id)app;
 - (id)initWithAlertManager:(id)arg1 from:(id)arg2 to:(id)arg3 withResult:(id)arg4;
+- (id)initWithTransitionRequest:(id)arg1;
 @end
 
 @interface FBWorkspaceEventQueue : NSObject
@@ -150,4 +153,41 @@ void receivedPortraitRotate();
 
 @interface SBLaunchAppListener : NSObject
 - (id)initWithBundleIdentifier:(id)arg1 handlerBlock:(id)arg2;
+@end
+
+@interface SBIcon : NSObject
+@end
+
+@interface SBLeafIcon : SBIcon
+-(id)initWithLeafIdentifier:(id)leafIdentifier applicationBundleID:(id)anId;
+@end
+
+@interface NSObject (LamoHacks)
+-(id)initWithLeafIdentifier:(id)leafIdentifier applicationBundleID:(id)anId;
+@end
+
+@interface SBWorkspaceApplicationTransitionContext : NSObject
+
+@property(nonatomic) _Bool animationDisabled; // @synthesize animationDisabled=_animationDisabled;
+
+- (void)setEntity:(id)arg1 forLayoutRole:(int)arg2;
+
+@end
+
+@interface SBWorkspaceDeactivatingEntity
+
+@property(nonatomic) long long layoutRole; // @synthesize layoutRole=_layoutRole;
+
++ (id)entity;
+
+@end
+
+@interface SBWorkspaceHomeScreenEntity : NSObject
+
+@end
+
+@interface SBMainWorkspaceTransitionRequest : NSObject
+
+- (id)initWithDisplay:(id)arg1;
+
 @end
