@@ -699,4 +699,39 @@ static SBAppToAppWorkspaceTransaction *transaction;
     return NO;
 }
 
+- (void)presentSettingsController {
+    
+    //dont open more than one instance
+    if ([_windows valueForKey:@"com.cortexdevteam.lamosetting"]) {
+        
+        return;
+    }
+    
+    //create settings window
+    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
+    [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
+    [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+    
+    //create settings view controller
+    CDTLamoSettingsViewController *settingsController = [[CDTLamoSettingsViewController alloc] init];
+    [settingsWindow addSubview:[settingsController view]];
+    
+    //shrink it down and update frame
+    [settingsWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
+    
+    //create the 'title bar' window that holds the gestures
+    CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
+    [settingsWindow addSubview:gestureView];
+    
+    //add it to dict
+    [_windows setValue:settingsWindow forKey:@"com.cortexdevteam.lamosetting"];
+    
+    //add window to springboard window
+    [_springboardWindow addSubview:settingsWindow];
+    
+    //animate it popping in
+    [self doPopAnimationForView:settingsWindow];
+
+}
+
 @end 

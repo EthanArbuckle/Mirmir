@@ -156,6 +156,7 @@ void receivedPortraitRotate();
 @end
 
 @interface SBIcon : NSObject
+-(id)leafIdentifier;
 @end
 
 @interface SBLeafIcon : SBIcon
@@ -189,5 +190,20 @@ void receivedPortraitRotate();
 @interface SBMainWorkspaceTransitionRequest : NSObject
 
 - (id)initWithDisplay:(id)arg1;
+
+@end
+
+@interface SBIconController : NSObject
+
++ (id)sharedInstance;
+- (void)icon:(id)icon touchEnded:(BOOL)ended;
+- (void)addNewIconToDesignatedLocation:(id)designatedLocation animate:(BOOL)animate scrollToList:(BOOL)list saveIconState:(BOOL)state;
+- (void)clearHighlightedIcon;
+
+@end
+
+@interface SBIconModel : NSObject
+
+- (void)addIcon:(id)icon;
 
 @end

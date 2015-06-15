@@ -3,6 +3,7 @@
 #import "CDTLamoBarView.h"
 #import "CDTLamoWindow.h"
 #import "CDTLamoSettings.h"
+#import "CDTLamoSettingsViewController.h"
 
 @interface CDTLamo : NSObject
 
@@ -40,5 +41,6 @@
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 - (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 - (BOOL)shouldBlockNotificationCenter;
+- (void)presentSettingsController;
 
 @end

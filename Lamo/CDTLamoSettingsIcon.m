@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 CortexDevTeam. All rights reserved.
 //
 
-#import "CDTLamoSettingsIcon.h"
 #import "Lamo.h"
+#import <objc/runtime.h>
 #import "ZKSwizzle.h"
 
-ZKSwizzleInterface($_Lamo_SBLeafIcon, SBApplicationIcon, UIView);
+ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
 
 @implementation $_Lamo_SBLeafIcon
 
@@ -25,23 +25,13 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBApplicationIcon, UIView);
     
 }
 
--(void)touchesEnded:(id)ended withEvent:(id)event {
-    
-    [[[UIAlertView alloc] initWithTitle:@"" message:@"" delegate:nil cancelButtonTitle:@"" otherButtonTitles:nil, nil] show];
-    if ([[self valueForKey:@"_leafIdentifier"] isEqualToString:@"lamo"]) {
-        NSLog(@"open");
-    }
-    
-    return ZKOrig(void);
-    
-}
 - (NSString *)displayName {
     
     if ([[self valueForKey:@"_leafIdentifier"] isEqualToString:@"lamo"]) {
         
-        return @"Lamo Settings";
+        return @"lamo prefs";
     }
-    
+
     return ZKOrig(NSString *);
     
 }
