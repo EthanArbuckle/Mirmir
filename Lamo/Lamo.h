@@ -6,6 +6,9 @@
 
 #define GTEiOS9 [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0
 
+#define stringify(a) str(a)
+#define str(a) #a
+
 #ifdef __cplusplus
 extern "C" {
 #endif

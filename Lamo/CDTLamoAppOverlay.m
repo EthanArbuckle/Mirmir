@@ -20,6 +20,7 @@
         [blurView setFrame:[self frame]];
         [self insertSubview:blurView atIndex:0];
         
+        NSString *resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
     }
     
     return self;

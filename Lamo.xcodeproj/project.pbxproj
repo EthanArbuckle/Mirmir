@@ -72,6 +72,7 @@
 		5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsIcon.m; sourceTree = "<group>"; };
 		5FA91D761B37131B00BBC90E /* CDTLamoAppOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoAppOverlay.h; sourceTree = "<group>"; };
 		5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoAppOverlay.m; sourceTree = "<group>"; };
+		5FA91D791B371DFC00BBC90E /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		5FB454261AF364350020FC56 /* Lamo.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Lamo.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB454291AF364350020FC56 /* Lamo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lamo.h; sourceTree = "<group>"; };
 		5FB454401AF364920020FC56 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 				5FEBA71A1B1C1F6700BACB25 /* README.md */,
 				5FE039931AF37001004F9098 /* UIKit.framework */,
 				5FE039911AF36FEA004F9098 /* CoreGraphics.framework */,
+				5FA91D791B371DFC00BBC90E /* Resources */,
 				5FB454281AF364350020FC56 /* Lamo */,
 				5FE039CD1AF447EB004F9098 /* lamoClient */,
 				5FB454271AF364350020FC56 /* Products */,
@@ -425,6 +427,7 @@
 				);
 				DSTROOT = "";
 				DYLIB_INSTALL_NAME_BASE = Builds/;
+				GCC_PREPROCESSOR_DEFINITIONS = "SRC_ROOT=\"$(SRCROOT)\"";
 				INSTALL_PATH = Builds/;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -442,6 +445,7 @@
 				);
 				DSTROOT = "";
 				DYLIB_INSTALL_NAME_BASE = Builds/;
+				GCC_PREPROCESSOR_DEFINITIONS = "SRC_ROOT=\"$(SRCROOT)\"";
 				INSTALL_PATH = Builds/;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
