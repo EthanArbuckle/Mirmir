@@ -14,9 +14,11 @@
 
 		//add pangesture to make it movable
 		CDTLamoPanGestureRecognizer *panTrack = [[CDTLamoPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        [panTrack setDelegate:self];
 		[self addGestureRecognizer:panTrack];
         
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        [tapGesture setDelegate:self];
         [self addGestureRecognizer:tapGesture];
         
     }
@@ -37,7 +39,34 @@
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
-    NSLog(@"Tap");
+    
+    //check if we need to create or remove overlay
+    if (_overlayView && [_overlayView superview]) {
+        
+        //remove it
+        [UIView animateWithDuration:0.4f animations:^{
+            
+            [_overlayView setAlpha:0];
+        } completion:^(BOOL finished) {
+            
+            _overlayView = nil;
+        }];
+    }
+    
+    else {
+    
+        //create overlay options. frame is in context of superview, cdtlamowindow
+        _overlayView = [[CDTLamoAppOverlay alloc] initWithOrientation:[(CDTLamoWindow *)[self superview] activeOrientation]];
+        [_overlayView setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
+        [_overlayView setBackgroundColor:[UIColor clearColor]];
+        [_overlayView setAlpha:0];
+        [[self superview] addSubview:_overlayView];
+        
+        [UIView animateWithDuration:0.4f animations:^{
+            [_overlayView setAlpha:1];
+        }];
+    }
+    
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
@@ -178,6 +207,10 @@
         
     }
 	
+}
+
+- (BOOL)gestureRecognizer:(nonnull UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 @end

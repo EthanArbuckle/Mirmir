@@ -11,6 +11,7 @@
 		5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */; };
 		5F40C0A81B2D9E0000AC3711 /* SBIconController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F40C0A71B2D9E0000AC3711 /* SBIconController.m */; };
 		5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */; };
+		5FA91D781B37131B00BBC90E /* CDTLamoAppOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */; };
 		5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5FB454291AF364350020FC56 /* Lamo.h */; };
 		5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
 		5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454441AF3657C0020FC56 /* CDTContextHostProvider.mm */; };
@@ -69,6 +70,8 @@
 		5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsViewController.m; sourceTree = "<group>"; };
 		5F40C0A71B2D9E0000AC3711 /* SBIconController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBIconController.m; sourceTree = "<group>"; };
 		5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsIcon.m; sourceTree = "<group>"; };
+		5FA91D761B37131B00BBC90E /* CDTLamoAppOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoAppOverlay.h; sourceTree = "<group>"; };
+		5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoAppOverlay.m; sourceTree = "<group>"; };
 		5FB454261AF364350020FC56 /* Lamo.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Lamo.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB454291AF364350020FC56 /* Lamo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Lamo.h; sourceTree = "<group>"; };
 		5FB454401AF364920020FC56 /* ZKSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKSwizzle.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */,
 				5FB454471AF3657C0020FC56 /* CDTLamoBarView.h */,
 				5FB454481AF3657C0020FC56 /* CDTLamoBarView.mm */,
+				5FA91D761B37131B00BBC90E /* CDTLamoAppOverlay.h */,
+				5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */,
 				5FEBA7441B210D0400BACB25 /* CDTLamoPanGestureRecognizer.h */,
 				5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */,
 				5F1026301B22B02000257C45 /* CDTLamoSettings.h */,
@@ -281,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */,
+				5FA91D781B37131B00BBC90E /* CDTLamoAppOverlay.m in Sources */,
 				5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */,
 				5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */,
 				5FB454561AF366B10020FC56 /* SBUIController.m in Sources */,

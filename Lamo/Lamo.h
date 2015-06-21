@@ -132,6 +132,8 @@ void receivedPortraitRotate();
 
 @interface _UIBackdropView : UIView
 - (id)initWithStyle:(int)arg1;
+- (void)setStyle:(int)arg1;
+- (void)setBlurRadius:(float)arg1;
 @end
 
 @interface SBViewSnapshotProvider
