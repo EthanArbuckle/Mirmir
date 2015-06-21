@@ -12,13 +12,11 @@
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;
 @property (nonatomic, copy) void (^primedSnapAction)();
-@property (nonatomic, retain) NSTimer *longPress_timer;
 
 @property CGPoint offset;
 @property CGFloat lastScale;
 @property BOOL wrapperViewIsTracking;
 @property BOOL isPrimedForSnapping;
-@property BOOL longPress_isPressed;
 
 + (id)sharedInstance;
 - (void)beginShowingHomescreen;
@@ -33,9 +31,6 @@
 - (void)triggerLandscapeForApplication:(SBApplication *)application;
 - (void)triggerPortraitForApplication:(SBApplication *)application;
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture;
-- (void)longPress_beginTimer;
-- (void)longPress_timerFired;
-- (void)longPress_panWithGesture:(UIPanGestureRecognizer *)panGesture;
 - (id)topmostApplication;
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;

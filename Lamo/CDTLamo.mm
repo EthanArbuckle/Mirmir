@@ -464,21 +464,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
             
         }
         
-       // [_longPress_timer invalidate];
-       // _longPress_isPressed = NO;
     }
-    
-    //hacky, but we're piggybacking a longpress gesture on this pan gesture
-   // if (_longPress_isPressed) {
-        
-   //     [self longPress_panWithGesture:panGesture];
-        
-   //     return;
-   // }
 
     if ([panGesture state] == UIGestureRecognizerStateBegan) {
-        
-        //[self longPress_beginTimer];
         
         _offset = [[[panGesture view] superview] frame].origin;
         
@@ -489,11 +477,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
     if ([panGesture state] == UIGestureRecognizerStateChanged) {
         
-        //[self longPress_beginTimer];
-        
         CGPoint translation = [panGesture translationInView:[self springboardWindow]];
-        
-       // NSLog(@"%f, %f", translation.x + _offset.x, translation.y + _offset.y);
         
         //window snapping shit
         
@@ -534,46 +518,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
     }
 
 }
-
-//these methods are a hacky way to piggypack on the windows pangesture to achieve a long press gesture recognizer
-- (void)longPress_beginTimer {
-
-    //invalidate timer just in case we're called twice consecutively
-    _longPress_isPressed = NO;
-    [_longPress_timer invalidate];
-    
-    //recreate it with our long press interval
-    _longPress_timer = [NSTimer timerWithTimeInterval:0.5 target:self selector:@selector(longPress_timerFired) userInfo:nil repeats:NO];
-    [[NSRunLoop mainRunLoop] addTimer:_longPress_timer forMode:NSDefaultRunLoopMode];
-}
-
-- (void)longPress_timerFired {
-
-    _longPress_isPressed = YES;
-}
-
-- (void)longPress_panWithGesture:(UIPanGestureRecognizer *)panGesture {
-    
-    //get finger y origin position
-    CGFloat yScale = [panGesture translationInView:_springboardWindow].y;
-    CGFloat scale;
-    
-    //so we dont get weird stuffs
-    if (yScale <= 0) {
-        
-        yScale = 0;
-    }
-    
-    CGFloat base = .6 / 50;
-    scale = base * yScale;
-    
-    [UIView animateWithDuration:.3 animations:^{
-        
-        [(UIView *)[_windows valueForKey:[(CDTLamoWindow *)[[panGesture view] superview] identifier]] setTransform:CGAffineTransformMakeScale(1 - scale, 1 - scale)];
-    }];
-    
-}
-//ok end hacks
 
 - (id)topmostApplication {
 
