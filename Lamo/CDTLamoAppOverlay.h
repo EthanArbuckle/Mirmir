@@ -12,11 +12,14 @@
 
 @interface CDTLamoAppOverlay : UIView
 
+@property CGFloat lastScale;
+
 - (id)initWithOrientation:(UIInterfaceOrientation *)orientation;
 
 - (void)handleClose;
 - (void)handleMin;
 - (void)handleMax;
 - (void)handleOrientation;
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer;
 
 @end

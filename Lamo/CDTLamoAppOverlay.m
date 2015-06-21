@@ -26,6 +26,10 @@
         resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
 #endif
         
+        //create pinching gesture
+        UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+        [self addGestureRecognizer:pinchGesture];
+        
         //create minimize button
         UIButton *minimizeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [minimizeButton setFrame:CGRectMake((kScreenWidth / 2) - 35, (kScreenHeight / 2) - 35, 70, 70)];
@@ -126,6 +130,33 @@
         
     }
     
+}
+
+//http://stackoverflow.com/questions/5150642/max-min-scale-of-pinch-zoom-in-uipinchgesturerecognizer-iphone-ios
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer {
+    
+    if([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        // Reset the last scale, necessary if there are multiple objects with different scales
+        _lastScale = [gestureRecognizer scale];
+    }
+    
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan ||
+        [gestureRecognizer state] == UIGestureRecognizerStateChanged) {
+        
+        CGFloat currentScale = [[[[gestureRecognizer view] superview].layer valueForKeyPath:@"transform.scale"] floatValue];
+        
+        // Constants to adjust the max/min values of zoom
+        const CGFloat kMaxScale = 1.0;
+        const CGFloat kMinScale = .4;
+        
+        CGFloat newScale = 1 -  (_lastScale - [gestureRecognizer scale]);
+        newScale = MIN(newScale, kMaxScale / currentScale);
+        newScale = MAX(newScale, kMinScale / currentScale);
+        CGAffineTransform transform = CGAffineTransformScale([[[gestureRecognizer view] superview] transform], newScale, newScale);
+        [[gestureRecognizer view] superview].transform = transform;
+        
+        _lastScale = [gestureRecognizer scale];  // Store the previous scale factor for the next pinch gesture call
+    }
 }
 
 @end

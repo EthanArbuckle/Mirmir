@@ -278,7 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "killall SpringBoard 2>/dev/null";
+			shellScript = "killall SpringBoard || true";
 		};
 /* End PBXShellScriptBuildPhase section */
 
