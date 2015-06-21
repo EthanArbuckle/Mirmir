@@ -20,10 +20,112 @@
         [blurView setFrame:[self frame]];
         [self insertSubview:blurView atIndex:0];
         
-        NSString *resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
+        NSString *resourcePath = @"/Library/Application Support/Lamo";
+        
+#ifdef TARGET_IPHONE_SIMULATOR
+        resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
+#endif
+        
+        //create minimize button
+        UIButton *minimizeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [minimizeButton setFrame:CGRectMake((kScreenWidth / 2) - 35, (kScreenHeight / 2) - 35, 70, 70)];
+        [minimizeButton setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/min.png", resourcePath]] forState:UIControlStateNormal];
+        [minimizeButton addTarget:[(CDTLamoWindow *)[self superview] barView] action:@selector(handleMin) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:minimizeButton];
+        
+        //create maximize button
+        UIButton *maximizeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [maximizeButton setFrame:CGRectMake((kScreenWidth / 2) - 35, [minimizeButton frame].origin.y - 100, 70, 70)];
+        [maximizeButton setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/full.png", resourcePath]] forState:UIControlStateNormal];
+        [maximizeButton addTarget:[(CDTLamoWindow *)[self superview] barView] action:@selector(handleMax) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:maximizeButton];
+        
+        //create close button
+        UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [closeButton setFrame:CGRectMake((kScreenWidth / 2) - 35, [minimizeButton frame].origin.y + 100, 70, 70)];
+        [closeButton setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/close.png", resourcePath]] forState:UIControlStateNormal];
+        [closeButton addTarget:[(CDTLamoWindow *)[self superview] barView] action:@selector(handleClose) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:closeButton];
+        
+        //create orientation button
+        UIButton *orientationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [orientationButton setFrame:CGRectMake(kScreenWidth - 55, kScreenHeight - 55, 45, 45)];
+        [orientationButton setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/rotate.png", resourcePath]] forState:UIControlStateNormal];
+        [orientationButton addTarget:self action:@selector(handleOrientation) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:orientationButton];
+        
     }
     
     return self;
+}
+
+- (void)handleClose {
+    
+    //close window
+    [[CDTLamo sharedInstance] unwindowApplicationWithBundleID:[(CDTLamoWindow *)[self superview] identifier]];
+    
+}
+
+- (void)handleMin {
+    
+    //animate scale back to .6
+    [UIView animateWithDuration:0.3f animations:^{
+        
+        [[self superview] setTransform:CGAffineTransformMakeScale(.6, .6)];
+        
+        //set frame to ensure window bar isnt out of screen bounds
+        CGRect appWindowFrame = [[self superview] frame];
+        
+        if (appWindowFrame.origin.y <= 0) {
+            
+            //off of screen, bounce it back
+            appWindowFrame.origin.y = 5;
+        }
+        
+        if (appWindowFrame.origin.x <= 0) {
+            
+            //bounce this back too
+            appWindowFrame.origin.x = 5;
+        }
+        
+        [[self superview] setFrame:appWindowFrame];
+        
+        
+    }];
+    
+}
+
+- (void)handleMax {
+    
+    //get sbapp
+    SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[(CDTLamoWindow *)[self superview] identifier]];
+    
+    //launch it fullscreen
+    [[CDTLamo sharedInstance] launchFullModeFromWindowForApplication:app];
+    
+}
+
+- (void)handleOrientation {
+    
+    //get app
+    SBApplication *app = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:[(CDTLamoWindow *)[self superview] identifier]];
+    
+    //trigger portrait opposite of current one
+    if ([(CDTLamoWindow *)[self superview] activeOrientation] == (UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft) {
+        
+        //in landscape, trigger portrait
+        [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+        [[CDTLamo sharedInstance] triggerPortraitForApplication:app];
+        
+    }
+    else {
+        
+        //in portrait, trigger landscape
+        [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft];
+        [[CDTLamo sharedInstance] triggerLandscapeForApplication:app];
+        
+    }
+    
 }
 
 @end

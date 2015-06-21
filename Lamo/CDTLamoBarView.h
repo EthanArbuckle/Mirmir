@@ -7,7 +7,7 @@
 @interface CDTLamoBarView : UIView <UIGestureRecognizerDelegate>
 
 @property (nonatomic, copy) void (^primedSnapAction)();
-@property (nonatomic, retain) CDTLamoAppOverlay *overlayView;
+@property (nonatomic, retain) UIView *overlayView;
 
 @property CGPoint offset;
 @property BOOL isPrimedForSnapping;
@@ -15,9 +15,5 @@
 - (void)setTitle:(NSString *)title;
 - (void)handleTap:(UITapGestureRecognizer *)gesture;
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture;
-- (void)handleClose;
-- (void)handleMin;
-- (void)handleMax;
-- (void)handleOrientation;
 
 @end

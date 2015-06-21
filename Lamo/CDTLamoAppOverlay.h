@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "Lamo.h"
+#import "CDTLamoBarView.h"
 
 @interface CDTLamoAppOverlay : UIView
 
 - (id)initWithOrientation:(UIInterfaceOrientation *)orientation;
+
+- (void)handleClose;
+- (void)handleMin;
+- (void)handleMax;
+- (void)handleOrientation;
 
 @end
