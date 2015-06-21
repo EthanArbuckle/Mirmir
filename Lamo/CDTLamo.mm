@@ -387,8 +387,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	//rotate context view
 	[UIView animateWithDuration:0.45f animations:^{
 
-		//rotate 90 and keep scale of .6
-		CGAffineTransform scale = CGAffineTransformMakeScale(.6, .6);
+		//rotate 90 and keep scale of .5
+		CGAffineTransform scale = CGAffineTransformMakeScale(.5, .5);
 		CGAffineTransform rotate = CGAffineTransformMakeRotation(M_PI * -90 / 180);
 		[window setTransform:CGAffineTransformConcat(scale, rotate)];
         

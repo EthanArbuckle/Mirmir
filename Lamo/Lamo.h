@@ -135,6 +135,7 @@ void receivedPortraitRotate();
 
 @interface _UIBackdropView : UIView
 - (id)initWithStyle:(int)arg1;
+- (id)initWithSettings:(id)arg1;
 - (void)setStyle:(int)arg1;
 - (void)setBlurRadius:(float)arg1;
 @end
@@ -210,5 +211,12 @@ void receivedPortraitRotate();
 @interface SBIconModel : NSObject
 
 - (void)addIcon:(id)icon;
+
+@end
+
+@interface _UIBackdropViewSettings : NSObject
+
++ (id)settingsForStyle:(int)arg1 graphicsQuality:(int)arg2;
+- (void)setBlurRadius:(float)arg1;
 
 @end
