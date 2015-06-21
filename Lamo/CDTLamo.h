@@ -11,12 +11,8 @@
 @property (nonatomic, retain) CDTContextHostProvider *contextHostProvider;
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;
-@property (nonatomic, copy) void (^primedSnapAction)();
 
-@property CGPoint offset;
-@property CGFloat lastScale;
 @property BOOL wrapperViewIsTracking;
-@property BOOL isPrimedForSnapping;
 
 + (id)sharedInstance;
 - (void)beginShowingHomescreen;
@@ -30,7 +26,6 @@
 - (void)launchFullModeFromWindowForApplication:(SBApplication *)appToOpen;
 - (void)triggerLandscapeForApplication:(SBApplication *)application;
 - (void)triggerPortraitForApplication:(SBApplication *)application;
-- (void)handlePan:(UIPanGestureRecognizer *)panGesture;
 - (id)topmostApplication;
 - (void)addView:(UIView *)view toDictWithIdentifier:(NSString *)bundleID;
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;

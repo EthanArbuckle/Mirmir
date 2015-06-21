@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CDTLamoBarView.h"
 
 @interface CDTLamoWindow : UIView
 
 @property (nonatomic, retain) NSString *identifier;
+@property (nonatomic, retain) UIView *barView;
+
 @property UIInterfaceOrientation *activeOrientation;
 @property BOOL statusBarHidden;
 

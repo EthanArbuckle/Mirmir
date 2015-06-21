@@ -156,6 +156,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 20)];
     
     [appWindow setIdentifier:bundleID];
+    [appWindow setBarView:gestureView];
     
     if ([[self topmostApplication] respondsToSelector:@selector(statusBarHidden)]) {
         
@@ -448,77 +449,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
 }
 
-- (void)handlePan:(UIPanGestureRecognizer *)panGesture {
-    
-    if ([panGesture state] == UIGestureRecognizerStateEnded) {
-
-        //check if we're primed to snap
-        if (_isPrimedForSnapping) {
-            
-            //we're primed, execute the snapz
-            _primedSnapAction();
-            
-            //and cancel it out so we dont double snapz
-            _isPrimedForSnapping = NO;
-            _primedSnapAction = nil;
-            
-        }
-        
-    }
-
-    if ([panGesture state] == UIGestureRecognizerStateBegan) {
-        
-        _offset = [[[panGesture view] superview] frame].origin;
-        
-        //bring it to front
-        [[[[panGesture view] superview] superview] bringSubviewToFront:[[panGesture view] superview]];
-        
-    } else
-
-    if ([panGesture state] == UIGestureRecognizerStateChanged) {
-        
-        CGPoint translation = [panGesture translationInView:[self springboardWindow]];
-        
-        //window snapping shit
-        
-        if (translation.x + _offset.x <= -5 && translation.y + _offset.y <= -5) { //top left
-            
-            //this makes the window a bit clear, and sets up the snapping action block
-            [self primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
-        }
-        
-        else if (_offset.x + translation.x >= kScreenWidth - ((kScreenWidth * .6) / 2) && translation.y + _offset.y <= -5) { //top right
-            
-            [self primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopRight];
-        }
-        
-        else {
-            
-            //window is out of snap region, unprime the shit
-            if (_isPrimedForSnapping) {
-                
-                _isPrimedForSnapping = NO;
-                
-                //restore alpha
-                [[_windows valueForKey:[(CDTLamoWindow *)[[panGesture view] superview] identifier]] setAlpha:1];
-                
-                _primedSnapAction = nil;
-            }
-        }
-        
-        CGRect bounds = CGRectMake(_offset.x + translation.x, _offset.y + translation.y, [[panGesture view] superview].frame.size.width,[[panGesture view] superview].frame.size.height);
-        
-        if (bounds.origin.x <= -((kScreenWidth * .6) / 2)) bounds.origin.x = -((kScreenWidth *.6) / 2);
-        if (bounds.origin.y >= kScreenHeight - ((kScreenHeight * .6) / 2)) bounds.origin.y = kScreenHeight - ((kScreenHeight * .6) / 2);
-        if (bounds.origin.y <= 0) bounds.origin.y = 0;
-        if (bounds.origin.x >= kScreenWidth - ((kScreenWidth * .6) / 2)) bounds.origin.x = kScreenWidth - ((kScreenWidth * .6) / 2);
-        
-        [[[panGesture view] superview] setFrame:bounds];
-
-    }
-
-}
-
 - (id)topmostApplication {
 
 	//just return top most application from UIApp
@@ -533,24 +463,21 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 - (void)primeApplicationForSnapping:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position {
     
-    //stop if already primed
-    if (_isPrimedForSnapping) {
-        
-        return;
-    }
-    
     //get window
     __block CDTLamoWindow *windowToSnap = [_windows valueForKey:identifier];
+    CDTLamoBarView *barView = (CDTLamoBarView *)[windowToSnap barView];
     
     //prime da snappies
-    _isPrimedForSnapping = YES;
-    _primedSnapAction = ^{
+    [barView setIsPrimedForSnapping:YES];
+    
+    [barView setPrimedSnapAction:^{
+        
         [UIView animateWithDuration:0.3 animations:^{
             [[CDTLamo sharedInstance] snapApplication:identifier toPosition:position];
             [windowToSnap setAlpha:1];
         }];
         
-    };
+    }];
     
     //make it transparent
     [windowToSnap setAlpha:0.5];
