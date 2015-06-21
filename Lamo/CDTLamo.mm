@@ -119,9 +119,10 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 	//create the bar
 	CDTLamoBarView *wrapperBarView = [[CDTLamoBarView alloc] init];
+    [wrapperBarView setTitle:[[self topmostApplication] valueForKey:@"_displayName"]];
 
 	//make it sit on top of the app
-	[wrapperBarView setFrame:CGRectMake(0, -40, kScreenWidth, 40)];
+	[wrapperBarView setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
 
 	[_sharedScalingWrapperView addSubview:wrapperBarView];
 
@@ -140,6 +141,11 @@ static SBAppToAppWorkspaceTransaction *transaction;
         return;
     }
     
+    //create the 'title bar' window that holds the gestures
+    //make this before we close the app so we can access topmost app and get the name
+    CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
+    [gestureView setTitle:[[self topmostApplication] valueForKey:@"_displayName"]];
+    
     //close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
 
@@ -147,7 +153,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	UIView *contextHost = [_contextHostProvider hostViewForApplicationWithBundleID:bundleID];
 
 	//create container view
-	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
+	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 20)];
     
     [appWindow setIdentifier:bundleID];
     
@@ -167,12 +173,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
 	//shrink it down and update frame
 	[appWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
-	[contextHost setFrame:CGRectMake(0, 40, contextHost.frame.size.width, contextHost.frame.size.height)];
+	[contextHost setFrame:CGRectMake(0, 20, contextHost.frame.size.width, contextHost.frame.size.height)];
 
-	//create the 'title bar' window that holds the gestures
-	CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
 	[appWindow addSubview:gestureView];
-
 	
 	//add it to dict
 	[_windows setValue:appWindow forKey:bundleID];
@@ -461,21 +464,21 @@ static SBAppToAppWorkspaceTransaction *transaction;
             
         }
         
-        [_longPress_timer invalidate];
-        _longPress_isPressed = NO;
+       // [_longPress_timer invalidate];
+       // _longPress_isPressed = NO;
     }
     
     //hacky, but we're piggybacking a longpress gesture on this pan gesture
-    if (_longPress_isPressed) {
+   // if (_longPress_isPressed) {
         
-        [self longPress_panWithGesture:panGesture];
+   //     [self longPress_panWithGesture:panGesture];
         
-        return;
-    }
+   //     return;
+   // }
 
     if ([panGesture state] == UIGestureRecognizerStateBegan) {
         
-        [self longPress_beginTimer];
+        //[self longPress_beginTimer];
         
         _offset = [[[panGesture view] superview] frame].origin;
         
@@ -486,7 +489,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
     if ([panGesture state] == UIGestureRecognizerStateChanged) {
         
-        [self longPress_beginTimer];
+        //[self longPress_beginTimer];
         
         CGPoint translation = [panGesture translationInView:[self springboardWindow]];
         
@@ -708,7 +711,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     }
     
     //create settings window
-    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 40)];
+    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     

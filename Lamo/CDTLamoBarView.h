@@ -3,10 +3,9 @@
 #import "CDTLamoWindow.h"
 #import "CDTLamoPanGestureRecognizer.h"
 
-@interface CDTLamoBarView : UIToolbar
+@interface CDTLamoBarView : UIView
 
-@property CGPoint panBounds;
-
+- (void)setTitle:(NSString *)title;
 - (void)handleClose;
 - (void)handleMin;
 - (void)handleMax;

@@ -195,6 +195,7 @@
 				5FB454221AF364350020FC56 /* Sources */,
 				5FB454231AF364350020FC56 /* Frameworks */,
 				5FB454241AF364350020FC56 /* CopyFiles */,
+				5FA91D751B36FFEA00BBC90E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,6 +258,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5FA91D751B36FFEA00BBC90E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "killall SpringBoard";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5FB454221AF364350020FC56 /* Sources */ = {
