@@ -122,6 +122,12 @@
         [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
         [[CDTLamo sharedInstance] triggerPortraitForApplication:app];
         
+        //animate buttons in overlay to new positions
+        [UIView animateWithDuration:0.4f animations:^{
+            
+            [self transitionToPortrait];
+        }];
+        
     }
     else {
         
@@ -129,8 +135,66 @@
         [(CDTLamoWindow *)[self superview] setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft];
         [[CDTLamo sharedInstance] triggerLandscapeForApplication:app];
         
+        //animate buttons in overlay to new positions
+        [UIView animateWithDuration:0.4f animations:^{
+            
+            [self transitionToLandscape];
+        }];
+        
     }
     
+}
+
+- (void)transitionToPortrait {
+    
+    //cycle through button subviews (bad method i know ;p)
+    for (UIView *subview in [self subviews]) {
+        
+        //skip blur view
+        if ([[self subviews] indexOfObject:subview] == 0) {
+            
+            continue;
+        }
+        
+        //3 buttons
+        if ([[self subviews] indexOfObject:subview] <= 4) {
+            
+            //move orient button
+            if ([[self subviews] indexOfObject:subview] == 4) {
+                
+                [subview setFrame:CGRectMake(kScreenWidth - 55, kScreenHeight - 55, 45, 45)];
+            }
+            
+            //remove rotation transform
+            [subview setTransform:CGAffineTransformIdentity];
+        }
+    }
+}
+
+- (void)transitionToLandscape {
+    
+    //cycle through button subviews (bad method i know ;p)
+    for (UIView *subview in [self subviews]) {
+        
+        //skip blur view
+        if ([[self subviews] indexOfObject:subview] == 0) {
+            
+            continue;
+        }
+        
+        //3 buttons
+        if ([[self subviews] indexOfObject:subview] <= 4) {
+            
+            //move orient button
+            if ([[self subviews] indexOfObject:subview] == 4) {
+                
+                [subview setFrame:CGRectMake(10, kScreenHeight - 55, 45, 45)];
+            }
+            
+            //apply rotation transform
+            [subview setTransform:CGAffineTransformMakeRotation(M_PI * -90 / 180)];
+        }
+    }
 }
 
 //http://stackoverflow.com/questions/5150642/max-min-scale-of-pinch-zoom-in-uipinchgesturerecognizer-iphone-ios

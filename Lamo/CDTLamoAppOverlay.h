@@ -20,6 +20,8 @@
 - (void)handleMin;
 - (void)handleMax;
 - (void)handleOrientation;
+- (void)transitionToPortrait;
+- (void)transitionToLandscape;
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer;
 
 @end
