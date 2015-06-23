@@ -50,7 +50,7 @@
 #if TARGET_IPHONE_SIMULATOR
     writePath = @"/Users/ethanarbuckle/Desktop/LAMO_DYLIB/lamoWindows.plist";
 #else
-    writepath = @"/Library/Application Support/Lamo/lamoWindows.plist";
+    writePath = @"/Library/Application Support/Lamo/lamoWindows.plist";
 #endif
     
     [NSKeyedArchiver archiveRootObject:dictToFile toFile:writePath];
@@ -64,7 +64,7 @@
 #if TARGET_IPHONE_SIMULATOR
     writePath = @"/Users/ethanarbuckle/Desktop/LAMO_DYLIB/lamoWindows.plist";
 #else
-    writepath = @"/Library/Application Support/Lamo/lamoWindows.plist";
+    writePath = @"/Library/Application Support/Lamo/lamoWindows.plist";
 #endif
     
     //get saved states
