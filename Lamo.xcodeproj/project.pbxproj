@@ -68,6 +68,7 @@
 		5F1026311B22B02000257C45 /* CDTLamoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettings.m; sourceTree = "<group>"; };
 		5F1026331B22B5AD00257C45 /* CDTLamoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSettingsViewController.h; sourceTree = "<group>"; };
 		5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsViewController.m; sourceTree = "<group>"; };
+		5F1452651B39BD1A00A8D4D1 /* lamo_install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = lamo_install.sh; sourceTree = "<group>"; };
 		5F40C0A71B2D9E0000AC3711 /* SBIconController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBIconController.m; sourceTree = "<group>"; };
 		5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsIcon.m; sourceTree = "<group>"; };
 		5F81689A1B38E04100F99B4D /* lamo_staging */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lamo_staging; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 				5FF275211B1A91AC006CC312 /* .travis.yml */,
 				5FEBA71A1B1C1F6700BACB25 /* README.md */,
 				5F81689B1B38E25400F99B4D /* lamo_build_deb.sh */,
+				5F1452651B39BD1A00A8D4D1 /* lamo_install.sh */,
 				5F81689A1B38E04100F99B4D /* lamo_staging */,
 				5FA91D791B371DFC00BBC90E /* Resources */,
 				5FB454281AF364350020FC56 /* Lamo */,
@@ -206,7 +208,7 @@
 				5FB454221AF364350020FC56 /* Sources */,
 				5FB454231AF364350020FC56 /* Frameworks */,
 				5FB454241AF364350020FC56 /* CopyFiles */,
-				5FA91D751B36FFEA00BBC90E /* ShellScript */,
+				5F1452641B39BBBB00A8D4D1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -271,7 +273,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5FA91D751B36FFEA00BBC90E /* ShellScript */ = {
+		5F1452641B39BBBB00A8D4D1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

@@ -23,7 +23,7 @@
         
         NSString *resourcePath = @"/Library/Application Support/Lamo";
         
-#ifdef TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
         resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
 #endif
         
