@@ -218,5 +218,7 @@ void receivedPortraitRotate();
 
 + (id)settingsForStyle:(int)arg1 graphicsQuality:(int)arg2;
 - (void)setBlurRadius:(float)arg1;
+- (void)setBlurHardEdges:(int)arg1;
+- (void)setBlursWithHardEdges:(BOOL)arg1;
 
 @end

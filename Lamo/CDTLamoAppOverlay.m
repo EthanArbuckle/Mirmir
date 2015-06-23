@@ -17,6 +17,8 @@
         //create blurred backdrop
         _UIBackdropViewSettings *blurSettings = [_UIBackdropViewSettings settingsForStyle:2060 graphicsQuality:100];
         [blurSettings setBlurRadius:5];
+        [blurSettings setBlurHardEdges:3];
+        [blurSettings setBlursWithHardEdges:YES];
         _UIBackdropView *blurView = [[_UIBackdropView alloc] initWithSettings:blurSettings];
         [blurView setFrame:[self frame]];
         [self insertSubview:blurView atIndex:0];
