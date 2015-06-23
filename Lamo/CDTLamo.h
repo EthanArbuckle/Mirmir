@@ -32,5 +32,6 @@
 - (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 - (BOOL)shouldBlockNotificationCenter;
 - (void)presentSettingsController;
+- (void)snapAllClose;
 
 @end

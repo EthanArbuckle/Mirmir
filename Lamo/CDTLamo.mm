@@ -608,4 +608,27 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 }
 
+- (void)snapAllClose {
+    
+    //cycle through all windows and close them
+    for (NSString *bundleID in [_windows allKeys]) {
+        
+        //end hosting
+        SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
+        [_contextHostProvider disableBackgroundingForApplication:appToHost];
+        [_contextHostProvider stopHostingForBundleID:bundleID];
+        
+        //switch it to portrait so it doesnt open in landscape
+        [self triggerPortraitForApplication:appToHost];
+        
+        CDTLamoWindow *window = [_windows objectForKey:bundleID];
+        
+        //remove the view
+        [window removeFromSuperview];
+        
+        //remove value from dict
+        [_windows removeObjectForKey:bundleID];
+    }
+}
+
 @end 

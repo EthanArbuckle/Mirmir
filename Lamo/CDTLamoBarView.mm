@@ -27,7 +27,7 @@
 }
 
 - (void)setTitle:(NSString *)title {
-    
+
     //create app name label
     UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
     [appNameLabel setTextColor:[UIColor whiteColor]];
