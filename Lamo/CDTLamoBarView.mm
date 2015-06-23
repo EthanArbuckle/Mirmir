@@ -33,6 +33,14 @@
     [appNameLabel setTextColor:[UIColor whiteColor]];
     [appNameLabel setTextAlignment:NSTextAlignmentCenter];
     [appNameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16]];
+    
+    //so we can watermake builds. 'BUILD_OWNER' flag
+    if ([[NSString stringWithFormat:@"%s", stringify(BUILD_OWNER)] length] > 0) {
+        
+        //if its present append it to title
+        title = [NSString stringWithFormat:@"%@ - %s", title, stringify(BUILD_OWNER)];
+    }
+    
     [appNameLabel setText:title];
     [self addSubview:appNameLabel];
     
@@ -100,7 +108,6 @@
             
             CGPoint translation = [panGesture translationInView:[[CDTLamo sharedInstance] springboardWindow]];
             
-            //window snapping shit
             
             if (translation.x + _offset.x <= -5 && translation.y + _offset.y <= -5) { //top left
                 
