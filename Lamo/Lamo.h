@@ -5,6 +5,8 @@
 #define kScreenWidth 			[[UIScreen mainScreen] bounds].size.width
 
 #define GTEiOS9 [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0
+#define iOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 && [[[UIDevice currentDevice] systemVersion] floatValue] < 9.0
+#define iOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0 && [[[UIDevice currentDevice] systemVersion] floatValue] < 8.0
 
 #define stringify(a) str(a)
 #define str(a) #a

@@ -31,6 +31,14 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 		//create dict to hold hosted apps
 		_windows = [[NSMutableDictionary alloc] init];
+        
+        //create our own window on ios 7 & 9
+        if ((iOS7) || GTEiOS9) {
+            
+            _springboardWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+            [_springboardWindow setWindowLevel:9999];
+            [_springboardWindow makeKeyAndVisible];
+        }
 
 	}
 
@@ -55,13 +63,16 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	FBWindowContextHostManager *appContextManager = [appScene contextHostManager];
 	_sharedScalingWrapperView = [[appContextManager valueForKey:@"_hostView"] superview];
     
-    //window arangment changed a bit on ios 9
+    //window arrangment changed a bit on ios 9
     if (GTEiOS9) {
         
-       // _sharedScalingWrapperView = [_sharedScalingWrapperView superview];
+        _sharedScalingWrapperView = [_sharedScalingWrapperView superview];
     }
     
-    _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
+    if (iOS8) {
+        
+        _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
+    }
 }
 
 - (void)seamlesslyCloseTopApp {
