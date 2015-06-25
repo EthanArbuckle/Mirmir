@@ -23,6 +23,10 @@
         [blurView setFrame:[self frame]];
         [self insertSubview:blurView atIndex:0];
         
+        //add disniss tapview gesture
+        UITapGestureRecognizer *dimsissTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
+        [self addGestureRecognizer:dimsissTap];
+        
         NSString *resourcePath = @"/Library/Application Support/Lamo";
         
 #if TARGET_IPHONE_SIMULATOR
@@ -197,6 +201,13 @@
             [subview setTransform:CGAffineTransformMakeRotation(M_PI * -90 / 180)];
         }
     }
+}
+
+- (void)handleTap {
+
+    //send fake tap to superview to close overlay
+    [(CDTLamoBarView *)[(CDTLamoWindow *)[self superview] barView] handleTap:nil];
+    
 }
 
 //http://stackoverflow.com/questions/5150642/max-min-scale-of-pinch-zoom-in-uipinchgesturerecognizer-iphone-ios

@@ -22,6 +22,7 @@
 - (void)handleOrientation;
 - (void)transitionToPortrait;
 - (void)transitionToLandscape;
+- (void)handleTap;
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer;
 
 @end
