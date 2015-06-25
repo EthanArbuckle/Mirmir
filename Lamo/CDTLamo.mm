@@ -349,16 +349,25 @@ static SBAppToAppWorkspaceTransaction *transaction;
 			[_contextHostProvider stopHostingForBundleID:bundleID];
 
 			//remove the view
-			[window removeFromSuperview];
+            [UIView animateWithDuration:0.2f animations:^{
+                
+                [window setAlpha:0];
+                
+            } completion:^(BOOL finished) {
+                
+                [window removeFromSuperview];
+                
+                //remove value from dict
+                [_windows removeObjectForKey:bundleID];
+                
+            }];
+			
 
 			//disable animated launch
 			[appToOpen setFlag:1 forActivationSetting:1];
 
 			//open
 			[[UIApplication sharedApplication] launchApplicationWithIdentifier:bundleID suspended:NO];
-            
-            //remove value from dict
-            [_windows removeObjectForKey:bundleID];
 			
 		}
 
