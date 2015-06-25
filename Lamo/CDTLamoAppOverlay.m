@@ -65,6 +65,12 @@
         [orientationButton addTarget:self action:@selector(handleOrientation) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:orientationButton];
         
+        //rotate if landcscape
+        if (orientation == (UIInterfaceOrientation *)UIInterfaceOrientationLandscapeLeft) {
+            
+            [self transitionToLandscape];
+        }
+        
     }
     
     return self;
