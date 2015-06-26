@@ -47,6 +47,9 @@ typedef enum CDTLamoSnapPosition {
 + (instancetype)eventWithName:(NSString *)label handler:(id)handler;
 @end
 
+@interface FBSceneManager : NSObject
+@end
+
 @interface SBAppToAppWorkspaceTransaction
 - (void)begin;
 - (id)initWithAlertManager:(id)alertManager exitedApp:(id)app;

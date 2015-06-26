@@ -124,14 +124,14 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 - (void)finishLaunching {
     
     ZKOrig(void);
-/*
+
     //create settings icon on homescreen
     SBLeafIcon *lamoSettings = [[NSClassFromString(@"SBLeafIcon") alloc] initWithLeafIdentifier:@"lamo" applicationBundleID:nil];
     SBIconController *iconController = [NSClassFromString(@"SBIconController") sharedInstance];
     SBIconModel *iconModel = [iconController valueForKey:@"_iconModel"];
     [iconModel addIcon:lamoSettings];
     [iconController addNewIconToDesignatedLocation:lamoSettings animate:NO scrollToList:NO saveIconState:YES];
-    */
+ 
 }
 
 - (void)_deviceLockStateChanged:(id)changed {

@@ -39,6 +39,19 @@ static SBAppToAppWorkspaceTransaction *transaction;
             [_springboardWindow setWindowLevel:9999];
             [_springboardWindow makeKeyAndVisible];
         }
+        
+        if (iOS8) {
+            
+            //get fbrootwindow
+            for (id object in [[[NSClassFromString(@"FBSceneManager") sharedInstance] valueForKey:@"_displayToRootWindow"] allObjects]) {
+                
+                if ([object isKindOfClass:NSClassFromString(@"FBWindow")]) {
+                    
+                    _springboardWindow = (UIWindow *)object;
+                }
+            }
+            
+        }
 
 	}
 
