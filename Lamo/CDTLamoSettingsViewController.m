@@ -43,9 +43,8 @@
                 
                 //create enable switch + label
                 UISwitch *cellSwitch = [[UISwitch alloc] init];
-                [cellSwitch setOn:0];
-                [cellSwitch addTarget:self action:@selector(handleSwitch:) forControlEvents:UIControlEventValueChanged];
-                NSLog(@"%@ - %d", self, [self respondsToSelector:@selector(handleSwitch:)]);
+                [cellSwitch setOn:[[CDTLamoSettings sharedSettings] isEnabled]];
+                [cellSwitch addTarget:[CDTLamoSettings sharedSettings] action:@selector(handleEnableSwitch:) forControlEvents:UIControlEventValueChanged];
                 [cellSwitch setTag:[indexPath row]];
                 [settingCell setAccessoryView:cellSwitch];
                 
@@ -56,9 +55,4 @@
     return settingCell;
 }
 
-- (void)handleSwitch:(id)cellSwitch {
-    
-    NSLog(@"switch");
-    
-}
 @end

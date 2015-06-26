@@ -39,7 +39,7 @@
 }
 
 - (void)saveChanges {
-    
+    NSLog(@"iht:");
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -52,6 +52,11 @@
 - (BOOL)isEnabled {
     
     return [[NSUserDefaults standardUserDefaults] boolForKey:isEnabledKey];
+}
+
+- (void)handleEnableSwitch:(UISwitch *)cellSwitch {
+    
+    [self setEnabled:[cellSwitch isOn]];
 }
 
 @end

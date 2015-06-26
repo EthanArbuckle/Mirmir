@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define isEnabledKey @"CDTLamoIsEnabled"
 
@@ -17,5 +18,8 @@
 
 - (void)setEnabled:(BOOL)enabled;
 - (BOOL)isEnabled;
+
+//ui recievers
+- (void)handleEnableSwitch:(UISwitch *)cellSwitch;
 
 @end
