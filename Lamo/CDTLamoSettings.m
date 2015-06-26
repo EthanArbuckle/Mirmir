@@ -51,7 +51,7 @@
 
 - (BOOL)isEnabled {
     
-    return YES;//[[NSUserDefaults standardUserDefaults] boolForKey:isEnabledKey];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:isEnabledKey];
 }
 
 @end

@@ -40,26 +40,25 @@
         //cell aint cell, make cell cell
         settingCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CDTLamoSettingCell"];
         
-        switch ([indexPath row]) {
-            case 0: {
                 
                 //create enable switch + label
                 UISwitch *cellSwitch = [[UISwitch alloc] init];
-                [cellSwitch setOn:[[CDTLamoSettings sharedSettings] isEnabled]];
+                [cellSwitch setOn:0];
+                [cellSwitch addTarget:self action:@selector(handleSwitch:) forControlEvents:UIControlEventValueChanged];
+                NSLog(@"%@ - %d", self, [self respondsToSelector:@selector(handleSwitch:)]);
+                [cellSwitch setTag:[indexPath row]];
                 [settingCell setAccessoryView:cellSwitch];
                 
                 [[settingCell textLabel] setText:@"Enabled"];
-                
-                break;
-            }
-                
-            default:
-                break;
-        }
+        
     }
     
     return settingCell;
 }
 
-
+- (void)handleSwitch:(id)cellSwitch {
+    
+    NSLog(@"switch");
+    
+}
 @end

@@ -20,7 +20,7 @@
         [blurSettings setBlurHardEdges:3];
         [blurSettings setBlursWithHardEdges:YES];
         _UIBackdropView *blurView = [[_UIBackdropView alloc] initWithSettings:blurSettings];
-        [blurView setFrame:[self frame]];
+        [blurView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];;
         [self insertSubview:blurView atIndex:0];
         
         //add disniss tapview gesture
