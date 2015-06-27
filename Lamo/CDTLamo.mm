@@ -627,8 +627,10 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //create settings view controller
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
-    [[_settingsController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
-    [settingsWindow addSubview:[_settingsController view]];
+    _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
+    [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
+    [_settingsController setTitle:@"Lamo Preferences"];
+    [settingsWindow addSubview:[_settingsNavigationController view]];
     
     //shrink it down and update frame
     [settingsWindow setTransform:CGAffineTransformMakeScale(.8, .8)];

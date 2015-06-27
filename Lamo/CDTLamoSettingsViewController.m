@@ -15,19 +15,11 @@
     if (self = [super init]) {
         
         //create tableview, with frame of fullscreen
-        _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+        _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
         [_lamoSettingsTable setDelegate:self];
         [_lamoSettingsTable setDataSource:self];
         [[self view] addSubview:_lamoSettingsTable];
-        
-        //create navigation controller/bar
-        UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-        UINavigationItem *titleItem = [[UINavigationItem alloc] initWithTitle:@"Lamo Preferences"];
-        [navigationBar pushNavigationItem:titleItem animated:NO];
-        [navigationBar setTranslucent:NO];
-        [[navigationBar layer] setZPosition:5];
-        [[self view] addSubview:navigationBar];
-        
+    
     }
     
     return self;
@@ -210,6 +202,7 @@
 
 - (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
+    //tapped an orientation cell
     if ([indexPath section] == 1) {
         
         if ([indexPath row] == 0) {
@@ -221,6 +214,19 @@
             [[CDTLamoSettings sharedSettings] setDefaultOrientation:@"landscape"];
         }
     }
+    
+    //tapped sizing cell
+    else if ([indexPath section] == 2) {
+        
+        if ([indexPath row] == 0) {
+
+            UIViewController *windowSize = [[UIViewController alloc] init];
+            [[windowSize view] setBackgroundColor:[UIColor blueColor]];
+            [windowSize setTitle:@"Default Window Size"];
+            [[self navigationController] pushViewController:windowSize animated:YES];
+        }
+    }
+    
     
     [_lamoSettingsTable reloadData];
 }
