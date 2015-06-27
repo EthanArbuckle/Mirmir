@@ -33,7 +33,10 @@
                                           defaultWindowSizeKey : @.6,
                                           minimizedWindowSizeKey : @.4,
                                           activationZoneKey : @"left",
-                                          activationTriggerRadiusKey : @80
+                                          activationTriggerRadiusKey : @80,
+                                          hideStatusBarKey : @YES,
+                                          pinchToResizeKey : @YES,
+                                          showTitleTextKey : @YES
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -112,6 +115,39 @@
 - (CGFloat)activationTriggerRadius {
     
     return [[NSUserDefaults standardUserDefaults] floatForKey:activationTriggerRadiusKey];
+}
+
+- (void)setHideStatusBar:(BOOL)hide {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:hide  forKey:hideStatusBarKey];
+    [self saveChanges];
+}
+
+- (BOOL)hideStatusBar {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:hideStatusBarKey];
+}
+
+- (void)setPinchToResize:(BOOL)enabled {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:enabled  forKey:pinchToResizeKey];
+    [self saveChanges];
+}
+
+- (BOOL)pinchToResize {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:pinchToResizeKey];
+}
+
+- (void)setShowTitleText:(BOOL)show {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:show  forKey:showTitleTextKey];
+    [self saveChanges];
+}
+
+- (BOOL)showTitleText {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:showTitleTextKey];
 }
 
 @end

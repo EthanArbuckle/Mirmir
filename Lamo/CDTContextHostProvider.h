@@ -1,4 +1,5 @@
 #import "Lamo.h"
+#import "CDTLamoSettings.h"
 
 #define NEED_IPAD_HAX UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 

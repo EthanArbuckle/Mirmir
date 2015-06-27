@@ -3,6 +3,7 @@
 #import "CDTLamoWindow.h"
 #import "CDTLamoPanGestureRecognizer.h"
 #import "CDTLamoAppOverlay.h"
+#import "CDTLamoSettings.h"
 
 @interface CDTLamoBarView : UIView <UIGestureRecognizerDelegate>
 

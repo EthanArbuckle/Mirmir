@@ -27,7 +27,7 @@
 }
 
 - (void)setTitle:(NSString *)title {
-
+    
     //create app name label
     UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
     [appNameLabel setTextColor:[UIColor whiteColor]];
@@ -39,10 +39,17 @@
         
         //if its present append it to title
         title = [NSString stringWithFormat:@"%@ - %s", title, stringify(BUILD_OWNER)];
+        
+        //add independent of user settings
+        [self addSubview:appNameLabel];
     }
     
     [appNameLabel setText:title];
-    [self addSubview:appNameLabel];
+    
+    if ([[CDTLamoSettings sharedSettings] showTitleText]) {
+        
+        [self addSubview:appNameLabel];
+    }
     
 }
 

@@ -183,7 +183,8 @@
                 
                 //create switch
                 UISwitch *cellSwitch = [[UISwitch alloc] init];
-                [cellSwitch setOn:YES];
+                [cellSwitch setOn:[[CDTLamoSettings sharedSettings] hideStatusBar]];
+                [cellSwitch addTarget:self action:@selector(handleStatusBarHideSwitch:) forControlEvents:UIControlEventValueChanged];
                 [settingCell setAccessoryView:cellSwitch];
             }
             else if ([indexPath row] == 1) {
@@ -192,7 +193,8 @@
                 
                 //create switch
                 UISwitch *cellSwitch = [[UISwitch alloc] init];
-                [cellSwitch setOn:YES];
+                [cellSwitch setOn:[[CDTLamoSettings sharedSettings] pinchToResize]];
+                [cellSwitch addTarget:self action:@selector(handlePinchSwitch:) forControlEvents:UIControlEventValueChanged];
                 [settingCell setAccessoryView:cellSwitch];
             }
             else if ([indexPath row] == 2) {
@@ -201,7 +203,8 @@
                 
                 //create switch
                 UISwitch *cellSwitch = [[UISwitch alloc] init];
-                [cellSwitch setOn:YES];
+                [cellSwitch setOn:[[CDTLamoSettings sharedSettings] showTitleText]];
+                [cellSwitch addTarget:self action:@selector(handleTitleTextSwitch:) forControlEvents:UIControlEventValueChanged];
                 [settingCell setAccessoryView:cellSwitch];
             }
         }
@@ -273,6 +276,21 @@
 - (void)handleEnableSwitch:(UISwitch *)cellSwitch {
     
     [[CDTLamoSettings sharedSettings] setEnabled:[cellSwitch isOn]];
+}
+
+- (void)handleStatusBarHideSwitch:(UISwitch *)cellSwitch {
+    
+    [[CDTLamoSettings sharedSettings] setHideStatusBar:[cellSwitch isOn]];
+}
+
+- (void)handlePinchSwitch:(UISwitch *)cellSwitch {
+    
+    [[CDTLamoSettings sharedSettings] setPinchToResize:[cellSwitch isOn]];
+}
+
+- (void)handleTitleTextSwitch:(UISwitch *)cellSwitch {
+    
+    [[CDTLamoSettings sharedSettings] setShowTitleText:[cellSwitch isOn]];
 }
 
 @end

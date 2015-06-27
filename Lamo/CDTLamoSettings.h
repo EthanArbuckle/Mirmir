@@ -15,6 +15,9 @@
 #define minimizedWindowSizeKey @"CDTLamoMinimizedWindowSize"
 #define activationZoneKey @"CDTLamoActivationZone"
 #define activationTriggerRadiusKey @"CDTLamoActivationTriggerRadius"
+#define hideStatusBarKey @"CDTLamoHideStatusBar"
+#define pinchToResizeKey @"CDTLamoPinchToResize"
+#define showTitleTextKey @"CDTLamoShowTitleText"
 
 @interface CDTLamoSettings : NSObject
 
@@ -38,5 +41,14 @@
 
 - (void)setActivationTriggerRadius:(CGFloat)radius;
 - (CGFloat)activationTriggerRadius;
+
+- (void)setHideStatusBar:(BOOL)hide;
+- (BOOL)hideStatusBar;
+
+- (void)setPinchToResize:(BOOL)enabled;
+- (BOOL)pinchToResize;
+
+- (void)setShowTitleText:(BOOL)show;
+- (BOOL)showTitleText;
 
 @end

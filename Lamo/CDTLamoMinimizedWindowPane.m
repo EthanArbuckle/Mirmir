@@ -101,7 +101,7 @@
         [(CDTLamoWindow *)_previewWindow setBarView:barView];
         [_previewWindow addSubview:barView];
         [barView setTitle:@"Lamo!"];
-        [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
+        [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
         
         [preview addSubview:_previewWindow];
     }

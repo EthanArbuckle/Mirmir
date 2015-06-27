@@ -18,5 +18,8 @@
 @property (nonatomic, retain) UITableView *lamoSettingsTable;
 
 - (void)handleEnableSwitch:(UISwitch *)cellSwitch;
+- (void)handleStatusBarHideSwitch:(UISwitch *)cellSwitch;
+- (void)handlePinchSwitch:(UISwitch *)cellSwitch;
+- (void)handleTitleTextSwitch:(UISwitch *)cellSwitch;
 
 @end

@@ -33,9 +33,12 @@
         resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
 #endif
         
-        //create pinching gesture
-        UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
-        [self addGestureRecognizer:pinchGesture];
+        //create pinching gesture if enabled
+        if ([[CDTLamoSettings sharedSettings] pinchToResize]) {
+            
+            UIPinchGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+            [self addGestureRecognizer:pinchGesture];
+        }
         
         //create minimize button
         UIButton *minimizeButton = [UIButton buttonWithType:UIButtonTypeCustom];
