@@ -56,7 +56,7 @@
 }
 
 - (void)setDefaultOrientation:(NSString *)defaultOrientation {
-    
+
     [[NSUserDefaults standardUserDefaults] setValue:defaultOrientation forKey:defaultOrientationKey];
     [self saveChanges];
 }

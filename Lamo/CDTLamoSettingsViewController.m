@@ -15,10 +15,18 @@
     if (self = [super init]) {
         
         //create tableview, with frame of fullscreen
-        _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+        _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
         [_lamoSettingsTable setDelegate:self];
         [_lamoSettingsTable setDataSource:self];
         [[self view] addSubview:_lamoSettingsTable];
+        
+        //create navigation controller/bar
+        UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
+        UINavigationItem *titleItem = [[UINavigationItem alloc] initWithTitle:@"Lamo Preferences"];
+        [navigationBar pushNavigationItem:titleItem animated:NO];
+        [navigationBar setTranslucent:NO];
+        [[navigationBar layer] setZPosition:5];
+        [[self view] addSubview:navigationBar];
         
     }
     
@@ -84,11 +92,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     //create settings cell
-    UITableViewCell *settingCell = [tableView dequeueReusableCellWithIdentifier:@"CDTLamoSettingCell"];
-    if (!settingCell) {
-        
+    UITableViewCell *settingCell = [[UITableViewCell alloc] init]; //[tableView dequeueReusableCellWithIdentifier:@"CDTLamoSettingCell"];
+    if (settingCell) {
+
         //cell aint cell, make cell cell
         settingCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CDTLamoSettingCell"];
         
@@ -198,6 +206,23 @@
     }
     
     return settingCell;
+}
+
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+    if ([indexPath section] == 1) {
+        
+        if ([indexPath row] == 0) {
+            
+            [[CDTLamoSettings sharedSettings] setDefaultOrientation:@"portrait"];
+        }
+        else if ([indexPath row] == 1) {
+            
+            [[CDTLamoSettings sharedSettings] setDefaultOrientation:@"landscape"];
+        }
+    }
+    
+    [_lamoSettingsTable reloadData];
 }
 
 - (void)handleEnableSwitch:(UISwitch *)cellSwitch {

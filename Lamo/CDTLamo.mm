@@ -187,9 +187,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
         [appWindow setStatusBarHidden:[(SBApplication *)[self topmostApplication] statusBarHidden]];
     }
     
-    //naivly assume portrait for the time being
-    [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
-    
 	//add host to window
 	[appWindow addSubview:contextHost];
     
@@ -209,27 +206,36 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_springboardWindow addSubview:appWindow];
 
     //animate it popping in
-    [self doPopAnimationForView:appWindow];
+    [self doPopAnimationForView:appWindow withBase:.6];
+    
+    //set to default orientation setting
+    if ([[[CDTLamoSettings sharedSettings] defaultOrientation] isEqualToString:@"portrait"]) {
+        
+        [_contextHostProvider sendPortraitRotationNotificationToBundleID:bundleID];
+    }
+    else {
+        [_contextHostProvider sendLandscapeRotationNotificationToBundleID:bundleID];
+    }
 
 }
 
-- (void)doPopAnimationForView:(UIView *)viewToPop {
+- (void)doPopAnimationForView:(UIView *)viewToPop withBase:(CGFloat)size {
 
 	[UIView animateWithDuration:0.1 animations:^{
 
-    	[viewToPop setTransform:CGAffineTransformMakeScale(.5, .5)];
+    	[viewToPop setTransform:CGAffineTransformMakeScale(size - .1, size - .1)];
 
     } completion:^(BOOL finished){
 
     	[UIView animateWithDuration:0.1 animations:^{
 
-    		[viewToPop setTransform:CGAffineTransformMakeScale(.65, .65)];
+    		[viewToPop setTransform:CGAffineTransformMakeScale(size + .5, size + .5)];
 
     	} completion:^(BOOL finished){
 
     		[UIView animateWithDuration:0.1 animations:^{
 
-    			[viewToPop setTransform:CGAffineTransformMakeScale(.6, .6)];
+    			[viewToPop setTransform:CGAffineTransformMakeScale(size, size)];
 
     		}];
 
@@ -615,16 +621,17 @@ static SBAppToAppWorkspaceTransaction *transaction;
     }
     
     //create settings window
-    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 20)];
+    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     
     //create settings view controller
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
+    [[_settingsController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
     [settingsWindow addSubview:[_settingsController view]];
     
     //shrink it down and update frame
-    [settingsWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
+    [settingsWindow setTransform:CGAffineTransformMakeScale(.8, .8)];
     
     //create the 'title bar' window that holds the gestures
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
@@ -637,7 +644,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_springboardWindow addSubview:settingsWindow];
     
     //animate it popping in
-    [self doPopAnimationForView:settingsWindow];
+    [self doPopAnimationForView:settingsWindow withBase:.8];
 
 }
 

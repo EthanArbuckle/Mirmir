@@ -21,7 +21,7 @@
 - (void)seamlesslyCloseTopApp;
 - (void)addTopBarToWrapperWindow;
 - (void)beginWindowModeForTopApplication;
-- (void)doPopAnimationForView:(UIView *)viewToPop;
+- (void)doPopAnimationForView:(UIView *)viewToPop withBase:(CGFloat)size;
 - (void)unwindowApplicationWithBundleID:(NSString *)bundleID;
 - (void)appWantsToOpen:(SBApplication *)app withBlock:(void(^)(void))completion;
 - (void)launchFullModeFromWindowForApplication:(SBApplication *)appToOpen;
