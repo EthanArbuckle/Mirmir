@@ -1,6 +1,5 @@
 #import "Lamo.h"
 #import "CDTLamo.h"
-#import "CDTMissionControl.h"
 #import "ZKSwizzle.h"
 #import "CDTLamoSettings.h"
 
