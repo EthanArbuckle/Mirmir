@@ -1,15 +1,15 @@
 #import "Lamo.h"
+#import "CDTLamoSettingsViewController.h"
 #import "CDTContextHostProvider.h"
 #import "CDTLamoBarView.h"
 #import "CDTLamoWindow.h"
 #import "CDTLamoSettings.h"
-#import "CDTLamoSettingsViewController.h"
 
 @interface CDTLamo : NSObject
 
 @property (nonatomic, retain) UIView *sharedScalingWrapperView;
 @property (nonatomic, retain) CDTContextHostProvider *contextHostProvider;
-@property (nonatomic, retain) CDTLamoSettingsViewController *settingsController;
+@property (nonatomic, retain) UIViewController *settingsController;
 @property (nonatomic, retain) UINavigationController *settingsNavigationController;
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;

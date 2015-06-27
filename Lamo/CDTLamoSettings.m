@@ -29,7 +29,8 @@
         //create default settings
         NSDictionary *defaultSettings = @{
                                           isEnabledKey : @YES,
-                                          defaultOrientationKey : @"portrait"
+                                          defaultOrientationKey : @"portrait",
+                                          defaultWindowSizeKey : @.6
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -64,6 +65,17 @@
 - (NSString *)defaultOrientation {
     
     return [[NSUserDefaults standardUserDefaults] valueForKey:defaultOrientationKey];
+}
+
+- (void)setDefaultWindowSize:(CGFloat)scale {
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:scale forKey:defaultWindowSizeKey];
+    [self saveChanges];
+}
+
+- (CGFloat)defaultWindowSize {
+    
+    return [[NSUserDefaults standardUserDefaults] floatForKey:defaultWindowSizeKey];
 }
 
 @end

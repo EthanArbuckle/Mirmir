@@ -115,7 +115,7 @@
                 [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
             }
             
-            else if (_offset.x + translation.x >= kScreenWidth - ((kScreenWidth * .6) / 2) && translation.y + _offset.y <= -5) { //top right
+            else if (_offset.x + translation.x >= kScreenWidth - ((kScreenWidth * [[CDTLamoSettings sharedSettings] defaultWindowSize]) / 2) && translation.y + _offset.y <= -5) { //top right
                 
                 [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopRight];
             }
@@ -136,10 +136,11 @@
             
             CGRect bounds = CGRectMake(_offset.x + translation.x, _offset.y + translation.y, [[panGesture view] superview].frame.size.width,[[panGesture view] superview].frame.size.height);
             
-            if (bounds.origin.x <= -((kScreenWidth * .6) / 2)) bounds.origin.x = -((kScreenWidth *.6) / 2);
-            if (bounds.origin.y >= kScreenHeight - ((kScreenHeight * .6) / 2)) bounds.origin.y = kScreenHeight - ((kScreenHeight * .6) / 2);
+            CGFloat mainSize = [[CDTLamoSettings sharedSettings] defaultWindowSize];
+            if (bounds.origin.x <= -((kScreenWidth * mainSize) / 2)) bounds.origin.x = -((kScreenWidth *mainSize) / 2);
+            if (bounds.origin.y >= kScreenHeight - ((kScreenHeight * mainSize) / 2)) bounds.origin.y = kScreenHeight - ((kScreenHeight * mainSize) / 2);
             if (bounds.origin.y <= 0) bounds.origin.y = 0;
-            if (bounds.origin.x >= kScreenWidth - ((kScreenWidth * .6) / 2)) bounds.origin.x = kScreenWidth - ((kScreenWidth * .6) / 2);
+            if (bounds.origin.x >= kScreenWidth - ((kScreenWidth * mainSize) / 2)) bounds.origin.x = kScreenWidth - ((kScreenWidth * mainSize) / 2);
             
             [[[panGesture view] superview] setFrame:bounds];
             

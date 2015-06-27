@@ -220,8 +220,7 @@
         
         if ([indexPath row] == 0) {
 
-            UIViewController *windowSize = [[UIViewController alloc] init];
-            [[windowSize view] setBackgroundColor:[UIColor blueColor]];
+            CDTLamoDefaultWindowPane *windowSize = [[CDTLamoDefaultWindowPane alloc] init];
             [windowSize setTitle:@"Default Window Size"];
             [[self navigationController] pushViewController:windowSize animated:YES];
         }

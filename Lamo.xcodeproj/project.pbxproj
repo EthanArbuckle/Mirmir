@@ -27,6 +27,7 @@
 		5FE9009C1B26DE0B00ACCB1C /* SBNotificationCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE9009B1B26DE0B00ACCB1C /* SBNotificationCenterController.m */; };
 		5FEBA7461B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBA7451B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m */; };
 		5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */; };
+		5FFC8B5A1B3E469B009377F8 /* CDTLamoDefaultWindowPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		5FF1277F1AFB06C8001EE496 /* CDTLamoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoWindow.h; sourceTree = "<group>"; };
 		5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoWindow.m; sourceTree = "<group>"; };
 		5FF275211B1A91AC006CC312 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = SOURCE_ROOT; };
+		5FFC8B581B3E469B009377F8 /* CDTLamoDefaultWindowPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoDefaultWindowPane.h; sourceTree = "<group>"; };
+		5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoDefaultWindowPane.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,8 @@
 				5F1026311B22B02000257C45 /* CDTLamoSettings.m */,
 				5F1026331B22B5AD00257C45 /* CDTLamoSettingsViewController.h */,
 				5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */,
+				5FFC8B581B3E469B009377F8 /* CDTLamoDefaultWindowPane.h */,
+				5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 				5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */,
 				5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */,
 				5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */,
+				5FFC8B5A1B3E469B009377F8 /* CDTLamoDefaultWindowPane.m in Sources */,
 				5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */,
 				5FE9009C1B26DE0B00ACCB1C /* SBNotificationCenterController.m in Sources */,
 				5FDF09191B091CFC0094306F /* CDTLamoStateManager.m in Sources */,

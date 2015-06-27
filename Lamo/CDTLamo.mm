@@ -194,7 +194,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_contextHostProvider setStatusBarHidden:@(1) onApplicationWithBundleID:bundleID];
     
 	//shrink it down and update frame
-	[appWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
+	[appWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
 	[contextHost setFrame:CGRectMake(0, 20, contextHost.frame.size.width, contextHost.frame.size.height)];
 
 	[appWindow addSubview:gestureView];
@@ -206,7 +206,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_springboardWindow addSubview:appWindow];
 
     //animate it popping in
-    [self doPopAnimationForView:appWindow withBase:.6];
+    [self doPopAnimationForView:appWindow withBase:[[CDTLamoSettings sharedSettings] defaultWindowSize]];
     
     //set to default orientation setting
     if ([[[CDTLamoSettings sharedSettings] defaultOrientation] isEqualToString:@"portrait"]) {
@@ -471,8 +471,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
     //rotate context view
     [UIView animateWithDuration:0.45f animations:^{
         
-        //scale of .6, this will also revert the 90 degree rotation
-        [window setTransform:CGAffineTransformMakeScale(.6, .6)];
+        //this will also revert the 90 degree rotation
+        [window setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
         
         //set frame to ensure window bar isnt out of screen bounds
         CGRect appWindowFrame = [window frame];
@@ -629,7 +629,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
     _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
     [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
-    [_settingsController setTitle:@"Lamo Preferences"];
+    [_settingsController setTitle:@"Lamo"];
     [settingsWindow addSubview:[_settingsNavigationController view]];
     
     //shrink it down and update frame

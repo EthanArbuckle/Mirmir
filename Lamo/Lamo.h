@@ -156,6 +156,7 @@ void receivedPortraitRotate();
 @interface SBHomeScreenPreviewView : UIView
 + (void)cleanupPreview;
 + (id)preview;
+- (id)initWithFrame:(struct CGRect)arg1 iconController:(id)arg2;
 @end
 
 @interface UIKeyboard

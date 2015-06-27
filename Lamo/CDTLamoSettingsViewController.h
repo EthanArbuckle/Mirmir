@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Lamo.h"
 #import "CDTLamoSettings.h"
+#import "CDTLamoDefaultWindowPane.h"
 
 @interface CDTLamoSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
