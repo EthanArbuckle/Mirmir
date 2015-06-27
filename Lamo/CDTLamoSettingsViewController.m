@@ -258,6 +258,12 @@
             
             [[CDTLamoSettings sharedSettings] setActivationZone:@"right"];
         }
+        else if ([indexPath row] == 3) {
+            
+            CDTLamoSensitivityPane *sensitivityPane = [[CDTLamoSensitivityPane alloc] init];
+            [sensitivityPane setTitle:@"Activation Sensitivity"];
+            [[self navigationController] pushViewController:sensitivityPane animated:YES];
+        }
     }
     
     

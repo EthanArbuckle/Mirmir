@@ -106,7 +106,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 		[[CDTLamo sharedInstance] setWrapperViewIsTracking:NO];
 
 		//if we need to window the app
-		if (location.y >= 80) {
+		if (location.y >= [[CDTLamoSettings sharedSettings] activationTriggerRadius]) {
 
 			//start window mode for app
 			[[CDTLamo sharedInstance] beginWindowModeForTopApplication];

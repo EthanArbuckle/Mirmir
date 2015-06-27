@@ -14,6 +14,7 @@
 #define defaultWindowSizeKey @"CDTLamoDefaultWindowSize"
 #define minimizedWindowSizeKey @"CDTLamoMinimizedWindowSize"
 #define activationZoneKey @"CDTLamoActivationZone"
+#define activationTriggerRadiusKey @"CDTLamoActivationTriggerRadius"
 
 @interface CDTLamoSettings : NSObject
 
@@ -34,5 +35,8 @@
 
 - (void)setActivationZone:(NSString *)zone;
 - (NSString *)activationZone;
+
+- (void)setActivationTriggerRadius:(CGFloat)radius;
+- (CGFloat)activationTriggerRadius;
 
 @end

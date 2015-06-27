@@ -11,6 +11,7 @@
 #import "CDTLamoSettings.h"
 #import "CDTLamoDefaultWindowPane.h"
 #import "CDTLamoMinimizedWindowPane.h"
+#import "CDTLamoSensitivityPane.h"
 
 @interface CDTLamoSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

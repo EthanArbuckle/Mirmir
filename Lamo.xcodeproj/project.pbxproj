@@ -29,6 +29,7 @@
 		5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF127801AFB06C8001EE496 /* CDTLamoWindow.m */; };
 		5FFC8B5A1B3E469B009377F8 /* CDTLamoDefaultWindowPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */; };
 		5FFC8B5D1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B5C1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m */; };
+		5FFC8B601B3E61C6009377F8 /* CDTLamoSensitivityPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoDefaultWindowPane.m; sourceTree = "<group>"; };
 		5FFC8B5B1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoMinimizedWindowPane.h; sourceTree = "<group>"; };
 		5FFC8B5C1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoMinimizedWindowPane.m; sourceTree = "<group>"; };
+		5FFC8B5E1B3E61C6009377F8 /* CDTLamoSensitivityPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSensitivityPane.h; sourceTree = "<group>"; };
+		5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSensitivityPane.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +212,8 @@
 				5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */,
 				5FFC8B5B1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.h */,
 				5FFC8B5C1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m */,
+				5FFC8B5E1B3E61C6009377F8 /* CDTLamoSensitivityPane.h */,
+				5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				5FB454501AF3657C0020FC56 /* CDTLamo.mm in Sources */,
 				5FE9009C1B26DE0B00ACCB1C /* SBNotificationCenterController.m in Sources */,
 				5FFC8B5D1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m in Sources */,
+				5FFC8B601B3E61C6009377F8 /* CDTLamoSensitivityPane.m in Sources */,
 				5FDF09191B091CFC0094306F /* CDTLamoStateManager.m in Sources */,
 				5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */,
 				5F40C0A81B2D9E0000AC3711 /* SBIconController.m in Sources */,

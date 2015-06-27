@@ -32,7 +32,8 @@
                                           defaultOrientationKey : @"portrait",
                                           defaultWindowSizeKey : @.6,
                                           minimizedWindowSizeKey : @.4,
-                                          activationZoneKey : @"left"
+                                          activationZoneKey : @"left",
+                                          activationTriggerRadiusKey : @80
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -100,6 +101,17 @@
 - (NSString *)activationZone {
     
     return [[NSUserDefaults standardUserDefaults] valueForKey:activationZoneKey];
+}
+
+- (void)setActivationTriggerRadius:(CGFloat)radius {
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:radius forKey:activationTriggerRadiusKey];
+    [self saveChanges];
+}
+
+- (CGFloat)activationTriggerRadius {
+    
+    return [[NSUserDefaults standardUserDefaults] floatForKey:activationTriggerRadiusKey];
 }
 
 @end

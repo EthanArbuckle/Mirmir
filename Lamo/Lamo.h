@@ -67,9 +67,10 @@ typedef enum CDTLamoSnapPosition {
 -(void)setFlag:(int)flag forDeactivationSetting:(unsigned)deactivationSetting;
 @end
 
-@interface SBWallpaperController
+@interface SBWallpaperController : NSObject
 -(id)sharedInstance;
 - (void)beginRequiringWithReason:(id)reason;
+-(id)initWithOrientation:(int)orientation variant:(int)variant;
 @end
 
 @interface UIApplication (Private) 
