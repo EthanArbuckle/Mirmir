@@ -229,7 +229,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
     	[UIView animateWithDuration:0.1 animations:^{
 
-    		[viewToPop setTransform:CGAffineTransformMakeScale(size + .5, size + .5)];
+    		[viewToPop setTransform:CGAffineTransformMakeScale(size + .05, size + .05)];
 
     	} completion:^(BOOL finished){
 
