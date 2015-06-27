@@ -26,7 +26,7 @@
     
 }
 
-- (NSString *)tableView:(nonnull UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     
     if (section == 4) {
         
@@ -36,7 +36,7 @@
     return @"";
 }
 
-- (NSInteger)numberOfSectionsInTableView:(nonnull UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 5;
 }
@@ -67,7 +67,7 @@
     return 0;
 }
 
-- (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
     if (section == 0) {
         
@@ -224,7 +224,7 @@
     return settingCell;
 }
 
-- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //tapped an orientation cell
     if ([indexPath section] == 1) {
