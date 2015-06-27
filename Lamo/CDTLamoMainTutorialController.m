@@ -56,7 +56,7 @@
         CDTLamoBarView *bar = [[CDTLamoBarView alloc] init];
         [bar setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
         [bar setTitle:@"Lamo!"];
-        [_windowPreview setBarView:bar];
+        [(CDTLamoWindow *)_windowPreview setBarView:bar];
         [_windowPreview addSubview:bar];
         
         //create pan gesture

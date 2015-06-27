@@ -162,7 +162,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     //show tutorial when we unlock if havent shown before
     if (![[[(NSNotification *)changed userInfo] valueForKey:@"kSBNotificationKeyState"] boolValue]) {
         
-        //if (![[CDTLamoSettings sharedSettings] hasShownTutorial]) {
+        if (![[CDTLamoSettings sharedSettings] hasShownTutorial]) {
             
             //wait a bit before showing
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -184,7 +184,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
                 //set as shown
                 [[CDTLamoSettings sharedSettings] setHasShownTutorial:YES];
             });
-        //}
+        }
     }
     
     //close all windows and stop hosting

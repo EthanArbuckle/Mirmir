@@ -614,12 +614,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 - (void)presentSettingsController {
     
-    //dont open more than one instance
-    if ([_windows valueForKey:@"com.cortexdevteam.lamosetting"]) {
-        
-        return;
-    }
-    
     //create settings window
     CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];

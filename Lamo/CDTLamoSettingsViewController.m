@@ -28,7 +28,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     
-    if (section == 4) {
+    if (section == 5) {
         
         return @"Cortex Dev Team";
     }
@@ -38,7 +38,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -62,6 +62,10 @@
     else if (section == 4) {
         
         return 3;
+    }
+    else if (section == 5) {
+        
+        return 1;
     }
     
     return 0;
@@ -88,6 +92,10 @@
     else if (section == 4) {
         
         return @"windows";
+    }
+    else if (section == 5) {
+        
+        return @"";
     }
     
     return @"";
@@ -219,6 +227,18 @@
             }
         }
         
+        //tutorial cell
+        else if ([indexPath section] == 5) {
+            
+            if ([indexPath row] == 0) {
+                
+                [[settingCell textLabel] setTextAlignment:NSTextAlignmentCenter];
+                [[settingCell textLabel] setText:@"Launch Tutorial"];
+                [[settingCell textLabel] setTextColor:[UIColor colorWithRed:0.204 green:0.459 blue:1.000 alpha:1.0]];
+                
+            }
+        }
+        
     }
     
     return settingCell;
@@ -276,6 +296,34 @@
             CDTLamoSensitivityPane *sensitivityPane = [[CDTLamoSensitivityPane alloc] init];
             [sensitivityPane setTitle:@"Activation Sensitivity"];
             [[self navigationController] pushViewController:sensitivityPane animated:YES];
+        }
+    }
+    
+    //tutorial cell
+    else if ([indexPath section] == 5) {
+        
+        if ([indexPath row] == 0) {
+            
+            //present
+            [[CDTLamo sharedInstance] setTutorialController:[[CDTLamoMainTutorialController alloc] init]];
+            [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Lamo Tutorial"];
+            [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
+            [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
+            [[[CDTLamo sharedInstance] springboardWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
+            [(CDTLamoMainTutorialController *)[[CDTLamo sharedInstance] tutorialController] addBarButtons];
+            
+            //fade it in and fade settings controller out
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:1];
+                [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] setAlpha:0];
+                
+            } completion:^(BOOL finished) {
+                
+                [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] removeFromSuperview];
+            }];
+
+            
         }
     }
     

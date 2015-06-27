@@ -12,7 +12,7 @@
 
 @interface CDTLamoMainTutorialController : UIViewController
 
-@property (nonatomic, retain) CDTLamoWindow *windowPreview;
+@property (nonatomic, retain) UIView *windowPreview;
 
 - (void)addBarButtons;
 - (void)closeTutorial;
