@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Lamo.h"
+#import "CDTLamoWindow.h"
 
 @interface CDTLamoMainTutorialController : UIViewController
 
+@property (nonatomic, retain) CDTLamoWindow *windowPreview;
+
 - (void)addBarButtons;
 - (void)closeTutorial;
+- (void)handlePan:(UIPanGestureRecognizer *)gesture;
 
 @end
