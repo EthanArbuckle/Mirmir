@@ -31,7 +31,8 @@
                                           isEnabledKey : @YES,
                                           defaultOrientationKey : @"portrait",
                                           defaultWindowSizeKey : @.6,
-                                          minimizedWindowSizeKey : @.4
+                                          minimizedWindowSizeKey : @.4,
+                                          activationZoneKey : @"left"
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -88,6 +89,17 @@
 - (CGFloat)minimizedWindowSize {
     
     return [[NSUserDefaults standardUserDefaults] floatForKey:minimizedWindowSizeKey];
+}
+
+- (void)setActivationZone:(NSString *)zone {
+    
+    [[NSUserDefaults standardUserDefaults] setValue:zone forKey:activationZoneKey];
+    [self saveChanges];
+}
+
+- (NSString *)activationZone {
+    
+    return [[NSUserDefaults standardUserDefaults] valueForKey:activationZoneKey];
 }
 
 @end

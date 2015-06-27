@@ -146,15 +146,26 @@
             if ([indexPath row] == 0) {
                 
                 [[settingCell textLabel] setText:@"Drag From Top Left"];
-                [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"left"]) {
+                    
+                    [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
             }
             else if ([indexPath row] == 1) {
                 
                 [[settingCell textLabel] setText:@"Drag From Top Center"];
+                if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"center"]) {
+                    
+                    [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
             }
             else if ([indexPath row] == 2) {
                 
                 [[settingCell textLabel] setText:@"Drag From Top Right"];
+                if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"right"]) {
+                    
+                    [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
             }
             else if ([indexPath row] == 3) {
                 
@@ -229,6 +240,23 @@
             CDTLamoMinimizedWindowPane *minimizePane = [[CDTLamoMinimizedWindowPane alloc] init];
             [minimizePane setTitle:@"Minimized Window Size"];
             [[self navigationController] pushViewController:minimizePane animated:YES];
+        }
+    }
+    
+    //activation zone cells
+    else if ([indexPath section] == 3) {
+        
+        if ([indexPath row] == 0) {
+            
+            [[CDTLamoSettings sharedSettings] setActivationZone:@"left"];
+        }
+        else if ([indexPath row] == 1) {
+            
+            [[CDTLamoSettings sharedSettings] setActivationZone:@"center"];
+        }
+        else if ([indexPath row] == 2) {
+            
+            [[CDTLamoSettings sharedSettings] setActivationZone:@"right"];
         }
     }
     

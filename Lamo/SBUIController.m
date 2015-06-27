@@ -5,11 +5,34 @@
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
+BOOL isInActivationZone(CGFloat xOrigin) {
+    
+    //left zone
+    if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"left"]) {
+        
+        return xOrigin <= 100;
+    }
+    
+    //center zone
+    if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"center"]) {
+        
+        return xOrigin >= (kScreenWidth / 3) && xOrigin <= (kScreenWidth / 3) * 2;
+    }
+    
+    //right zone
+    if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"right"]) {
+        
+        return xOrigin >= kScreenWidth - 100;
+    }
+    
+    return NO;
+}
+
 @implementation $_Lamo_SBUIController
 
 - (void)_showNotificationsGestureBeganWithLocation:(CGPoint)location {
 
-    if (location.x <= 100 && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
+    if (isInActivationZone(location.x) && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
 
 		//we've started tracking the wrapper view
 		[[CDTLamo sharedInstance] setWrapperViewIsTracking:YES];

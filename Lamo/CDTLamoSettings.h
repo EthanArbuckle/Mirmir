@@ -13,6 +13,7 @@
 #define defaultOrientationKey @"CDTLamoDefaultOrientation"
 #define defaultWindowSizeKey @"CDTLamoDefaultWindowSize"
 #define minimizedWindowSizeKey @"CDTLamoMinimizedWindowSize"
+#define activationZoneKey @"CDTLamoActivationZone"
 
 @interface CDTLamoSettings : NSObject
 
@@ -30,5 +31,8 @@
 
 - (void)setMinimizedWindowSize:(CGFloat)scale;
 - (CGFloat)minimizedWindowSize;
+
+- (void)setActivationZone:(NSString *)zone;
+- (NSString *)activationZone;
 
 @end
