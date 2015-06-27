@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Lamo.h"
 #import "CDTLamoBarView.h"
+#import "CDTLamoSettings.h"
 
 @interface CDTLamoAppOverlay : UIView
 

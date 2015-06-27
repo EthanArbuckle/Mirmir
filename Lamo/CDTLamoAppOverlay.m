@@ -88,7 +88,7 @@
     //animate scale back to .6
     [UIView animateWithDuration:0.3f animations:^{
         
-        [[self superview] setTransform:CGAffineTransformMakeScale(.6, .6)];
+        [[self superview] setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
         
         //set frame to ensure window bar isnt out of screen bounds
         CGRect appWindowFrame = [[self superview] frame];

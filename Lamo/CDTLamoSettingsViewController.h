@@ -10,6 +10,7 @@
 #import "Lamo.h"
 #import "CDTLamoSettings.h"
 #import "CDTLamoDefaultWindowPane.h"
+#import "CDTLamoMinimizedWindowPane.h"
 
 @interface CDTLamoSettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

@@ -224,6 +224,12 @@
             [windowSize setTitle:@"Default Window Size"];
             [[self navigationController] pushViewController:windowSize animated:YES];
         }
+        else if ([indexPath row] == 1) {
+            
+            CDTLamoMinimizedWindowPane *minimizePane = [[CDTLamoMinimizedWindowPane alloc] init];
+            [minimizePane setTitle:@"Minimized Window Size"];
+            [[self navigationController] pushViewController:minimizePane animated:YES];
+        }
     }
     
     

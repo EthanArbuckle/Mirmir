@@ -30,7 +30,8 @@
         NSDictionary *defaultSettings = @{
                                           isEnabledKey : @YES,
                                           defaultOrientationKey : @"portrait",
-                                          defaultWindowSizeKey : @.6
+                                          defaultWindowSizeKey : @.6,
+                                          minimizedWindowSizeKey : @.4
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -76,6 +77,17 @@
 - (CGFloat)defaultWindowSize {
     
     return [[NSUserDefaults standardUserDefaults] floatForKey:defaultWindowSizeKey];
+}
+
+- (void)setMinimizedWindowSize:(CGFloat)scale; {
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:scale forKey:minimizedWindowSizeKey];
+    [self saveChanges];
+}
+
+- (CGFloat)minimizedWindowSize {
+    
+    return [[NSUserDefaults standardUserDefaults] floatForKey:minimizedWindowSizeKey];
 }
 
 @end
