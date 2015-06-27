@@ -192,4 +192,25 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     
 }
 
+- (BOOL)clickedMenuButton {
+    
+    //if we're on the homescreen and settings is open, close them
+    if (![[CDTLamo sharedInstance] topmostApplication] && [[[CDTLamo sharedInstance] settingsController] view]) {
+        
+        UINavigationController *settings = [[CDTLamo sharedInstance] settingsNavigationController];
+        
+        //animate it out
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            [[[settings view] superview] setAlpha:0];
+        } completion:^(BOOL finished) {
+            
+            //remove it
+            [[[settings view] superview] removeFromSuperview];
+        }];
+    }
+    
+    return ZKOrig(BOOL);
+}
+
 @end
