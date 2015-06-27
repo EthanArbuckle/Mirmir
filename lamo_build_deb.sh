@@ -1,4 +1,5 @@
 rm wingedgudda.deb || true
+rm -rf Builds/ || true
 rm lamo_staging/Library/MobileSubstrate/DynamicLibraries/Lamo.dylib || true
 rm lamo_staging/Library/MobileSubstrate/DynamicLibraries/LamoClient.dylib || true
 xctool -sdk iphoneos -project Lamo.xcodeproj/ -scheme Lamo CODE_SIGNING_REQUIRED=NO owner=$1
