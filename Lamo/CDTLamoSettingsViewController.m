@@ -26,6 +26,16 @@
     
 }
 
+- (NSString *)tableView:(nonnull UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    
+    if (section == 4) {
+        
+        return @"Cortex Dev Team";
+    }
+    
+    return @"";
+}
+
 - (NSInteger)numberOfSectionsInTableView:(nonnull UITableView *)tableView {
     
     return 5;
