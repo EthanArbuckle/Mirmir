@@ -26,9 +26,61 @@
     
 }
 
+- (NSInteger)numberOfSectionsInTableView:(nonnull UITableView *)tableView {
+    
+    return 5;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
+    if (section == 0) {
+        
+        return 1;
+    }
+    else if (section == 1) {
+        
+        return 2;
+    }
+    else if (section == 2) {
+        
+        return 2;
+    }
+    else if (section == 3) {
+        
+        return 4;
+    }
+    else if (section == 4) {
+        
+        return 3;
+    }
+    
+    return 0;
+}
+
+- (NSString *)tableView:(nonnull UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        
+        return @"";
+    }
+    else if (section == 1) {
+        
+        return @"default orientation";
+    }
+    else if (section == 2) {
+        
+        return @"sizing";
+    }
+    else if (section == 3) {
+        
+        return @"activation";
+    }
+    else if (section == 4) {
+        
+        return @"windows";
+    }
+    
+    return @"";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -40,19 +92,117 @@
         //cell aint cell, make cell cell
         settingCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CDTLamoSettingCell"];
         
+        if ([indexPath section] == 0) {
+            
+            //create enable switch + label
+            UISwitch *cellSwitch = [[UISwitch alloc] init];
+            [cellSwitch setOn:[[CDTLamoSettings sharedSettings] isEnabled]];
+        [cellSwitch addTarget:self action:@selector(handleEnableSwitch:) forControlEvents:UIControlEventValueChanged];
+            [cellSwitch setTag:[indexPath row]];
+            [settingCell setAccessoryView:cellSwitch];
+            [[settingCell textLabel] setText:@"Enabled"];
+            
+        }
+        
+        else if ([indexPath section] == 1) {
+            
+            //orientaition cells
+            if ([indexPath row] == 0) {
                 
-                //create enable switch + label
+                [[settingCell textLabel] setText:@"Portrait"];
+                if ([[[CDTLamoSettings sharedSettings] defaultOrientation] isEqualToString:@"portrait"]) {
+                    
+                    [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
+            }
+            else if ([indexPath row] == 1) {
+                
+                [[settingCell textLabel] setText:@"Landscape"];
+                if ([[[CDTLamoSettings sharedSettings] defaultOrientation] isEqualToString:@"landscape"]) {
+                    
+                    [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                }
+            }
+        }
+        
+        else if ([indexPath section] == 2) {
+            
+            //window size cells
+            if ([indexPath row] == 0) {
+                
+                [[settingCell textLabel] setText:@"Default Window Size"];
+                [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            }
+            else if ([indexPath row] == 1) {
+                
+                [[settingCell textLabel] setText:@"Minimized Size"];
+                [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            }
+        }
+        
+        //activation cells
+        else if ([indexPath section] == 3) {
+            
+            if ([indexPath row] == 0) {
+                
+                [[settingCell textLabel] setText:@"Drag From Top Left"];
+                [settingCell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            }
+            else if ([indexPath row] == 1) {
+                
+                [[settingCell textLabel] setText:@"Drag From Top Center"];
+            }
+            else if ([indexPath row] == 2) {
+                
+                [[settingCell textLabel] setText:@"Drag From Top Right"];
+            }
+            else if ([indexPath row] == 3) {
+                
+                [[settingCell textLabel] setText:@"Sensitivity"];
+                [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            }
+        }
+        
+        else if ([indexPath section] == 4) {
+            
+            //window settings
+            if ([indexPath row] == 0) {
+                
+                [[settingCell textLabel] setText:@"Hide Status Bar"];
+                
+                //create switch
                 UISwitch *cellSwitch = [[UISwitch alloc] init];
-                [cellSwitch setOn:[[CDTLamoSettings sharedSettings] isEnabled]];
-                [cellSwitch addTarget:[CDTLamoSettings sharedSettings] action:@selector(handleEnableSwitch:) forControlEvents:UIControlEventValueChanged];
-                [cellSwitch setTag:[indexPath row]];
+                [cellSwitch setOn:YES];
                 [settingCell setAccessoryView:cellSwitch];
+            }
+            else if ([indexPath row] == 1) {
                 
-                [[settingCell textLabel] setText:@"Enabled"];
+                [[settingCell textLabel] setText:@"Pinch to Resize"];
+                
+                //create switch
+                UISwitch *cellSwitch = [[UISwitch alloc] init];
+                [cellSwitch setOn:YES];
+                [settingCell setAccessoryView:cellSwitch];
+            }
+            else if ([indexPath row] == 2) {
+                
+                [[settingCell textLabel] setText:@"Show Title Text"];
+                
+                //create switch
+                UISwitch *cellSwitch = [[UISwitch alloc] init];
+                [cellSwitch setOn:YES];
+                [settingCell setAccessoryView:cellSwitch];
+            }
+        }
         
     }
     
     return settingCell;
+}
+
+- (void)handleEnableSwitch:(UISwitch *)cellSwitch {
+    
+    [[CDTLamoSettings sharedSettings] setEnabled:[cellSwitch isOn]];
 }
 
 @end

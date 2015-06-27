@@ -9,6 +9,7 @@
 
 @property (nonatomic, retain) UIView *sharedScalingWrapperView;
 @property (nonatomic, retain) CDTContextHostProvider *contextHostProvider;
+@property (nonatomic, retain) CDTLamoSettingsViewController *settingsController;
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;
 

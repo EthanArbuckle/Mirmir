@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 #define isEnabledKey @"CDTLamoIsEnabled"
+#define defaultOrientationKey @"CDTLamoDefaultOrientation"
 
 @interface CDTLamoSettings : NSObject
 
@@ -19,7 +20,7 @@
 - (void)setEnabled:(BOOL)enabled;
 - (BOOL)isEnabled;
 
-//ui recievers
-- (void)handleEnableSwitch:(UISwitch *)cellSwitch;
+- (void)setDefaultOrientation:(NSString *)defaultOrientation;
+- (NSString *)defaultOrientation;
 
 @end

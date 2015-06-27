@@ -28,7 +28,8 @@
         
         //create default settings
         NSDictionary *defaultSettings = @{
-                                          isEnabledKey : @YES
+                                          isEnabledKey : @YES,
+                                          defaultOrientationKey : @"portrait"
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -39,7 +40,7 @@
 }
 
 - (void)saveChanges {
-    NSLog(@"iht:");
+
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -54,9 +55,15 @@
     return [[NSUserDefaults standardUserDefaults] boolForKey:isEnabledKey];
 }
 
-- (void)handleEnableSwitch:(UISwitch *)cellSwitch {
+- (void)setDefaultOrientation:(NSString *)defaultOrientation {
     
-    [self setEnabled:[cellSwitch isOn]];
+    [[NSUserDefaults standardUserDefaults] setValue:defaultOrientation forKey:defaultOrientationKey];
+    [self saveChanges];
+}
+
+- (NSString *)defaultOrientation {
+    
+    return [[NSUserDefaults standardUserDefaults] valueForKey:defaultOrientationKey];
 }
 
 @end

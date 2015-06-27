@@ -620,8 +620,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     
     //create settings view controller
-    CDTLamoSettingsViewController *settingsController = [[CDTLamoSettingsViewController alloc] init];
-    [settingsWindow addSubview:[settingsController view]];
+    _settingsController = [[CDTLamoSettingsViewController alloc] init];
+    [settingsWindow addSubview:[_settingsController view]];
     
     //shrink it down and update frame
     [settingsWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
