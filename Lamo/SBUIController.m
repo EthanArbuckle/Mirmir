@@ -8,6 +8,12 @@ ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
 BOOL isInActivationZone(CGFloat xOrigin) {
     
+    //stop if reachability is open
+    if ([[[NSClassFromString(@"SBReachabilityManager") sharedInstance] valueForKey:@"_reachabilityModeActive"] boolValue]) {
+        
+        return NO;
+    }
+    
     //left zone
     if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"left"]) {
         

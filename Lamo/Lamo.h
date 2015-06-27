@@ -229,3 +229,7 @@ void receivedPortraitRotate();
 - (void)setBlursWithHardEdges:(BOOL)arg1;
 
 @end
+
+@interface SBReachabilityManager : NSObject
++ (id)sharedInstance;
+@end
