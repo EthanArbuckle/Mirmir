@@ -18,6 +18,7 @@
 #define hideStatusBarKey @"CDTLamoHideStatusBar"
 #define pinchToResizeKey @"CDTLamoPinchToResize"
 #define showTitleTextKey @"CDTLamoShowTitleText"
+#define hasShownTutorialKey @"CDTLamoShownTutorial"
 
 @interface CDTLamoSettings : NSObject
 
@@ -50,5 +51,8 @@
 
 - (void)setShowTitleText:(BOOL)show;
 - (BOOL)showTitleText;
+
+- (void)setHasShownTutorial:(BOOL)shown;
+- (BOOL)hasShownTutorial;
 
 @end

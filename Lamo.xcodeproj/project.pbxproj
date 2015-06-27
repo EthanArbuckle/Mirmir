@@ -30,6 +30,7 @@
 		5FFC8B5A1B3E469B009377F8 /* CDTLamoDefaultWindowPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B591B3E469B009377F8 /* CDTLamoDefaultWindowPane.m */; };
 		5FFC8B5D1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B5C1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m */; };
 		5FFC8B601B3E61C6009377F8 /* CDTLamoSensitivityPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */; };
+		5FFC8B641B3EFF71009377F8 /* CDTLamoMainTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B631B3EFF71009377F8 /* CDTLamoMainTutorialController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		5FFC8B5C1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoMinimizedWindowPane.m; sourceTree = "<group>"; };
 		5FFC8B5E1B3E61C6009377F8 /* CDTLamoSensitivityPane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSensitivityPane.h; sourceTree = "<group>"; };
 		5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSensitivityPane.m; sourceTree = "<group>"; };
+		5FFC8B621B3EFF71009377F8 /* CDTLamoMainTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoMainTutorialController.h; sourceTree = "<group>"; };
+		5FFC8B631B3EFF71009377F8 /* CDTLamoMainTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoMainTutorialController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,7 @@
 				5FFC8B531B3E44EA009377F8 /* Context Hosting */,
 				5FFC8B541B3E4502009377F8 /* Windows */,
 				5FFC8B551B3E451F009377F8 /* Settings */,
+				5FFC8B611B3EFF38009377F8 /* Tutorial */,
 				5FFC8B561B3E459F009377F8 /* Hooks */,
 				5FFC8B571B3E45C8009377F8 /* Objects */,
 				5FB454451AF3657C0020FC56 /* CDTLamo.h */,
@@ -241,6 +245,15 @@
 				5FB454411AF364920020FC56 /* ZKSwizzle.m */,
 			);
 			name = Objects;
+			sourceTree = "<group>";
+		};
+		5FFC8B611B3EFF38009377F8 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				5FFC8B621B3EFF71009377F8 /* CDTLamoMainTutorialController.h */,
+				5FFC8B631B3EFF71009377F8 /* CDTLamoMainTutorialController.m */,
+			);
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FFC8B641B3EFF71009377F8 /* CDTLamoMainTutorialController.m in Sources */,
 				5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */,
 				5FA91D781B37131B00BBC90E /* CDTLamoAppOverlay.m in Sources */,
 				5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */,

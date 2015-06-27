@@ -2,6 +2,7 @@
 #import "CDTLamo.h"
 #import "ZKSwizzle.h"
 #import "CDTLamoSettings.h"
+#import "CDTLamoMainTutorialController.h"
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
@@ -157,6 +158,34 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 }
 
 - (void)_deviceLockStateChanged:(id)changed {
+    
+    //show tutorial when we unlock if havent shown before
+    if (![[[(NSNotification *)changed userInfo] valueForKey:@"kSBNotificationKeyState"] boolValue]) {
+        
+        if (![[CDTLamoSettings sharedSettings] hasShownTutorial]) {
+            
+            //wait a bit before showing
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            
+                //present
+                [[CDTLamo sharedInstance] setTutorialController:[[CDTLamoMainTutorialController alloc] init]];
+                [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Lamo Tutorial"];
+                [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
+                [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
+                [[[CDTLamo sharedInstance] springboardWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
+                [(CDTLamoMainTutorialController *)[[CDTLamo sharedInstance] tutorialController] addBarButtons];
+                
+                //fade it in
+                [UIView animateWithDuration:0.3 animations:^{
+                    
+                    [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:1];
+                }];
+            
+                //set as shown
+                //[[CDTLamoSettings sharedSettings] setHasShownTutorial:YES];
+            });
+        }
+    }
     
     //close all windows and stop hosting
     [[CDTLamo sharedInstance] snapAllClose];

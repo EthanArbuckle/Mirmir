@@ -36,7 +36,8 @@
                                           activationTriggerRadiusKey : @80,
                                           hideStatusBarKey : @YES,
                                           pinchToResizeKey : @YES,
-                                          showTitleTextKey : @YES
+                                          showTitleTextKey : @YES,
+                                          hasShownTutorialKey : @NO
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -148,6 +149,17 @@
 - (BOOL)showTitleText {
     
     return [[NSUserDefaults standardUserDefaults] boolForKey:showTitleTextKey];
+}
+
+- (void)setHasShownTutorial:(BOOL)shown {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:shown forKey:hasShownTutorialKey];
+    [self saveChanges];
+}
+
+- (BOOL)hasShownTutorial {
+    
+    return [[NSUserDefaults standardUserDefaults] boolForKey:hasShownTutorialKey];
 }
 
 @end

@@ -9,8 +9,13 @@
 
 @property (nonatomic, retain) UIView *sharedScalingWrapperView;
 @property (nonatomic, retain) CDTContextHostProvider *contextHostProvider;
+
+//these just need to be retained
 @property (nonatomic, retain) UIViewController *settingsController;
 @property (nonatomic, retain) UINavigationController *settingsNavigationController;
+@property (nonatomic, retain) UIViewController *tutorialController;
+@property (nonatomic, retain) UINavigationController *tutorialNavigationController;
+
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, retain) UIWindow *springboardWindow;
 
