@@ -39,14 +39,7 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
 -(id)generateIconImage:(int)ifmage {
     
     //create rounded icon image
-    UIImage *image = [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/icon.png"];
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(120, 120), NO, [UIScreen mainScreen].scale);
-    [[UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 120, 120) cornerRadius:33.0] addClip];
-    [image drawInRect:CGRectMake(0, 0, 120, 120)];
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
+    return [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/icon.png"];
 }
 
 @end
