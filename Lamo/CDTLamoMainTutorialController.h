@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Lamo.h"
+#import "CDTContextHostProvider.h"
 #import "CDTLamoWindow.h"
 
 @interface CDTLamoMainTutorialController : UIViewController
 
 @property (nonatomic, retain) UIView *windowPreview;
+@property (nonatomic, retain) CDTContextHostProvider *contextProvider;
 
 - (void)addBarButtons;
 - (void)closeTutorial;

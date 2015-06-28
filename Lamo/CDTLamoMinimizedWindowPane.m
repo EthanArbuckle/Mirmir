@@ -26,6 +26,13 @@
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    //ensure we arent hosting the weather preview
+    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 1;
@@ -102,6 +109,10 @@
         [_previewWindow addSubview:barView];
         [barView setTitle:@"Lamo!"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
+        
+        //create weather app
+        UIView *contextView = [[CDTContextHostProvider new] hostViewForApplicationWithBundleID:@"com.apple.weather"];
+        [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];
     }

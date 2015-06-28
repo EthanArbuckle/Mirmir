@@ -107,9 +107,10 @@
 - (void)stopHostingForBundleID:(NSString *)bundleID {
 
 	SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
-	FBWindowContextHostManager *contextManager = [self contextManagerForApplication:appToHost];
+    [self disableBackgroundingForApplication:appToHost];
+    FBWindowContextHostManager *contextManager = [self contextManagerForApplication:appToHost];
 	[contextManager disableHostingForRequester:bundleID];
-    
+
     if (NEED_IPAD_HAX) {
         
         if ([_onlyIpad_runningIdentifiers containsObject:bundleID]) {

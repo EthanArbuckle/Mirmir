@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Lamo.h"
 #import "CDTLamoWindow.h"
+#import "CDTContextHostProvider.h"
 
 @interface CDTLamoSensitivityPane : UITableViewController
 

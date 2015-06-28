@@ -115,7 +115,7 @@
             //create enable switch + label
             UISwitch *cellSwitch = [[UISwitch alloc] init];
             [cellSwitch setOn:[[CDTLamoSettings sharedSettings] isEnabled]];
-        [cellSwitch addTarget:self action:@selector(handleEnableSwitch:) forControlEvents:UIControlEventValueChanged];
+            [cellSwitch addTarget:self action:@selector(handleEnableSwitch:) forControlEvents:UIControlEventValueChanged];
             [cellSwitch setTag:[indexPath row]];
             [settingCell setAccessoryView:cellSwitch];
             [[settingCell textLabel] setText:@"Enabled"];
@@ -246,6 +246,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    //ensure we arent hosting the weather preview
+    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    
     //tapped an orientation cell
     if ([indexPath section] == 1) {
         
@@ -321,6 +324,10 @@
             } completion:^(BOOL finished) {
                 
                 [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] removeFromSuperview];
+                
+                //ensure we arent hosting the weather preview
+                [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+                
             }];
 
             

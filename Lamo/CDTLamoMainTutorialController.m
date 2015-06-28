@@ -55,9 +55,15 @@
         //create bar view
         CDTLamoBarView *bar = [[CDTLamoBarView alloc] init];
         [bar setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
-        [bar setTitle:@"Lamo!"];
+        [bar setTitle:@"Weather"];
         [(CDTLamoWindow *)_windowPreview setBarView:bar];
         [_windowPreview addSubview:bar];
+        
+        //create weather context view
+        _contextProvider = [[CDTContextHostProvider alloc] init];
+        UIView *contextView = [_contextProvider hostViewForApplicationWithBundleID:@"com.apple.weather"];
+        [_contextProvider setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
+        [_windowPreview addSubview:contextView];
         
         //create pan gesture
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
@@ -89,7 +95,11 @@
         //remove it
         [[[self navigationController] view] removeFromSuperview];
         
+        
     }];
+    
+    //stop hosting
+    [_contextProvider stopHostingForBundleID:@"com.apple.weather"];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture {

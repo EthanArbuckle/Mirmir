@@ -26,6 +26,13 @@
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    //ensure we arent hosting the weather preview
+    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 1;
@@ -94,6 +101,10 @@
         CDTLamoWindow *previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [previewWindow setBackgroundColor:[UIColor grayColor]];
         [previewWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
+        
+        //create weather app
+        UIView *contextView = [[CDTContextHostProvider new] hostViewForApplicationWithBundleID:@"com.apple.weather"];
+        [previewWindow addSubview:contextView];
         
         //create zone overlay
         _activationZone = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [[CDTLamoSettings sharedSettings] activationTriggerRadius])];

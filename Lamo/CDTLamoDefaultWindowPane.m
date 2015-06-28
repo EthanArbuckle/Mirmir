@@ -26,6 +26,13 @@
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    //ensure we arent hosting the weather preview
+    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
     return 1;
@@ -93,7 +100,7 @@
         [cell addSubview:preview];
         [cell addSubview:hidingView];
         
-        //create fake lamo window
+        //create lamo window
         _previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [_previewWindow setBackgroundColor:[UIColor grayColor]];
         CDTLamoBarView *barView = [[CDTLamoBarView alloc] init];
@@ -102,6 +109,10 @@
         [_previewWindow addSubview:barView];
         [barView setTitle:@"Lamo!"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
+        
+        //create weather app
+        UIView *contextView = [[CDTContextHostProvider new] hostViewForApplicationWithBundleID:@"com.apple.weather"];
+        [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];
     }
