@@ -324,10 +324,7 @@
             } completion:^(BOOL finished) {
                 
                 [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] removeFromSuperview];
-                
-                //ensure we arent hosting the weather preview
-                [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
-                
+                                
             }];
 
             

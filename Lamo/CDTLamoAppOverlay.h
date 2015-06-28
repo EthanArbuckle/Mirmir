@@ -25,5 +25,6 @@
 - (void)transitionToLandscape;
 - (void)handleTap;
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gestureRecognizer;
+- (void)prepForTutorialStage:(int)stage;
 
 @end

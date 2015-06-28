@@ -45,7 +45,7 @@
         
         //create preview window
         _windowPreview = [[CDTLamoWindow alloc] init];
-        [_windowPreview setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        [_windowPreview setFrame:CGRectMake(0, -20, kScreenWidth, kScreenHeight + 20)];
         [_windowPreview setBackgroundColor:[UIColor darkGrayColor]];
         [_windowPreview setUserInteractionEnabled:YES];
         
@@ -54,7 +54,7 @@
         
         //create bar view
         CDTLamoBarView *bar = [[CDTLamoBarView alloc] init];
-        [bar setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
+        [bar setFrame:CGRectMake(0, 0, kScreenWidth, 20)];
         [bar setTitle:@"Weather"];
         [(CDTLamoWindow *)_windowPreview setBarView:bar];
         [_windowPreview addSubview:bar];
@@ -63,12 +63,20 @@
         _contextProvider = [[CDTContextHostProvider alloc] init];
         UIView *contextView = [_contextProvider hostViewForApplicationWithBundleID:@"com.apple.weather"];
         [_contextProvider setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
+        [contextView setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
         [_windowPreview addSubview:contextView];
         
         //create pan gesture
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
         [[homePreview subviews][2] addGestureRecognizer:panGesture];
         
+        //create animating view
+        _animatingView = [[UIView alloc] initWithFrame:CGRectMake(5, 205, 40, 40)];
+        [_animatingView setBackgroundColor:[UIColor redColor]];
+        [[self view] addSubview:_animatingView];
+        
+        //start animating
+        [self animateHelperViewDown];
     }
     
     return self;
@@ -123,7 +131,15 @@
         //pass
         if ([gesture locationInView:[[gesture view] superview]].y >= 80) {
             
-            [self closeTutorial];
+            //pass, push to next controller
+            CDTLamoOverlayTutorialController *overlayTutorial = [[CDTLamoOverlayTutorialController alloc] init];
+            [_windowPreview removeFromSuperview];
+            [overlayTutorial addBarButtons];
+            [overlayTutorial setLamoWindow:_windowPreview];
+            [overlayTutorial setTitle:@"Lamo Tutorial"];
+            [[[self navigationController] interactivePopGestureRecognizer] setEnabled:NO];
+            [[overlayTutorial navigationItem] setHidesBackButton:YES];
+            [[self navigationController] pushViewController:overlayTutorial animated:YES];
             
         }
         
@@ -138,6 +154,34 @@
             
         }
     }
+}
+
+- (void)animateHelperViewDown {
+    
+    //animate view down
+    [UIView animateWithDuration:2 animations:^{
+        
+        [_animatingView setFrame:CGRectMake(5, 300, 40, 40)];
+        
+    } completion:^(BOOL finished) {
+        
+        //animate back up
+        [self animateHelperViewUp];
+    }];
+}
+
+- (void)animateHelperViewUp {
+    
+    //animate view up
+    [UIView animateWithDuration:1 animations:^{
+        
+        [_animatingView setFrame:CGRectMake(5, 200, 40, 40)];
+        
+    } completion:^(BOOL finished) {
+        
+        //animate back down
+        [self animateHelperViewDown];
+    }];
 }
 
 @end

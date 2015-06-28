@@ -31,6 +31,7 @@
 		5FFC8B5D1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B5C1B3E599E009377F8 /* CDTLamoMinimizedWindowPane.m */; };
 		5FFC8B601B3E61C6009377F8 /* CDTLamoSensitivityPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */; };
 		5FFC8B641B3EFF71009377F8 /* CDTLamoMainTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B631B3EFF71009377F8 /* CDTLamoMainTutorialController.m */; };
+		5FFC8B671B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFC8B661B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		5FFC8B5F1B3E61C6009377F8 /* CDTLamoSensitivityPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSensitivityPane.m; sourceTree = "<group>"; };
 		5FFC8B621B3EFF71009377F8 /* CDTLamoMainTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoMainTutorialController.h; sourceTree = "<group>"; };
 		5FFC8B631B3EFF71009377F8 /* CDTLamoMainTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoMainTutorialController.m; sourceTree = "<group>"; };
+		5FFC8B651B3F9B36009377F8 /* CDTLamoOverlayTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoOverlayTutorialController.h; sourceTree = "<group>"; };
+		5FFC8B661B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoOverlayTutorialController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +255,8 @@
 			children = (
 				5FFC8B621B3EFF71009377F8 /* CDTLamoMainTutorialController.h */,
 				5FFC8B631B3EFF71009377F8 /* CDTLamoMainTutorialController.m */,
+				5FFC8B651B3F9B36009377F8 /* CDTLamoOverlayTutorialController.h */,
+				5FFC8B661B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */,
 				5FB454561AF366B10020FC56 /* SBUIController.m in Sources */,
 				5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */,
+				5FFC8B671B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m in Sources */,
 				5FEBA7461B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m in Sources */,
 				5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */,
 				5FB4544F1AF3657C0020FC56 /* CDTContextHostProvider.mm in Sources */,

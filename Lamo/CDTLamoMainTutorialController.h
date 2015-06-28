@@ -10,14 +10,18 @@
 #import "Lamo.h"
 #import "CDTContextHostProvider.h"
 #import "CDTLamoWindow.h"
+#import "CDTLamoOverlayTutorialController.h"
 
 @interface CDTLamoMainTutorialController : UIViewController
 
 @property (nonatomic, retain) UIView *windowPreview;
 @property (nonatomic, retain) CDTContextHostProvider *contextProvider;
+@property (nonatomic, retain) UIView *animatingView;
 
 - (void)addBarButtons;
 - (void)closeTutorial;
 - (void)handlePan:(UIPanGestureRecognizer *)gesture;
+- (void)animateHelperViewDown;
+- (void)animateHelperViewUp;
 
 @end

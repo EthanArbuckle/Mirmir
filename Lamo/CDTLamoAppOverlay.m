@@ -246,4 +246,48 @@
     }
 }
 
+- (void)prepForTutorialStage:(int)stage {
+    
+    //remove gesture from self
+    for (UIGestureRecognizer *gesture in [self gestureRecognizers]) {
+        [self removeGestureRecognizer:gesture];
+    }
+    
+    //get button for stage
+    UIButton *button;
+    if (stage == 1) {
+        button = [self subviews][2];
+    }
+    else if (stage == 2) {
+        button = [self subviews][1];
+    }
+    else if (stage == 3) {
+        button = [self subviews][3];
+    }
+    else if (stage == 4) {
+        button = [self subviews][4];
+    }
+    
+    //fade all other buttons
+    for (UIView *subview in [self subviews]) {
+        
+        if ([subview isKindOfClass:[UIButton class]] && subview != button) {
+            
+            //lower alpha
+            [subview setAlpha:0.5];
+        }
+
+    }
+    NSLog(@"button %@ %d", button, stage);
+    //just to make sure this button is correct
+    [button setAlpha:1];
+    
+    //get tutorial controller (lol)
+    CDTLamoOverlayTutorialController *controller = [[[[CDTLamo sharedInstance] tutorialNavigationController] viewControllers] lastObject];
+    
+    //reset buttons target to controller
+    [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    [button addTarget:controller action:@selector(progressStep) forControlEvents:UIControlEventTouchUpInside];
+}
+
 @end

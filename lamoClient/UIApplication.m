@@ -38,7 +38,7 @@ ZKSwizzleInterface($_Lamo_UIApplication, UIApplication, NSObject);
 }
 
 void receivedStatusBarChange(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
-    
+
     //set hidden based on isHidden key
     [[UIApplication sharedApplication] setStatusBarHidden:[[(__bridge NSDictionary *)userInfo valueForKey:@"isHidden"] boolValue] animated:YES];
 }
