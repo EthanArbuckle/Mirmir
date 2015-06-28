@@ -506,6 +506,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
     __block CDTLamoWindow *windowToSnap = [_windows valueForKey:identifier];
     CDTLamoBarView *barView = (CDTLamoBarView *)[windowToSnap barView];
     
+    //dont snap the settings
+    if ([[windowToSnap identifier] isEqualToString:@"com.cortexdevteam.lamosetting"]) {
+        
+        return;
+    }
+    
     //prime da snappies
     [barView setIsPrimedForSnapping:YES];
     
@@ -626,11 +632,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_settingsController setTitle:@"Lamo"];
     [settingsWindow addSubview:[_settingsNavigationController view]];
     
-    //shrink it down and update frame
-    [settingsWindow setTransform:CGAffineTransformMakeScale(.8, .8)];
-    
     //create the 'title bar' window that holds the gestures
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
+    [gestureView setTitle:@"Lamo Settings"];
     [settingsWindow addSubview:gestureView];
     
     //add it to dict
@@ -640,7 +644,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_springboardWindow addSubview:settingsWindow];
     
     //animate it popping in
-    [self doPopAnimationForView:settingsWindow withBase:.8];
+    [self doPopAnimationForView:settingsWindow withBase:1];
 
 }
 

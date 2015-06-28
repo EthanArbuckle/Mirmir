@@ -125,6 +125,7 @@
             else if (_offset.x + translation.x >= kScreenWidth - ((kScreenWidth * [[CDTLamoSettings sharedSettings] defaultWindowSize]) / 2) && translation.y + _offset.y <= -5) { //top right
                 
                 [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopRight];
+                
             }
             
             else {
