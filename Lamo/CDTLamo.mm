@@ -629,12 +629,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
     _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
     [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
-    [_settingsController setTitle:@"Lamo"];
+    [_settingsController setTitle:@"Mímir"];
     [settingsWindow addSubview:[_settingsNavigationController view]];
     
     //create the 'title bar' window that holds the gestures
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
-    [gestureView setTitle:@"Lamo Settings"];
+    [gestureView setTitle:@"Mímir Settings"];
     [settingsWindow addSubview:gestureView];
     
     //add it to dict

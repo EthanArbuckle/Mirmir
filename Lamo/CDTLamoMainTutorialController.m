@@ -136,7 +136,7 @@
             [_windowPreview removeFromSuperview];
             [overlayTutorial addBarButtons];
             [overlayTutorial setLamoWindow:_windowPreview];
-            [overlayTutorial setTitle:@"Lamo Tutorial"];
+            [overlayTutorial setTitle:@"Mímir Tutorial"];
             [[[self navigationController] interactivePopGestureRecognizer] setEnabled:NO];
             [[overlayTutorial navigationItem] setHidesBackButton:YES];
             [[self navigationController] pushViewController:overlayTutorial animated:YES];

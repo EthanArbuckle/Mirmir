@@ -123,7 +123,7 @@
     else if (_currentStep == 5) {
         
         //we're finished
-        [_instructionLabel setText:@"Welcome to Lamo!"];
+        [_instructionLabel setText:@"Welcome to Mímir!"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             
             [self closeTutorial];

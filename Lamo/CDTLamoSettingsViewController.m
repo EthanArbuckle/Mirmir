@@ -309,7 +309,7 @@
             
             //present
             [[CDTLamo sharedInstance] setTutorialController:[[CDTLamoMainTutorialController alloc] init]];
-            [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Lamo Tutorial"];
+            [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Mímir Tutorial"];
             [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
             [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
             [[[CDTLamo sharedInstance] springboardWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
