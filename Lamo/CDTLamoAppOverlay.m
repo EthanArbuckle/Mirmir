@@ -15,9 +15,7 @@
     if (self = [super init]) {
         
         //create blurred backdrop
-        _UIBackdropViewSettings *blurSettings = [_UIBackdropViewSettings settingsForStyle:2060 graphicsQuality:100];
-        [blurSettings setBlurRadius:5];
-        _UIBackdropView *blurView = [[_UIBackdropView alloc] initWithSettings:blurSettings];
+        _UIBackdropView *blurView = [[_UIBackdropView alloc] initWithStyle:1];
         [blurView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];;
         [self insertSubview:blurView atIndex:0];
         
