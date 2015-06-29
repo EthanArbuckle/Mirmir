@@ -11,6 +11,7 @@
 #import "CDTLamoActivatorEventCloseAll.h"
 #import "CDTLamoActivatorEventCloseCurrent.h"
 #import "CDTLamoActivatorCloseAllButCurrent.h"
+#import "CDTLamoActivatorEventReorientate.h"
 
 @interface CDTLamoActivatorBinding : NSObject
 
