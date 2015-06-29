@@ -57,7 +57,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 	}
     
     //getting pissed off at notification center stealing my window pans
-    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
+    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter] && !isInActivationZone(location.x)) {
 
         [self _showNotificationsGestureCancelled];
         return;
@@ -74,7 +74,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 - (void)_showNotificationsGestureChangedWithLocation:(CGPoint)location velocity:(CGPoint)velocity {
     
     //stop our touches from getting jacked
-    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
+    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter] && !isInActivationZone(location.x)) {
         
         [self _showNotificationsGestureCancelled];
         return;
@@ -100,7 +100,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 - (void)_showNotificationsGestureEndedWithLocation:(CGPoint)location velocity:(CGPoint)velocity {
 
     //stop our touches from getting jacked
-    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
+    if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter] && !isInActivationZone(location.x)) {
         
         [self _showNotificationsGestureCancelled];
         return;
