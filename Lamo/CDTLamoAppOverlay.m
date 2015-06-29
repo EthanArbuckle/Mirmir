@@ -271,12 +271,18 @@
             
             //lower alpha
             [subview setAlpha:0.5];
+            
+            //restore transform
+            [subview setTransform:CGAffineTransformIdentity];
         }
 
     }
-    NSLog(@"button %@ %d", button, stage);
+
     //just to make sure this button is correct
     [button setAlpha:1];
+    
+    //have it grow a little bit
+    [button setTransform:CGAffineTransformMakeScale(1.2, 1.2)];
     
     //get tutorial controller (lol)
     CDTLamoOverlayTutorialController *controller = [[[[CDTLamo sharedInstance] tutorialNavigationController] viewControllers] lastObject];
