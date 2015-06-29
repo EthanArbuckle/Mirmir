@@ -176,6 +176,14 @@ static SBAppToAppWorkspaceTransaction *transaction;
     //create live context host
 	UIView *contextHost = [_contextHostProvider hostViewForApplicationWithBundleID:bundleID];
 
+    //make sure the window isnt fucked
+    if (![contextHost isKindOfClass:NSClassFromString(@"FBWindowContextHostWrapperView")]) {
+        
+        //if not throw a message and stop
+        [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+        return;
+    }
+    
 	//create container view
 	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 20)];
     
