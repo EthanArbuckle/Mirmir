@@ -29,9 +29,10 @@
         
         NSString *resourcePath = @"/Library/Application Support/Lamo";
         
-#if TARGET_IPHONE_SIMULATOR
+#ifdef TARGET_IPHONE_SIMULATOR
         resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
 #endif
+        NSLog(@"res: %@", resourcePath);
         
         //create pinching gesture if enabled
         if ([[CDTLamoSettings sharedSettings] pinchToResize]) {

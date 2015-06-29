@@ -161,7 +161,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     if (!bundleID || [(SBApplication *)[self topmostApplication] pid] <= 0) {
         
         //if not throw a message and stop
-        [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(." delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
         return;
     }
     
@@ -634,7 +634,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //create the 'title bar' window that holds the gestures
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
-    [gestureView setTitle:@"Mímir Settings"];
+    //[gestureView setTitle:@"Mímir Settings"];
     [settingsWindow addSubview:gestureView];
     
     //add it to dict

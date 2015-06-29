@@ -18,6 +18,16 @@
         _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
         [_lamoSettingsTable setDelegate:self];
         [_lamoSettingsTable setDataSource:self];
+        [_lamoSettingsTable setBackgroundColor:Rgb2UIColor(246, 246, 246)];
+        
+        //create header view. use 2 views to implement a gap
+        UIView *coloredView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
+        [coloredView setBackgroundColor:Rgb2UIColor(81, 81, 81)];
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 235)];
+        [headerView setBackgroundColor:[UIColor clearColor]];
+        [headerView addSubview:coloredView];
+        [_lamoSettingsTable setTableHeaderView:headerView];
+        
         [[self view] addSubview:_lamoSettingsTable];
     
     }
@@ -109,6 +119,9 @@
 
         //cell aint cell, make cell cell
         settingCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CDTLamoSettingCell"];
+        [settingCell setBackgroundColor:Rgb2UIColor(251, 251, 251)];
+        [[settingCell textLabel] setTextColor:Rgb2UIColor(81, 81, 81)];
+        [[settingCell textLabel] setFont:[UIFont fontWithName:@"HelveticaNeue" size:18]];
         
         if ([indexPath section] == 0) {
             
