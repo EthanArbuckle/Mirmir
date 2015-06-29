@@ -45,7 +45,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     
-    if (section == 5) {
+    if (section == 6) {
         
         return @"Cortex Dev Team";
     }
@@ -55,7 +55,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 6;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -90,6 +90,10 @@
         
         return 1;
     }
+    else if (section == 6) {
+        
+        return 1;
+    }
     
     return 0;
 }
@@ -117,6 +121,10 @@
         return @"windows";
     }
     else if (section == 5) {
+        
+        return @"";
+    }
+    else if (section == 6) {
         
         return @"";
     }
@@ -289,6 +297,16 @@
             }
         }
         
+        //credits cell
+        else if ([indexPath section] == 6) {
+            
+            if ([indexPath row] == 0) {
+                
+                [[settingCell textLabel] setText:@"Credits"];
+                [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            }
+        }
+        
     }
     
     return settingCell;
@@ -296,8 +314,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //ensure we arent hosting the weather preview
-    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    //stop hosting
+    if (NEED_IPAD_HAX) {
+        [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
+    }
+    else {
+        [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    }
     
     //tapped an orientation cell
     if ([indexPath section] == 1) {
@@ -399,7 +422,21 @@
             }];
 
         }
+        
     }
+    
+    //credits cell
+    else if ([indexPath section] == 6) {
+        
+        if ([indexPath row] == 0) {
+            
+            //push to credits pane
+            CDTLamoCreditsPane *credits = [[CDTLamoCreditsPane alloc] init];
+            [credits setTitle:@"Mímir Credits"];
+            [[self navigationController] pushViewController:credits animated:YES];
+        }
+    }
+
     
     
     [_lamoSettingsTable reloadData];

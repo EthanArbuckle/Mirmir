@@ -29,8 +29,13 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    //ensure we arent hosting the weather preview
-    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    //stop hosting
+    if (NEED_IPAD_HAX) {
+        [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
+    }
+    else {
+        [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -110,8 +115,16 @@
         [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
         
-        //create weather app
-        UIView *contextView = [[CDTContextHostProvider new] hostViewForApplicationWithBundleID:@"com.apple.weather"];
+        //create app
+        UIView *contextView;
+        if (NEED_IPAD_HAX) {
+            contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.Maps"];
+            [[CDTContextHostProvider new] setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.Maps"];
+        }
+        else {
+            contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
+            [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
+        }
         [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];

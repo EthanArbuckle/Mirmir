@@ -63,14 +63,26 @@
         //create bar view
         CDTLamoBarView *bar = [[CDTLamoBarView alloc] init];
         [bar setFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-        [bar setTitle:@"Weather"];
+        if (NEED_IPAD_HAX) {
+            [bar setTitle:@"Maps"];
+        }
+        else {
+            [bar setTitle:@"Weather"];
+        }
         [(CDTLamoWindow *)_windowPreview setBarView:bar];
         [_windowPreview addSubview:bar];
         
         //create weather context view
         _contextProvider = [[CDTContextHostProvider alloc] init];
-        UIView *contextView = [_contextProvider hostViewForApplicationWithBundleID:@"com.apple.weather"];
-        [_contextProvider setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
+        UIView *contextView;
+        if (NEED_IPAD_HAX) {
+            contextView = [_contextProvider hostViewForApplicationWithBundleID:@"com.apple.Maps"];
+            [_contextProvider setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.Maps"];
+        }
+        else {
+            contextView = [_contextProvider hostViewForApplicationWithBundleID:@"com.apple.weather"];
+            [_contextProvider setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
+        }
         [contextView setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
         [_windowPreview addSubview:contextView];
         
@@ -115,7 +127,12 @@
     }];
     
     //stop hosting
-    [_contextProvider stopHostingForBundleID:@"com.apple.weather"];
+    if (NEED_IPAD_HAX) {
+        [_contextProvider stopHostingForBundleID:@"com.apple.Maps"];
+    }
+    else {
+        [_contextProvider stopHostingForBundleID:@"com.apple.weather"];
+    }
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture {

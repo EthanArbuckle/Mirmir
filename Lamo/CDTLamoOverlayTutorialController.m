@@ -99,7 +99,12 @@
     }];
     
     //stop hosting
-    [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    if (NEED_IPAD_HAX) {
+        [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
+    }
+    else {
+        [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
+    }
 }
 
 - (void)progressStep {
