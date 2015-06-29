@@ -10,6 +10,7 @@
 #import "activator_headers/libactivator.h"
 #import "CDTLamoActivatorEventCloseAll.h"
 #import "CDTLamoActivatorEventCloseCurrent.h"
+#import "CDTLamoActivatorCloseAllButCurrent.h"
 
 @interface CDTLamoActivatorBinding : NSObject
 
