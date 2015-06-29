@@ -35,8 +35,13 @@
         [instructionLabel setText:@"Drag down and release from the top left corner to invoke a window"];
         [[self view] addSubview:instructionLabel];
         
-        //create homescreen preview
+        //create homescreen preview + gesture holding view
         SBHomeScreenPreviewView *homePreview = [NSClassFromString(@"SBHomeScreenPreviewView") preview];
+        UIView *gestureView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+        [homePreview addSubview:gestureView];
+        [gestureView setBackgroundColor:[UIColor lightGrayColor]];
+        [gestureView setAlpha:0.1];
+        [gestureView setUserInteractionEnabled:YES];
         [homePreview setTransform:CGAffineTransformMakeScale(.8, .8)];
         [homePreview setFrame:CGRectMake((kScreenWidth / 2) - ((kScreenWidth * .8) / 2), 200, kScreenWidth, kScreenHeight)];
         [[homePreview subviews][1] removeFromSuperview];
@@ -51,6 +56,9 @@
         
         //add it behind status bar of homescreenview
         [homePreview insertSubview:_windowPreview atIndex:1];
+        
+        //remove statusbar
+        [[homePreview subviews][2] removeFromSuperview];
         
         //create bar view
         CDTLamoBarView *bar = [[CDTLamoBarView alloc] init];
@@ -68,7 +76,7 @@
         
         //create pan gesture
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        [[homePreview subviews][2] addGestureRecognizer:panGesture];
+        [gestureView addGestureRecognizer:panGesture];
         
         //create animating view
         _animatingView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 205, 40, 40)];
