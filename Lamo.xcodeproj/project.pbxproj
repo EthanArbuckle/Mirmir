@@ -16,6 +16,7 @@
 		5F9ED46E1B41DB3E007205EB /* CDTLamoActivatorEventCloseCurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED46D1B41DB3E007205EB /* CDTLamoActivatorEventCloseCurrent.m */; };
 		5F9ED4711B41DE68007205EB /* CDTLamoActivatorCloseAllButCurrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED4701B41DE68007205EB /* CDTLamoActivatorCloseAllButCurrent.m */; };
 		5F9ED4741B41E1A4007205EB /* CDTLamoActivatorEventReorientate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED4731B41E1A4007205EB /* CDTLamoActivatorEventReorientate.m */; };
+		5F9ED4771B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED4761B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.m */; };
 		5FA91D781B37131B00BBC90E /* CDTLamoAppOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */; };
 		5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5FB454291AF364350020FC56 /* Lamo.h */; };
 		5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
@@ -92,6 +93,8 @@
 		5F9ED4701B41DE68007205EB /* CDTLamoActivatorCloseAllButCurrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoActivatorCloseAllButCurrent.m; sourceTree = "<group>"; };
 		5F9ED4721B41E1A4007205EB /* CDTLamoActivatorEventReorientate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoActivatorEventReorientate.h; sourceTree = "<group>"; };
 		5F9ED4731B41E1A4007205EB /* CDTLamoActivatorEventReorientate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoActivatorEventReorientate.m; sourceTree = "<group>"; };
+		5F9ED4751B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoActivatorEventTriggerOverlay.h; sourceTree = "<group>"; };
+		5F9ED4761B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoActivatorEventTriggerOverlay.m; sourceTree = "<group>"; };
 		5FA91D761B37131B00BBC90E /* CDTLamoAppOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoAppOverlay.h; sourceTree = "<group>"; };
 		5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoAppOverlay.m; sourceTree = "<group>"; };
 		5FA91D791B371DFC00BBC90E /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -165,6 +168,8 @@
 				5F9ED4701B41DE68007205EB /* CDTLamoActivatorCloseAllButCurrent.m */,
 				5F9ED4721B41E1A4007205EB /* CDTLamoActivatorEventReorientate.h */,
 				5F9ED4731B41E1A4007205EB /* CDTLamoActivatorEventReorientate.m */,
+				5F9ED4751B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.h */,
+				5F9ED4761B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.m */,
 			);
 			name = Activator;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F9ED4661B41C523007205EB /* CDTLamoActivatorBinding.m in Sources */,
+				5F9ED4771B41E921007205EB /* CDTLamoActivatorEventTriggerOverlay.m in Sources */,
 				5FFC8B641B3EFF71009377F8 /* CDTLamoMainTutorialController.m in Sources */,
 				5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */,
 				5FA91D781B37131B00BBC90E /* CDTLamoAppOverlay.m in Sources */,
