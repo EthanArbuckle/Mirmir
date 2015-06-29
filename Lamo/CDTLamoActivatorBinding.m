@@ -46,7 +46,9 @@
         return;
     }
     
+    //setup events
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventCloseAll new] forName:@"com.cortexdevteam.lamo.closeall"];
+    [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventCloseCurrent new] forName:@"com.cortexdevteam.lamo.closecurrent"];
 }
 
 @end

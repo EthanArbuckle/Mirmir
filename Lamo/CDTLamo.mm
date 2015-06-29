@@ -621,7 +621,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (void)presentSettingsController {
     
     //create settings window
-    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
+    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, -20, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     
@@ -706,6 +706,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //remove from windows dict
     [_windows removeObjectForKey:key];
+}
+
+- (UIView *)topmostApplicationWindow {
+    
+    //return the top application
+    return [[_springboardWindow subviews] lastObject];
 }
 
 @end 

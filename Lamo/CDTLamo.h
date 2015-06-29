@@ -41,5 +41,6 @@
 - (void)presentSettingsController;
 - (void)snapAllClose:(BOOL)animated;
 - (void)removeKeyFromDict:(NSString *)key;
+- (UIView *)topmostApplicationWindow;
 
 @end
