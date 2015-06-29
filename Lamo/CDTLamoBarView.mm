@@ -115,17 +115,32 @@
             
             CGPoint translation = [panGesture translationInView:[[CDTLamo sharedInstance] springboardWindow]];
             
+            CGPoint snapLocation = [panGesture locationInView:[[CDTLamo sharedInstance] springboardWindow]];
             
-            if (translation.x + _offset.x <= -5 && translation.y + _offset.y <= -5) { //top left
+            if (snapLocation.x <= 5) { //left
                 
                 //this makes the window a bit clear, and sets up the snapping action block
-                [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
+                if (snapLocation.y <= kScreenHeight / 2) {
+                    
+                    [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopLeft];
+                }
+                else {
+                    
+                    [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapBottomLeft];
+                }
             }
             
-            else if (_offset.x + translation.x >= kScreenWidth - ((kScreenWidth * [[CDTLamoSettings sharedSettings] defaultWindowSize]) / 2) && translation.y + _offset.y <= -5) { //top right
+            else if (snapLocation.x >= kScreenWidth - 5) { //left
                 
-                [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopRight];
-                
+                //this makes the window a bit clear, and sets up the snapping action block
+                if (snapLocation.y <= kScreenHeight / 2) {
+                    
+                    [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTopRight];
+                }
+                else {
+                    
+                    [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapBottomRight];
+                }
             }
             
             else {
