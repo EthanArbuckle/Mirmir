@@ -648,26 +648,57 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 }
 
-- (void)snapAllClose {
+- (void)snapAllClose:(BOOL)animated {
     
     //cycle through all windows and close them
     for (NSString *bundleID in [_windows allKeys]) {
         
-        //end hosting
-        SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
-        [_contextHostProvider disableBackgroundingForApplication:appToHost];
-        [_contextHostProvider stopHostingForBundleID:bundleID];
-        
-        //switch it to portrait so it doesnt open in landscape
-        [self triggerPortraitForApplication:appToHost];
-        
         CDTLamoWindow *window = [_windows objectForKey:bundleID];
         
-        //remove the view
-        [window removeFromSuperview];
-        
-        //remove value from dict
-        [_windows removeObjectForKey:bundleID];
+        if (animated) {
+            
+            //fade them
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                [window setAlpha:0];
+            } completion:^(BOOL finished) {
+                
+                //end hosting
+                SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
+                [_contextHostProvider disableBackgroundingForApplication:appToHost];
+                [_contextHostProvider stopHostingForBundleID:bundleID];
+                
+                //switch it to portrait so it doesnt open in landscape
+                [self triggerPortraitForApplication:appToHost];
+
+                
+                //remove the view
+                [window removeFromSuperview];
+                
+                //remove value from dict
+                [_windows removeObjectForKey:bundleID];
+
+            }];
+        }
+        else { //dont animate
+            
+            //end hosting
+            SBApplication *appToHost = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
+            [_contextHostProvider disableBackgroundingForApplication:appToHost];
+            [_contextHostProvider stopHostingForBundleID:bundleID];
+            
+            //switch it to portrait so it doesnt open in landscape
+            [self triggerPortraitForApplication:appToHost];
+
+            
+            //remove the view
+            [window removeFromSuperview];
+            
+            //remove value from dict
+            [_windows removeObjectForKey:bundleID];
+
+        }
+
     }
 }
 

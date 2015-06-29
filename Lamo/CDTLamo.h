@@ -39,7 +39,7 @@
 - (void)snapApplication:(NSString *)identifier toPosition:(CDTLamoSnapPosition)position;
 - (BOOL)shouldBlockNotificationCenter;
 - (void)presentSettingsController;
-- (void)snapAllClose;
+- (void)snapAllClose:(BOOL)animated;
 - (void)removeKeyFromDict:(NSString *)key;
 
 @end

@@ -3,6 +3,7 @@
 #import "ZKSwizzle.h"
 #import "CDTLamoSettings.h"
 #import "CDTLamoMainTutorialController.h"
+#import "CDTLamoActivatorBinding.h"
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
@@ -160,7 +161,10 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     SBIconModel *iconModel = [iconController valueForKey:@"_iconModel"];
     [iconModel addIcon:lamoSettings];
     [iconController addNewIconToDesignatedLocation:lamoSettings animate:NO scrollToList:NO saveIconState:YES];
- 
+    
+    //register for activator events if needed
+    [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];
+    
 }
 
 - (void)_deviceLockStateChanged:(id)changed {
@@ -194,7 +198,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     }
     
     //close all windows and stop hosting
-    [[CDTLamo sharedInstance] snapAllClose];
+    [[CDTLamo sharedInstance] snapAllClose:NO];
     
 }
 
