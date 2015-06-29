@@ -40,5 +40,6 @@
 - (BOOL)shouldBlockNotificationCenter;
 - (void)presentSettingsController;
 - (void)snapAllClose;
+- (void)removeKeyFromDict:(NSString *)key;
 
 @end

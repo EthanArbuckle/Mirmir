@@ -39,7 +39,7 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
 -(id)generateIconImage:(int)ifmage {
     
     //create rounded icon image
-    return [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/icon.png"];
+    return [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/Icon.png"];
 }
 
 @end

@@ -20,13 +20,20 @@
         [_lamoSettingsTable setDataSource:self];
         [_lamoSettingsTable setBackgroundColor:Rgb2UIColor(246, 246, 246)];
         
-        //create header view. use 2 views to implement a gap
-        UIView *coloredView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 200)];
-        [coloredView setBackgroundColor:Rgb2UIColor(81, 81, 81)];
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 235)];
-        [headerView setBackgroundColor:[UIColor clearColor]];
-        [headerView addSubview:coloredView];
-        [_lamoSettingsTable setTableHeaderView:headerView];
+        //create header view. use second view to create gap
+        NSString *resourcePath = @"/Library/Application Support/Lamo";
+        
+#if TARGET_IPHONE_SIMULATOR
+        resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
+#endif
+        UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 130)];
+        [headerView setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Header.png", resourcePath]]];
+        [headerView setContentMode:UIViewContentModeScaleAspectFit];
+        
+        UIView *headerContainer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 160)];
+        [headerContainer setBackgroundColor:[UIColor clearColor]];
+        [headerContainer addSubview:headerView];
+        [_lamoSettingsTable setTableHeaderView:headerContainer];
         
         [[self view] addSubview:_lamoSettingsTable];
     
@@ -116,13 +123,18 @@
     //create settings cell
     UITableViewCell *settingCell = [[UITableViewCell alloc] init]; //[tableView dequeueReusableCellWithIdentifier:@"CDTLamoSettingCell"];
     if (settingCell) {
-
+        
+        NSString *resourcePath = @"/Library/Application Support/Lamo";
+        
+#if TARGET_IPHONE_SIMULATOR
+        resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
+#endif
         //cell aint cell, make cell cell
         settingCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CDTLamoSettingCell"];
         [settingCell setBackgroundColor:Rgb2UIColor(251, 251, 251)];
         [[settingCell textLabel] setTextColor:Rgb2UIColor(81, 81, 81)];
         [[settingCell textLabel] setFont:[UIFont fontWithName:@"HelveticaNeue" size:18]];
-        
+
         if ([indexPath section] == 0) {
             
             //create enable switch + label
@@ -131,6 +143,7 @@
             [cellSwitch addTarget:self action:@selector(handleEnableSwitch:) forControlEvents:UIControlEventValueChanged];
             [cellSwitch setTag:[indexPath row]];
             [settingCell setAccessoryView:cellSwitch];
+            [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Enabled.png", resourcePath]]];
             [[settingCell textLabel] setText:@"Enabled"];
             
         }
@@ -140,6 +153,7 @@
             //orientaition cells
             if ([indexPath row] == 0) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Portrait.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Portrait"];
                 if ([[[CDTLamoSettings sharedSettings] defaultOrientation] isEqualToString:@"portrait"]) {
                     
@@ -148,6 +162,7 @@
             }
             else if ([indexPath row] == 1) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Landscape.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Landscape"];
                 if ([[[CDTLamoSettings sharedSettings] defaultOrientation] isEqualToString:@"landscape"]) {
                     
@@ -161,11 +176,13 @@
             //window size cells
             if ([indexPath row] == 0) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/DefaultWindowSize.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Default Window Size"];
                 [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
             else if ([indexPath row] == 1) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Minimum.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Minimized Size"];
                 [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
@@ -176,6 +193,7 @@
             
             if ([indexPath row] == 0) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/TopLeft.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Drag From Top Left"];
                 if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"left"]) {
                     
@@ -184,6 +202,7 @@
             }
             else if ([indexPath row] == 1) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/TopCenter.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Drag From Top Center"];
                 if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"center"]) {
                     
@@ -192,6 +211,7 @@
             }
             else if ([indexPath row] == 2) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/TopRight.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Drag From Top Right"];
                 if ([[[CDTLamoSettings sharedSettings] activationZone] isEqualToString:@"right"]) {
                     
@@ -200,6 +220,7 @@
             }
             else if ([indexPath row] == 3) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Sensitivity.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Sensitivity"];
                 [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
@@ -210,6 +231,7 @@
             //window settings
             if ([indexPath row] == 0) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/StatusBar.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Hide Status Bar"];
                 
                 //create switch
@@ -220,6 +242,7 @@
             }
             else if ([indexPath row] == 1) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Pinch.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Pinch to Resize"];
                 
                 //create switch
@@ -230,6 +253,7 @@
             }
             else if ([indexPath row] == 2) {
                 
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Title.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Show Title Text"];
                 
                 //create switch
@@ -337,6 +361,7 @@
             } completion:^(BOOL finished) {
                 
                 [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] removeFromSuperview];
+                [[CDTLamo sharedInstance] removeKeyFromDict:@"com.cortexdevteam.lamosetting"];
                                 
             }];
 

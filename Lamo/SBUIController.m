@@ -38,10 +38,10 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 @implementation $_Lamo_SBUIController
 
 - (void)_showNotificationsGestureBeganWithLocation:(CGPoint)location {
-
+    
     if (isInActivationZone(location.x) && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
 
-		//we've started tracking the wrapper view
+        //we've started tracking the wrapper view
 		[[CDTLamo sharedInstance] setWrapperViewIsTracking:YES];
 
 		//create wrapper view
@@ -58,7 +58,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     
     //getting pissed off at notification center stealing my window pans
     if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
-        
+
         [self _showNotificationsGestureCancelled];
         return;
     }
@@ -212,7 +212,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
         } completion:^(BOOL finished) {
             
             //remove it
-            [[[settings view] superview] removeFromSuperview];
+            [[CDTLamo sharedInstance] removeKeyFromDict:@"com.cortexdevteam.lamosetting"];
         }];
     }
     

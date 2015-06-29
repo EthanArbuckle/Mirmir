@@ -47,7 +47,7 @@
     [lamoWindow setTransform:CGAffineTransformMakeScale(.7, .7)];
     
     CGRect windowFrame = [lamoWindow frame];
-    windowFrame.origin.y = 150;
+    windowFrame.origin.y = 110;
     [lamoWindow setFrame:windowFrame];
     
     _appWindow = lamoWindow;

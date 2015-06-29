@@ -16,7 +16,7 @@
 
 @property (nonatomic, retain) UIView *windowPreview;
 @property (nonatomic, retain) CDTContextHostProvider *contextProvider;
-@property (nonatomic, retain) UIView *animatingView;
+@property (nonatomic, retain) UIImageView *animatingView;
 
 - (void)addBarButtons;
 - (void)closeTutorial;

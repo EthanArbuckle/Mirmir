@@ -71,8 +71,8 @@
         [[homePreview subviews][2] addGestureRecognizer:panGesture];
         
         //create animating view
-        _animatingView = [[UIView alloc] initWithFrame:CGRectMake(5, 205, 40, 40)];
-        [_animatingView setBackgroundColor:[UIColor redColor]];
+        _animatingView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 205, 40, 40)];
+        [_animatingView setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/Hand.png"]];
         [[self view] addSubview:_animatingView];
         
         //start animating

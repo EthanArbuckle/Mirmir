@@ -164,7 +164,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
         [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
         return;
     }
-    
+
     //create the 'title bar' window that holds the gestures
     //make this before we close the app so we can access topmost app and get the name
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
@@ -286,7 +286,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
         //remove value from dict
         [_windows removeObjectForKey:bundleID];
 
-	}];
+    }];
 
 }
 
@@ -669,6 +669,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
         //remove value from dict
         [_windows removeObjectForKey:bundleID];
     }
+}
+
+- (void)removeKeyFromDict:(NSString *)key {
+    
+    //remove from windows dict
+    [_windows removeObjectForKey:key];
 }
 
 @end 

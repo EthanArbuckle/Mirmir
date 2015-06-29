@@ -17,8 +17,6 @@
         //create blurred backdrop
         _UIBackdropViewSettings *blurSettings = [_UIBackdropViewSettings settingsForStyle:2060 graphicsQuality:100];
         [blurSettings setBlurRadius:5];
-        [blurSettings setBlurHardEdges:3];
-        [blurSettings setBlursWithHardEdges:YES];
         _UIBackdropView *blurView = [[_UIBackdropView alloc] initWithSettings:blurSettings];
         [blurView setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];;
         [self insertSubview:blurView atIndex:0];
@@ -29,10 +27,9 @@
         
         NSString *resourcePath = @"/Library/Application Support/Lamo";
         
-#ifdef TARGET_IPHONE_SIMULATOR
+#if TARGET_IPHONE_SIMULATOR
         resourcePath = [NSString stringWithFormat:@"%s/Resources", stringify(SRC_ROOT)];
 #endif
-        NSLog(@"res: %@", resourcePath);
         
         //create pinching gesture if enabled
         if ([[CDTLamoSettings sharedSettings] pinchToResize]) {
