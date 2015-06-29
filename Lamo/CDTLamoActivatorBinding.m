@@ -52,6 +52,7 @@
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorCloseAllButCurrent new] forName:@"com.cortexdevteam.lamo.closebackground"];
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventTriggerOverlay new] forName:@"com.cortexdevteam.lamo.triggeroverlay"];
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventReorientate new] forName:@"com.cortexdevteam.lamo.reorientate"];
+    [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventMaximize new] forName:@"com.cortexdevteam.lamo.maximize"];
 }
 
 @end
