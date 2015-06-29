@@ -82,6 +82,12 @@
     }
     else if (section == 5) {
         
+        //1 if no activator, 2 if activator
+        if ([[CDTLamoActivatorBinding sharedBinding] activatorSupported]) {
+            
+            return 2;
+        }
+        
         return 1;
     }
     
@@ -274,6 +280,13 @@
                 [[settingCell textLabel] setTextColor:[UIColor colorWithRed:0.204 green:0.459 blue:1.000 alpha:1.0]];
                 
             }
+            else if ([indexPath row] == 1) {
+                
+                [[settingCell textLabel] setTextAlignment:NSTextAlignmentCenter];
+                [[settingCell textLabel] setText:@"Launch Activator"];
+                [[settingCell textLabel] setTextColor:[UIColor colorWithRed:0.204 green:0.459 blue:1.000 alpha:1.0]];
+                
+            }
         }
         
     }
@@ -366,6 +379,25 @@
             }];
 
             
+        }
+        else if ([indexPath row] == 1) {
+            
+            //launch activator
+            SBApplication *activator = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:@"libactivator"];
+            [[NSClassFromString(@"SBUIController") sharedInstance] activateApplicationAnimated:activator];
+            
+            //fade it in and fade settings controller out
+            [UIView animateWithDuration:0.3 animations:^{
+                
+                [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] setAlpha:0];
+                
+            } completion:^(BOOL finished) {
+                
+                [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] removeFromSuperview];
+                [[CDTLamo sharedInstance] removeKeyFromDict:@"com.cortexdevteam.lamosetting"];
+                
+            }];
+
         }
     }
     
