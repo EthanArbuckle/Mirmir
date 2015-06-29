@@ -107,7 +107,7 @@
         [barView setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
         [(CDTLamoWindow *)_previewWindow setBarView:barView];
         [_previewWindow addSubview:barView];
-        [barView setTitle:@"Lamo!"];
+        [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
         
         //create weather app
