@@ -84,7 +84,7 @@
 
 - (void)handleMin {
     
-    //animate scale back to .6
+    //animate scale back to min size
     [UIView animateWithDuration:0.3f animations:^{
         
         [[self superview] setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
