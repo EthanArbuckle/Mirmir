@@ -59,6 +59,10 @@
     [event setHandled:YES];
 }
 
+- (UIImage *)activator:(LAActivator *)activator requiresSmallIconForListenerName:(NSString *)listenerName scale:(CGFloat)scale {
+    return [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/icon-small.png"];
+}
+
 - (void)activator:(LAActivator *)activator abortEvent:(LAEvent *)event {
     NSLog(@"abort event");
 }
