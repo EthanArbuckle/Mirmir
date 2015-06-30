@@ -35,22 +35,24 @@
         [headerContainer addSubview:headerView];
         [_lamoSettingsTable setTableHeaderView:headerContainer];
         
+        //create footer text
+        UILabel *footer = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+        [footer setFont:[UIFont systemFontOfSize:12]];
+        [footer setTextColor:[UIColor grayColor]];
+        [footer setTextAlignment:NSTextAlignmentCenter];
+        [footer setBackgroundColor:[UIColor clearColor]];
+        [footer setText:@"Cortex Dev Team"];
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
+        [footer setBackgroundColor:[UIColor clearColor]];
+        [footerView addSubview:footer];
+        [_lamoSettingsTable setTableFooterView:footerView];
+        
         [[self view] addSubview:_lamoSettingsTable];
     
     }
     
     return self;
     
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    
-    if (section == 6) {
-        
-        return @"Cortex Dev Team";
-    }
-    
-    return @"";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

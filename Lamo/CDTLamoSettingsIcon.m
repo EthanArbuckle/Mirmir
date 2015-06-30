@@ -38,8 +38,13 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
 
 -(id)generateIconImage:(int)ifmage {
     
-    //create rounded icon image
-    return [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/Icon.png"];
+    if ([[self valueForKey:@"_leafIdentifier"] isEqualToString:@"lamo"]) {
+
+        //create rounded icon image
+        return [UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/Icon.png"];
+    }
+    
+    return ZKOrig(id, ifmage);
 }
 
 @end
