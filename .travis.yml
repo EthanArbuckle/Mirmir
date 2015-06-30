@@ -1,4 +1,5 @@
 language: objective-c
 xcode_project: Lamo.xcodeproj
+osx_image: beta-xcode6.3
 script:
     - xctool -sdk iphonesimulator -project Lamo.xcodeproj/ -scheme Lamo CODE_SIGNING_REQUIRED=NO
