@@ -637,6 +637,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
     _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
     [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
+    [_settingsController setTitle:@"Mímir"];
     [settingsWindow addSubview:[_settingsNavigationController view]];
     
     //create the 'title bar' window that holds the gestures
