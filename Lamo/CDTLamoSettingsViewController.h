@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "Lamo.h"
 #import "CDTLamoSettings.h"
 #import "CDTLamoDefaultWindowPane.h"
@@ -26,5 +27,6 @@
 - (void)handleStatusBarHideSwitch:(UISwitch *)cellSwitch;
 - (void)handlePinchSwitch:(UISwitch *)cellSwitch;
 - (void)handleTitleTextSwitch:(UISwitch *)cellSwitch;
+- (void)handleTweet;
 
 @end

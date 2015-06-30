@@ -21,6 +21,7 @@
 		5F9ED47D1B41EDCD007205EB /* CDTLamoActivatorEventMinimize.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED47C1B41EDCD007205EB /* CDTLamoActivatorEventMinimize.m */; };
 		5F9ED4801B41FA51007205EB /* CDTLamoCreditsPane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED47F1B41FA51007205EB /* CDTLamoCreditsPane.m */; };
 		5F9ED4831B41FF49007205EB /* CDTLamoCreditsDevCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED4821B41FF49007205EB /* CDTLamoCreditsDevCell.m */; };
+		5F9ED4851B42248C007205EB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F9ED4841B42248C007205EB /* Social.framework */; };
 		5FA91D781B37131B00BBC90E /* CDTLamoAppOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */; };
 		5FB4542A1AF364350020FC56 /* Lamo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5FB454291AF364350020FC56 /* Lamo.h */; };
 		5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB454411AF364920020FC56 /* ZKSwizzle.m */; };
@@ -107,6 +108,7 @@
 		5F9ED47F1B41FA51007205EB /* CDTLamoCreditsPane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoCreditsPane.m; sourceTree = "<group>"; };
 		5F9ED4811B41FF49007205EB /* CDTLamoCreditsDevCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoCreditsDevCell.h; sourceTree = "<group>"; };
 		5F9ED4821B41FF49007205EB /* CDTLamoCreditsDevCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoCreditsDevCell.m; sourceTree = "<group>"; };
+		5F9ED4841B42248C007205EB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		5FA91D761B37131B00BBC90E /* CDTLamoAppOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoAppOverlay.h; sourceTree = "<group>"; };
 		5FA91D771B37131B00BBC90E /* CDTLamoAppOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoAppOverlay.m; sourceTree = "<group>"; };
 		5FA91D791B371DFC00BBC90E /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F9ED4851B42248C007205EB /* Social.framework in Frameworks */,
 				5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */,
 				5FE039921AF36FEA004F9098 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -193,6 +196,7 @@
 		5FB4541D1AF364350020FC56 = {
 			isa = PBXGroup;
 			children = (
+				5F9ED4841B42248C007205EB /* Social.framework */,
 				5FE039931AF37001004F9098 /* UIKit.framework */,
 				5FE039911AF36FEA004F9098 /* CoreGraphics.framework */,
 				5FF275211B1A91AC006CC312 /* .travis.yml */,

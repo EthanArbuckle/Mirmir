@@ -48,6 +48,12 @@
         [_lamoSettingsTable setTableFooterView:footerView];
         
         [[self view] addSubview:_lamoSettingsTable];
+        
+        //create tweet button
+        UIButton *tweetButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [tweetButton setImage:[UIImage imageWithContentsOfFile:@"/Library/Application Support/Lamo/Tweet.png"] forState:UIControlStateNormal];
+        [tweetButton addTarget:self action:@selector(handleTweet) forControlEvents:UIControlEventTouchUpInside];
+        [[self navigationItem] setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:tweetButton]];
     
     }
     
@@ -462,6 +468,13 @@
 - (void)handleTitleTextSwitch:(UISwitch *)cellSwitch {
     
     [[CDTLamoSettings sharedSettings] setShowTitleText:[cellSwitch isOn]];
+}
+
+- (void)handleTweet {
+    
+    SLComposeViewController *composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+    [composeController setInitialText:@"I’m using Mírmir by @CortexDevTeam to Multitask on my iDevice."];
+    [self presentViewController:composeController animated:YES completion:nil];
 }
 
 @end
