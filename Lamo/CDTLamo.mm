@@ -614,6 +614,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
         return NO;
     }
     
+    //stop if settings is on screen
+    if ([self isShowingSettings]) {
+        
+        return YES;
+    }
+    
     //cycle through windows and return YES if any of them are within 20points of top
     for (NSString *windowID in [_windows allKeys]) {
         
@@ -720,6 +726,17 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //return the top application
     return [[_springboardWindow subviews] lastObject];
+}
+
+- (BOOL)isShowingSettings {
+    
+    //return if settings is on screen
+    if ([[_settingsNavigationController viewControllers] count] > 0) {
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end 

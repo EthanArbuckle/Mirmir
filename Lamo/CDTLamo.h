@@ -42,5 +42,6 @@
 - (void)snapAllClose:(BOOL)animated;
 - (void)removeKeyFromDict:(NSString *)key;
 - (UIView *)topmostApplicationWindow;
+- (BOOL)isShowingSettings;
 
 @end
