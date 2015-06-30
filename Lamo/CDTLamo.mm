@@ -629,7 +629,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (void)presentSettingsController {
     
     //create settings window
-    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, -20, kScreenWidth, kScreenHeight + 20)];
+    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     
@@ -637,7 +637,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
     _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
     [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
-    [_settingsController setTitle:@"Mímir"];
     [settingsWindow addSubview:[_settingsNavigationController view]];
     
     //create the 'title bar' window that holds the gestures

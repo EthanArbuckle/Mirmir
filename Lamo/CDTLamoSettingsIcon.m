@@ -29,7 +29,7 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
     
     if ([[self valueForKey:@"_leafIdentifier"] isEqualToString:@"lamo"]) {
         
-        return @"mímir prefs";
+        return @"Mímir";
     }
 
     return ZKOrig(NSString *);

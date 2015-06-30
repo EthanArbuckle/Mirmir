@@ -15,7 +15,7 @@
     if (self = [super init]) {
         
         //create tableview, with frame of fullscreen
-        _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+        _lamoSettingsTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - 20) style:UITableViewStyleGrouped];
         [_lamoSettingsTable setDelegate:self];
         [_lamoSettingsTable setDataSource:self];
         [_lamoSettingsTable setBackgroundColor:Rgb2UIColor(246, 246, 246)];
