@@ -21,9 +21,8 @@
         [currentWindow setValue:identifier forKey:@"bundleID"];
         
         //fuck these orientations not being able to go straight into a dict
-        UIInterfaceOrientation *orientation = [(CDTLamoWindow *)[dictionary valueForKey:identifier] activeOrientation];
-        if (orientation == (UIInterfaceOrientation *)UIInterfaceOrientationPortrait) {
-            
+        if ([(CDTLamoWindow *)[dictionary valueForKey:identifier] activeOrientation] == (UIInterfaceOrientation *)UIInterfaceOrientationPortrait) {
+
             [currentWindow setValue:@"portrait" forKey:@"orientation"];
         }
         else {
@@ -46,12 +45,12 @@
     }
     
     NSString *writePath;
-    
-#if TARGET_IPHONE_SIMULATOR
+    /*
+#if 0//TARGET_IPHONE_SIMULATOR
     writePath = @"/Users/ethanarbuckle/Desktop/LAMO_DYLIB/lamoWindows.plist";
-#else
-    writePath = @"/Library/Application Support/Lamo/lamoWindows.plist";
-#endif
+#else*/
+    writePath = @"/var/mobile/Library/Preferences/com.cortexdevteam.lamoWindows.plist";
+//#endif
     
     [NSKeyedArchiver archiveRootObject:dictToFile toFile:writePath];
     
@@ -61,11 +60,11 @@
     
     NSString *writePath;
     
-#if TARGET_IPHONE_SIMULATOR
-    writePath = @"/Users/ethanarbuckle/Desktop/LAMO_DYLIB/lamoWindows.plist";
-#else
-    writePath = @"/Library/Application Support/Lamo/lamoWindows.plist";
-#endif
+//#if 0//TARGET_IPHONE_SIMULATOR
+//    writePath = @"/Users/ethanarbuckle/Desktop/LAMO_DYLIB/lamoWindows.plist";
+//#else
+    writePath = @"/var/mobile/Library/Preferences/com.cortexdevteam.lamoWindows.plist";
+//#endif
     
     //get saved states
     NSDictionary *savedStates = [NSKeyedUnarchiver unarchiveObjectWithFile:writePath];
@@ -81,7 +80,7 @@
         UIView *contextHost = [contextProvider hostViewForApplicationWithBundleID:identifier];
         
         //create container view
-        CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:frame];
+        CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] init];
         
         [appWindow setIdentifier:identifier];
         [appWindow setStatusBarHidden:YES];
@@ -91,8 +90,9 @@
             [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
         }
         else {
+            NSLog(@"ladnscapepfewfw");
             [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationMaskLandscapeLeft];
-            [[CDTLamo sharedInstance] sendLandscapeRotationNotificationToBundleID:identifier];
+            [[CDTLamo sharedInstance] triggerLandscapeForApplication:[[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:identifier]];
         }
         
         //add host to window
@@ -103,11 +103,13 @@
         
         //shrink it down and update frame
         [appWindow setTransform:CGAffineTransformFromString([[savedStates valueForKey:identifier] valueForKey:@"transform"])];
-        [contextHost setFrame:CGRectMake(0, 40, contextHost.frame.size.width, contextHost.frame.size.height)];
+        [contextHost setFrame:CGRectMake(0, 20, contextHost.frame.size.width, contextHost.frame.size.height)];
         
         //create the 'title bar' window that holds the gestures
         CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
         [appWindow addSubview:gestureView];
+        
+        [appWindow setFrame:frame];
         
         if (view) {
             
