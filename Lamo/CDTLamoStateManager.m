@@ -90,7 +90,7 @@
             [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
         }
         else {
-            NSLog(@"ladnscapepfewfw");
+
             [appWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationMaskLandscapeLeft];
             [[CDTLamo sharedInstance] triggerLandscapeForApplication:[[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:identifier]];
         }
