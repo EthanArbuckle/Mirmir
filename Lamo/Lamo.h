@@ -122,6 +122,10 @@ void receivedPortraitRotate();
 - (id)hostViewForRequester:(id)arg1 enableAndOrderFront:(BOOL)arg2;
 @end
 
+@interface FBWindowContextHostView : UIView
+- (BOOL)isHosting;
+@end
+
 @interface FBSMutableSceneSettings
 - (void)setBackgrounded:(bool)arg1;
 @end

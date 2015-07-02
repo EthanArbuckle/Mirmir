@@ -19,7 +19,8 @@
 - (FBWindowContextHostManager *)contextManagerForApplication:(id)sbapplication;
 - (FBSMutableSceneSettings *)sceneSettingsForApplication:(id)sbapplication;
 
-//- (BOOL)isHostViewHosting:(UIView *)hostView;
+- (BOOL)isHostViewHosting:(UIView *)hostView;
+- (void)forceRehostingOnBundleID:(NSString *)bundleID;
 
 - (void)stopHostingForBundleID:(NSString *)bundleID;
 //- (void)startHostingForBundleID:(NSString *)bundleID;

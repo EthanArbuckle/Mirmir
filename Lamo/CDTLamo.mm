@@ -189,6 +189,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     [appWindow setIdentifier:bundleID];
     [appWindow setBarView:gestureView];
+    [appWindow setHostedContextView:contextHost];
     
     if ([[self topmostApplication] respondsToSelector:@selector(statusBarHidden)]) {
         
@@ -292,6 +293,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 		[window removeFromSuperview];
         
         //remove value from dict
+        [[(CDTLamoWindow *)[_windows valueForKey:bundleID] hostingCheckTimer] invalidate];
         [_windows removeObjectForKey:bundleID];
 
     }];
@@ -306,6 +308,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	//close the window if its currently context hosted
 	if ([_windows valueForKey:bundleID]) {
         
+        [[(CDTLamoWindow *)[_windows valueForKey:bundleID] hostingCheckTimer] invalidate];
 		[_contextHostProvider disableBackgroundingForApplication:app];
 		[_contextHostProvider stopHostingForBundleID:bundleID];
 
@@ -371,7 +374,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 		//close the window if its currently context hosted
 		if ([_windows valueForKey:bundleID]) {
-
+            
+            [[(CDTLamoWindow *)[_windows valueForKey:bundleID] hostingCheckTimer] invalidate];
 			[_contextHostProvider disableBackgroundingForApplication:appToOpen];
 			[_contextHostProvider stopHostingForBundleID:bundleID];
 

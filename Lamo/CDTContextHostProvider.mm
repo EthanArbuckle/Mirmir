@@ -102,7 +102,20 @@
 	return [[[self FBSceneForApplication:sbapplication] mutableSettings] mutableCopy];
 }
 
-//- (BOOL)isHostViewHosting:(UIView *)hostView;
+- (BOOL)isHostViewHosting:(UIView *)hostView {
+    if (hostView && [[hostView subviews] count] >= 1)
+        return [(FBWindowContextHostView *)[hostView subviews][0] isHosting];
+    return NO;
+}
+
+- (void)forceRehostingOnBundleID:(NSString *)bundleID {
+
+    SBApplication *appToForce = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
+    [self launchSuspendedApplicationWithBundleID:bundleID];
+    [self enableBackgroundingForApplication:appToForce];
+    FBWindowContextHostManager *manager = [self contextManagerForApplication:appToForce];
+    [manager enableHostingForRequester:bundleID priority:1];
+}
 
 - (void)stopHostingForBundleID:(NSString *)bundleID {
 

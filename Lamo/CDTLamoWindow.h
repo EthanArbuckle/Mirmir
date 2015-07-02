@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CDTLamoBarView.h"
+#import "CDTContextHostProvider.h"
 
 @interface CDTLamoWindow : UIView
 
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, retain) UIView *barView;
+@property (nonatomic, retain) UIView *hostedContextView;
+@property (nonatomic, retain) NSTimer *hostingCheckTimer;
+@property (nonatomic, retain) CDTContextHostProvider *contextProvider;
 
 @property UIInterfaceOrientation *activeOrientation;
 @property BOOL statusBarHidden;
 
 - (float)level;
+- (void)runHostingCheck;
 
 @end
