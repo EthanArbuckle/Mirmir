@@ -130,7 +130,7 @@
                 }
             }
             
-            else if (snapLocation.x >= kScreenWidth - 5) { //left
+            else if (snapLocation.x >= kScreenWidth - 5) { //right
                 
                 //this makes the window a bit clear, and sets up the snapping action block
                 if (snapLocation.y <= kScreenHeight / 2) {
@@ -141,6 +141,17 @@
                     
                     [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapBottomRight];
                 }
+            }
+            
+            
+            else if (snapLocation.y <= 5) { //top
+                
+                [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapTop];
+            }
+            
+            else if (snapLocation.y >= kScreenHeight - ((kScreenHeight * [[CDTLamoSettings sharedSettings] defaultWindowSize]) / 2)) { //bottom
+                
+                [[CDTLamo sharedInstance] primeApplicationForSnapping:[(CDTLamoWindow *)[[panGesture view] superview] identifier] toPosition:CDTLamoSnapBottom];
             }
             
             else {
