@@ -29,10 +29,11 @@
 - (void)setTitle:(NSString *)title {
     
     //create app name label
-    UILabel *appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-    [appNameLabel setTextColor:[UIColor whiteColor]];
-    [appNameLabel setTextAlignment:NSTextAlignmentCenter];
-    [appNameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16]];
+    _appNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+    [_appNameLabel setTextColor:[UIColor whiteColor]];
+    [_appNameLabel setTextAlignment:NSTextAlignmentCenter];
+    [_appNameLabel setCenter:[self center]];
+    [_appNameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16]];
     
     //so we can watermake builds. 'BUILD_OWNER' flag
     if ([[NSString stringWithFormat:@"%s", stringify(BUILD_OWNER)] length] > 0) {
@@ -41,14 +42,14 @@
         title = [NSString stringWithFormat:@"%@ - %s", title, stringify(BUILD_OWNER)];
         
         //add independent of user settings
-        [self addSubview:appNameLabel];
+        [self addSubview:_appNameLabel];
     }
     
-    [appNameLabel setText:title];
+    [_appNameLabel setText:title];
     
     if ([[CDTLamoSettings sharedSettings] showTitleText]) {
         
-        [self addSubview:appNameLabel];
+        [self addSubview:_appNameLabel];
     }
     
 }
@@ -72,7 +73,13 @@
     
         //create overlay options. frame is in context of superview, cdtlamowindow
         _overlayView = [[CDTLamoAppOverlay alloc] initWithOrientation:[(CDTLamoWindow *)[self superview] activeOrientation]];
-        [_overlayView setFrame:CGRectMake(0, [[CDTLamoSettings sharedSettings] windowBarHeight], kScreenWidth, kScreenHeight)];
+        
+        //settings barview stays at 20
+        if ([[(CDTLamoWindow *)[self superview] identifier] isEqualToString:@"com.cortexdevteam.lamosetting"])
+            [_overlayView setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
+        else
+            [_overlayView setFrame:CGRectMake(0, [[CDTLamoSettings sharedSettings] windowBarHeight], kScreenWidth, kScreenHeight)];
+        
         [_overlayView setBackgroundColor:[UIColor clearColor]];
         [_overlayView setAlpha:0];
         [[self superview] addSubview:_overlayView];

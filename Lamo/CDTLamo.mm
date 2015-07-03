@@ -622,7 +622,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //stop if settings is on screen
     if ([self isShowingSettings]) {
-        
+
         return YES;
     }
     
@@ -655,6 +655,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     //create the 'title bar' window that holds the gestures
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
     //[gestureView setTitle:@"Mímir Settings"];
+    [gestureView setFrame:CGRectMake(0, 0, kScreenWidth, 20)];
     [settingsWindow addSubview:gestureView];
     
     //add it to dict
@@ -737,8 +738,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (BOOL)isShowingSettings {
     
     //return if settings is on screen
-    if ([[_settingsNavigationController viewControllers] count] > 0) {
-        
+    if ([[_settingsNavigationController viewControllers] count] > 0 && [[_settingsNavigationController view] superview]) {
         return YES;
     }
     

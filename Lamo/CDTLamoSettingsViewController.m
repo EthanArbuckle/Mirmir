@@ -78,7 +78,7 @@
     }
     else if (section == 2) {
         
-        return 2;
+        return 3;
     }
     else if (section == 3) {
         
@@ -206,6 +206,12 @@
                 
                 [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Minimum.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Minimized Size"];
+                [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            }
+            else if ([indexPath row] == 2) {
+                
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Minimum.png", resourcePath]]];
+                [[settingCell textLabel] setText:@"Window Bar Size"];
                 [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
         }
@@ -357,6 +363,12 @@
             CDTLamoMinimizedWindowPane *minimizePane = [[CDTLamoMinimizedWindowPane alloc] init];
             [minimizePane setTitle:@"Minimized Window Size"];
             [[self navigationController] pushViewController:minimizePane animated:YES];
+        }
+        else if ([indexPath row] == 2) {
+            
+            CDTLamoWindowBarSizePane *windowBarSize = [[CDTLamoWindowBarSizePane alloc] init];
+            [windowBarSize setTitle:@"Window Bar Size"];
+            [[self navigationController] pushViewController:windowBarSize animated:YES];
         }
     }
     

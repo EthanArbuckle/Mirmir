@@ -9,6 +9,7 @@
 
 @property (nonatomic, copy) void (^primedSnapAction)();
 @property (nonatomic, retain) UIView *overlayView;
+@property (nonatomic, retain) UILabel *appNameLabel;
 
 @property CGPoint offset;
 @property BOOL isPrimedForSnapping;

@@ -14,6 +14,7 @@
 #import "CDTLamoMinimizedWindowPane.h"
 #import "CDTLamoSensitivityPane.h"
 #import "CDTLamoMainTutorialController.h"
+#import "CDTLamoWindowBarSizePane.h"
 #import "CDTLamoActivatorBinding.h"
 #import "CDTLamoCreditsPane.h"
 
