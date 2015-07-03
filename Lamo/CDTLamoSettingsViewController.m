@@ -210,7 +210,7 @@
             }
             else if ([indexPath row] == 2) {
                 
-                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Minimum.png", resourcePath]]];
+                [[settingCell imageView] setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/Titlebar.png", resourcePath]]];
                 [[settingCell textLabel] setText:@"Window Bar Size"];
                 [settingCell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             }
@@ -485,7 +485,7 @@
 - (void)handleTweet {
     
     SLComposeViewController *composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-    [composeController setInitialText:@"I’m using Mírmir by @CortexDevTeam to Multitask on my iDevice."];
+    [composeController setInitialText:@"I’m using Mírmir by @CortexDevTeam to Multitask on my device!"];
     [self presentViewController:composeController animated:YES completion:nil];
 }
 
