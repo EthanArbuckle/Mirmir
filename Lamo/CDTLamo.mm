@@ -146,7 +146,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [wrapperBarView setTitle:[[self topmostApplication] valueForKey:@"_displayName"]];
 
 	//make it sit on top of the app
-	[wrapperBarView setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
+	[wrapperBarView setFrame:CGRectMake(0, -[[CDTLamoSettings sharedSettings] windowBarHeight], kScreenWidth, [[CDTLamoSettings sharedSettings] windowBarHeight])];
 
 	[_sharedScalingWrapperView addSubview:wrapperBarView];
 
@@ -184,8 +184,10 @@ static SBAppToAppWorkspaceTransaction *transaction;
         return;
     }
     
+    CGFloat barHeight = [[CDTLamoSettings sharedSettings] windowBarHeight];
+    
 	//create container view
-	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + 20)];
+	CDTLamoWindow *appWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(20, 20, kScreenWidth, kScreenHeight + barHeight)];
     
     [appWindow setIdentifier:bundleID];
     [appWindow setBarView:gestureView];
@@ -204,7 +206,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
 	//shrink it down and update frame
 	[appWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
-	[contextHost setFrame:CGRectMake(0, 20, contextHost.frame.size.width, contextHost.frame.size.height)];
+	[contextHost setFrame:CGRectMake(0, barHeight, contextHost.frame.size.width, contextHost.frame.size.height)];
 
 	[appWindow addSubview:gestureView];
 	

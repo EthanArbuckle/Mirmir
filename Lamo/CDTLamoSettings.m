@@ -37,7 +37,8 @@
                                           hideStatusBarKey : @YES,
                                           pinchToResizeKey : @YES,
                                           showTitleTextKey : @YES,
-                                          hasShownTutorialKey : @NO
+                                          hasShownTutorialKey : @NO,
+                                          windowBarHeightKey : @20
                                           };
         
         [[NSUserDefaults standardUserDefaults] registerDefaults:defaultSettings];
@@ -160,6 +161,17 @@
 - (BOOL)hasShownTutorial {
     
     return [[NSUserDefaults standardUserDefaults] boolForKey:hasShownTutorialKey];
+}
+
+- (void)setWindowBarHeight:(CGFloat)height {
+    
+    [[NSUserDefaults standardUserDefaults] setFloat:height forKey:windowBarHeightKey];
+    [self saveChanges];
+}
+
+- (CGFloat)windowBarHeight {
+    
+    return [[NSUserDefaults standardUserDefaults] floatForKey:windowBarHeightKey];
 }
 
 @end

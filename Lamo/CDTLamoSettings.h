@@ -19,6 +19,7 @@
 #define pinchToResizeKey @"CDTLamoPinchToResize"
 #define showTitleTextKey @"CDTLamoShowTitleText"
 #define hasShownTutorialKey @"CDTLamoShownTutorial"
+#define windowBarHeightKey @"CDTLamoWindowBarHeight"
 
 @interface CDTLamoSettings : NSObject
 
@@ -54,5 +55,8 @@
 
 - (void)setHasShownTutorial:(BOOL)shown;
 - (BOOL)hasShownTutorial;
+
+- (void)setWindowBarHeight:(CGFloat)height;
+- (CGFloat)windowBarHeight;
 
 @end

@@ -7,7 +7,7 @@
 	if (self = [super init]) {
 
 		//create the bar
-		[self setFrame:CGRectMake(0, 0, kScreenWidth, 20)];
+		[self setFrame:CGRectMake(0, 0, kScreenWidth, [[CDTLamoSettings sharedSettings] windowBarHeight])];
 		[self setBackgroundColor:[UIColor darkGrayColor]];
 		[self setAlpha:0.9];
 		[self setUserInteractionEnabled:YES];
@@ -72,7 +72,7 @@
     
         //create overlay options. frame is in context of superview, cdtlamowindow
         _overlayView = [[CDTLamoAppOverlay alloc] initWithOrientation:[(CDTLamoWindow *)[self superview] activeOrientation]];
-        [_overlayView setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
+        [_overlayView setFrame:CGRectMake(0, [[CDTLamoSettings sharedSettings] windowBarHeight], kScreenWidth, kScreenHeight)];
         [_overlayView setBackgroundColor:[UIColor clearColor]];
         [_overlayView setAlpha:0];
         [[self superview] addSubview:_overlayView];
