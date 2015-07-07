@@ -15,6 +15,7 @@
 #import "CDTLamoActivatorEventTriggerOverlay.h"
 #import "CDTLamoActivatorEventMaximize.h"
 #import "CDTLamoActivatorEventMinimize.h"
+#import "CDTLamoActivatorEventPassthrough.h"
 
 @interface CDTLamoActivatorBinding : NSObject
 

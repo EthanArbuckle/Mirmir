@@ -745,4 +745,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
     return NO;
 }
 
+- (NSDictionary *)mutableWindowDict {
+    
+    return [_windows mutableCopy];
+}
+
 @end 

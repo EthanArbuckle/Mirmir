@@ -43,5 +43,6 @@
 - (void)removeKeyFromDict:(NSString *)key;
 - (UIView *)topmostApplicationWindow;
 - (BOOL)isShowingSettings;
+- (NSDictionary *)mutableWindowDict;
 
 @end

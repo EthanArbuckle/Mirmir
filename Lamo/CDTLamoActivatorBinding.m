@@ -54,6 +54,7 @@
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventReorientate new] forName:@"com.cortexdevteam.lamo.reorientate"];
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventMaximize new] forName:@"com.cortexdevteam.lamo.maximize"];
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventMinimize new] forName:@"com.cortexdevteam.lamo.minimize"];
+    [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventPassthrough new] forName:@"com.cortexdevteam.lamo.passthrough"];
 }
 
 @end

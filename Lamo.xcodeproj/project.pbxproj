@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F09D1D51B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F09D1D41B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m */; };
 		5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026311B22B02000257C45 /* CDTLamoSettings.m */; };
 		5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */; };
 		5F40C0A81B2D9E0000AC3711 /* SBIconController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F40C0A71B2D9E0000AC3711 /* SBIconController.m */; };
@@ -79,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F09D1D31B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoActivatorEventPassthrough.h; sourceTree = "<group>"; };
+		5F09D1D41B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoActivatorEventPassthrough.m; sourceTree = "<group>"; };
 		5F1026301B22B02000257C45 /* CDTLamoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSettings.h; sourceTree = "<group>"; };
 		5F1026311B22B02000257C45 /* CDTLamoSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettings.m; sourceTree = "<group>"; };
 		5F1026331B22B5AD00257C45 /* CDTLamoSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSettingsViewController.h; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				5F9ED4791B41EC19007205EB /* CDTLamoActivatorEventMaximize.m */,
 				5F9ED47B1B41EDCD007205EB /* CDTLamoActivatorEventMinimize.h */,
 				5F9ED47C1B41EDCD007205EB /* CDTLamoActivatorEventMinimize.m */,
+				5F09D1D31B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.h */,
+				5F09D1D41B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m */,
 			);
 			name = Activator;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				5FB454551AF366B10020FC56 /* SBAppSliderController.m in Sources */,
 				5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */,
 				5FB454561AF366B10020FC56 /* SBUIController.m in Sources */,
+				5F09D1D51B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m in Sources */,
 				5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */,
 				5F9ED46B1B41CD7C007205EB /* CDTLamoActivatorEventCloseAll.m in Sources */,
 				5FFC8B671B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m in Sources */,
