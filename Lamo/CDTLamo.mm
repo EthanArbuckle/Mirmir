@@ -593,12 +593,17 @@ static SBAppToAppWorkspaceTransaction *transaction;
                 
                 break;
                 
-            case CDTLamoSnapTop:
+            case CDTLamoSnapTop: {
                 
-                [windowToSnap setTransform:CGAffineTransformMakeScale(1, .5)];
-                [windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight * .5)];
+                NSString *windowChange = [NSString stringWithFormat:@"%@LamoWindowSize", [(CDTLamoWindow *)windowToSnap identifier]];
+                
+                CFNotificationCenterPostNotification(CFNotificationCenterGetDistributedCenter(), (CFStringRef)windowChange, NULL, (__bridge CFDictionaryRef) @{@"frame" : [NSValue valueWithCGRect:CGRectMake(0, 0, kScreenWidth, kScreenHeight * .5)] } , YES);
+                
+                [windowToSnap setTransform:CGAffineTransformMakeScale(1, 1)];
+                //[windowToSnap setFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight * .5)];
                 
                 break;
+            }
                 
             case CDTLamoSnapBottom:
                 

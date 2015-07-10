@@ -31,6 +31,10 @@ ZKSwizzleInterface($_Lamo_UIApplication, UIApplication, NSObject);
         //create statusbar notification
         NSString *changeStatusBarNotification = [NSString stringWithFormat:@"%@LamoStatusBarChange", dispident];
         CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), (__bridge const void *)(self), (CFNotificationCallback)receivedStatusBarChange, (CFStringRef)changeStatusBarNotification, NULL, CFNotificationSuspensionBehaviorDrop);
+        
+        //create window size notification
+        NSString *windowSizeNotification = [NSString stringWithFormat:@"%@LamoWindowSize", dispident];
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDistributedCenter(), (__bridge const void *)(self), (CFNotificationCallback)recieveWindowFrameSize, (CFStringRef)windowSizeNotification, NULL, CFNotificationSuspensionBehaviorDrop);
                 
     }
     
@@ -63,5 +67,14 @@ void receivedPortraitRotate() {
     }
 }
 
+void recieveWindowFrameSize(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo) {
+    
+    //resize all windows
+    for (UIWindow *window in [[UIApplication sharedApplication] windows]) {
+        
+        [window setFrame:[[(__bridge NSDictionary *)userInfo valueForKey:@"frame"] CGRectValue]];
+        
+    }
+}
 
 @end
