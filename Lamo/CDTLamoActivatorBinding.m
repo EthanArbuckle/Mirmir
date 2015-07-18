@@ -55,6 +55,7 @@
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventMaximize new] forName:@"com.cortexdevteam.lamo.maximize"];
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventMinimize new] forName:@"com.cortexdevteam.lamo.minimize"];
     [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventPassthrough new] forName:@"com.cortexdevteam.lamo.passthrough"];
+    [[NSClassFromString(@"LAActivator") sharedInstance] registerListener:[CDTLamoActivatorEventSettings new] forName:@"com.cortexdevteam.lamo.settings"];
 }
 
 @end

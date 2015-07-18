@@ -745,7 +745,10 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (void)removeKeyFromDict:(NSString *)key {
     
     //remove from windows dict
-    [_windows removeObjectForKey:key];
+    if ([_windows valueForKey:key]) {
+        
+        [_windows removeObjectForKey:key];
+    }
 }
 
 - (UIView *)topmostApplicationWindow {
