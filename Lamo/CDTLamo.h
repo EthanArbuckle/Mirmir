@@ -4,6 +4,7 @@
 #import "CDTLamoBarView.h"
 #import "CDTLamoWindow.h"
 #import "CDTLamoSettings.h"
+#import <dlfcn.h>
 
 @interface CDTLamo : NSObject
 
@@ -44,5 +45,6 @@
 - (UIView *)topmostApplicationWindow;
 - (BOOL)isShowingSettings;
 - (NSDictionary *)mutableWindowDict;
+- (BOOL)SBHTMLInstalled;
 
 @end

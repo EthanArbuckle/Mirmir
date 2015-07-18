@@ -152,13 +152,17 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 - (void)finishLaunching {
     
     ZKOrig(void);
-
-    //create settings icon on homescreen
-    SBLeafIcon *lamoSettings = [[NSClassFromString(@"SBLeafIcon") alloc] initWithLeafIdentifier:@"lamo" applicationBundleID:nil];
-    SBIconController *iconController = [NSClassFromString(@"SBIconController") sharedInstance];
-    SBIconModel *iconModel = [iconController valueForKey:@"_iconModel"];
-    [iconModel addIcon:lamoSettings];
-    [iconController addNewIconToDesignatedLocation:lamoSettings animate:NO scrollToList:NO saveIconState:YES];
+    
+    //only create icon if sbhtml is not installed
+    if (![[CDTLamo sharedInstance] SBHTMLInstalled]) {
+    
+        //create settings icon on homescreen
+        SBLeafIcon *lamoSettings = [[NSClassFromString(@"SBLeafIcon") alloc] initWithLeafIdentifier:@"lamo" applicationBundleID:nil];
+        SBIconController *iconController = [NSClassFromString(@"SBIconController") sharedInstance];
+        SBIconModel *iconModel = [iconController valueForKey:@"_iconModel"];
+        [iconModel addIcon:lamoSettings];
+        [iconController addNewIconToDesignatedLocation:lamoSettings animate:NO scrollToList:NO saveIconState:YES];
+    }
     
     //register for activator events if needed
     [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];
@@ -170,12 +174,17 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     //show tutorial when we unlock if havent shown before
     if (![[[(NSNotification *)changed userInfo] valueForKey:@"kSBNotificationKeyState"] boolValue]) {
         
+        if (iOS7) {
+            
+            [[[CDTLamo sharedInstance] springboardWindow] makeKeyAndVisible];
+        }
+        
         if (![[CDTLamoSettings sharedSettings] hasShownTutorial]) {
             
             //wait a bit before showing
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             
-                //present
+                //presents
                 [[CDTLamo sharedInstance] setTutorialController:[[CDTLamoMainTutorialController alloc] init]];
                 [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Lamo Tutorial"];
                 [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
@@ -192,6 +201,15 @@ BOOL isInActivationZone(CGFloat xOrigin) {
                 //set as shown
                 [[CDTLamoSettings sharedSettings] setHasShownTutorial:YES];
             });
+        }
+    }
+    
+    else {
+        
+        //locking, hide springboard window on iOS 7
+        if (iOS7) {
+            
+            [[[CDTLamo sharedInstance] springboardWindow] removeFromSuperview];
         }
     }
     

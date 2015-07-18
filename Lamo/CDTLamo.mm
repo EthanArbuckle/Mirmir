@@ -37,7 +37,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
             
             _springboardWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
             [_springboardWindow setWindowLevel:9999];
-            [_springboardWindow makeKeyAndVisible];
+            [_springboardWindow setUserInteractionEnabled:NO];
+            //[_springboardWindow makeKeyAndVisible];
         }
         
         if (iOS8) {
@@ -70,22 +71,34 @@ static SBAppToAppWorkspaceTransaction *transaction;
 }
 
 - (void)updateWrapperView {
-
-	//set wrapper view to topmost app's host view wrapper
-	FBScene *appScene = [[self topmostApplication] mainScene];
-	FBWindowContextHostManager *appContextManager = [appScene contextHostManager];
-	_sharedScalingWrapperView = [[appContextManager valueForKey:@"_hostView"] superview];
     
-    //window arrangment changed a bit on ios 9
-    if (GTEiOS9) {
+    if (!(iOS7)) {
         
-        _sharedScalingWrapperView = [_sharedScalingWrapperView superview];
+        //set wrapper view to topmost app's host view wrapper
+        FBScene *appScene = [[self topmostApplication] mainScene];
+        FBWindowContextHostManager *appContextManager = [appScene contextHostManager];
+        _sharedScalingWrapperView = [[appContextManager valueForKey:@"_hostView"] superview];
+        
+        //window arrangment changed a bit on ios 9
+        if (GTEiOS9) {
+            
+            _sharedScalingWrapperView = [_sharedScalingWrapperView superview];
+        }
+        
+        if (iOS8) {
+            
+            _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
+        }
+        
     }
     
-    if (iOS8) {
+    else {
         
-        _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
+        //get hostview on iOS 7
+        id contextHostManager = [[self topmostApplication] mainScreenContextHostManager];
+        _sharedScalingWrapperView = [contextHostManager valueForKey:@"_hostView"];
     }
+    
 }
 
 - (void)seamlesslyCloseTopApp {
@@ -668,6 +681,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //add window to springboard window
     [_springboardWindow addSubview:settingsWindow];
+    [_springboardWindow setUserInteractionEnabled:YES];
     
     //animate it popping in
     [self doPopAnimationForView:settingsWindow withBase:1];
@@ -753,6 +767,21 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (NSDictionary *)mutableWindowDict {
     
     return [_windows mutableCopy];
+}
+
+- (BOOL)SBHTMLInstalled {
+    
+    //see if we can create a sbhtml class
+    dlopen("/Library/MobileSubstrate/DynamicLibraries/SBHTML.dylib", RTLD_LAZY);
+    Class sbhtmlClass = NSClassFromString(@"SBHTMLWebView");
+    
+    //if it exists, we have sbhtml
+    if (sbhtmlClass) {
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end 

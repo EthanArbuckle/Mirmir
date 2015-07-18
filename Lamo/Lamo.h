@@ -97,7 +97,7 @@ void receivedPortraitRotate();
 - (int)pid;
 - (id)mainScene;
 - (NSString *)path;
-//- (id)mainScreenContextHostManager;
+- (id)mainScreenContextHostManager;
 - (void)setDeactivationSetting:(unsigned int)setting value:(id)value;
 - (void)setDeactivationSetting:(unsigned int)setting flag:(BOOL)flag;
 - (id)bundleIdentifier;
