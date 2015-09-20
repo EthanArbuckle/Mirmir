@@ -41,6 +41,7 @@ typedef enum CDTLamoSnapPosition {
 @interface SBUIController : NSObject
 - (void)restoreContentAndUnscatterIconsAnimated:(BOOL)animated;
 - (void)activateApplicationAnimated:(id)application;
+- (BOOL)isAppSwitcherShowing;
 @end
 
 @interface FBWorkspaceEvent : NSObject
@@ -252,5 +253,17 @@ void receivedPortraitRotate();
 @interface SBLockScreenManager : NSObject
 
 +(id)sharedInstance;
+
+@end
+
+@interface SBControlCenterController : UIViewController
+
+- (BOOL)isVisible;
+
+@end
+
+@interface SBNotificationCenterController : UIViewController
+
+@property(readonly, assign, nonatomic, getter=isVisible) BOOL visible;
 
 @end

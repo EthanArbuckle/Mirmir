@@ -831,6 +831,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
                 }
             }
             
+            //make sure its not in the nc, cc, or app switcher
+            if ([[NSClassFromString(@"SBUIController") sharedInstance] isAppSwitcherShowing] || [[NSClassFromString(@"SBControlCenterController") sharedInstance] isVisible] || [[NSClassFromString(@"SBNotificationCenterController") sharedInstance] isVisible]) {
+                
+                return NO;
+            }
+            
             //start the app in its window
             [self beginWindowModeForApplicationWithBundleID:[icon applicationBundleID]];
             
