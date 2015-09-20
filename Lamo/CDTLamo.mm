@@ -166,22 +166,21 @@ static SBAppToAppWorkspaceTransaction *transaction;
 }
 
 - (void)beginWindowModeForTopApplication {
-
-	//get bundle identifier for application
-	NSString *bundleID = [[self topmostApplication] valueForKey:@"_bundleIdentifier"];
     
-    //make sure app is _there_ and running
-    if (!bundleID || [(SBApplication *)[self topmostApplication] pid] <= 0) {
-        
-        //if not throw a message and stop
-        [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
-        return;
-    }
+    //get bundle identifier for application
+    NSString *bundleID = [[self topmostApplication] valueForKey:@"_bundleIdentifier"];
+    [self beginWindowModeForApplicationWithBundleID:bundleID];
+    
+}
+
+- (void)beginWindowModeForApplicationWithBundleID:(NSString *)bundleID {
+    
+    SBApplication *appToWindow = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 
     //create the 'title bar' window that holds the gestures
     //make this before we close the app so we can access topmost app and get the name
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
-    [gestureView setTitle:[[self topmostApplication] valueForKey:@"_displayName"]];
+    [gestureView setTitle:[appToWindow valueForKey:@"_displayName"]];
     
     //close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
@@ -206,9 +205,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [appWindow setBarView:gestureView];
     [appWindow setHostedContextView:contextHost];
     
-    if ([[self topmostApplication] respondsToSelector:@selector(statusBarHidden)]) {
+    if ([appToWindow respondsToSelector:@selector(statusBarHidden)]) {
         
-        [appWindow setStatusBarHidden:[(SBApplication *)[self topmostApplication] statusBarHidden]];
+        [appWindow setStatusBarHidden:[appToWindow statusBarHidden]];
     }
     
 	//add host to window
@@ -784,6 +783,61 @@ static SBAppToAppWorkspaceTransaction *transaction;
         return YES;
     }
     
+    return NO;
+}
+
+- (BOOL)didSucceedInForceTouchLaunchAtLocation:(CGPoint)touch {
+    
+    //touch is location anywhere on the screen. we need to decide if its on an icon, and if so launch that app's window.
+    //returning YES does a short vibrate, NO does nothing
+    
+    //close if device is locked, or an app is open
+    if ([self topmostApplication] || [[[NSClassFromString(@"SBLockScreenManager") sharedInstance] valueForKey:@"_isUILocked"] boolValue]) {
+
+        return NO;
+    }
+    
+    NSMutableArray* iconsToCheck = [[NSMutableArray alloc] init];
+        
+    //if they are not inside a folder view, -currentFolderIconList will be nil
+    if ([[NSClassFromString(@"SBIconController") sharedInstance] currentFolderIconList]) {
+
+        [iconsToCheck addObjectsFromArray:[[[NSClassFromString(@"SBIconController") sharedInstance] currentFolderIconList] icons]];
+    }
+    
+    else {
+        
+        //if they're not in sa folder then we also check the dock icons
+        [iconsToCheck addObjectsFromArray:[[[NSClassFromString(@"SBIconController") sharedInstance] currentRootIconList] icons]];
+        [iconsToCheck addObjectsFromArray:[[[NSClassFromString(@"SBIconController") sharedInstance] dockListView] icons]];
+    }
+    
+    for (SBIcon* icon in iconsToCheck) {
+            
+        //get existing SBIconView for this SBIcon
+        UIView *iconView = [[NSClassFromString(@"SBIconViewMap") homescreenMap] mappedIconViewForIcon:icon];
+                    
+        //this call is wasted on every icon which is not in the dock
+        CGRect convertedFrame = [iconView.superview convertRect:iconView.frame toView:[[UIApplication sharedApplication] keyWindow]];
+                    
+        if (CGRectContainsPoint(convertedFrame, touch)) {
+            
+            //make sure it doesnt conflict with another app window
+            for (CDTLamoWindow *window in [_windows allValues]) {
+                
+                if (CGRectContainsPoint([window frame], touch) || [[icon applicationBundleID] isEqualToString:[window identifier]]) {
+                    
+                    return NO;
+                }
+            }
+            
+            //start the app in its window
+            [self beginWindowModeForApplicationWithBundleID:[icon applicationBundleID]];
+            
+            return YES;
+        }
+    }
+
     return NO;
 }
 

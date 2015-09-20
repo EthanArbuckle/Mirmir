@@ -174,6 +174,7 @@ void receivedPortraitRotate();
 
 @interface SBIcon : NSObject
 -(id)leafIdentifier;
+- (id)applicationBundleID;
 @end
 
 @interface SBLeafIcon : SBIcon
@@ -216,6 +217,9 @@ void receivedPortraitRotate();
 - (void)icon:(id)icon touchEnded:(BOOL)ended;
 - (void)addNewIconToDesignatedLocation:(id)designatedLocation animate:(BOOL)animate scrollToList:(BOOL)list saveIconState:(BOOL)state;
 - (void)clearHighlightedIcon;
+- (id)currentFolderIconList;
+- (id)currentRootIconList;
+- (id)dockListView;
 
 @end
 
@@ -236,4 +240,17 @@ void receivedPortraitRotate();
 
 @interface SBReachabilityManager : NSObject
 + (id)sharedInstance;
+@end
+
+@interface SBIconViewMap : UIView
+
++(id)homescreenMap;
+-(id)mappedIconViewForIcon:(id)icon;
+
+@end
+
+@interface SBLockScreenManager : NSObject
+
++(id)sharedInstance;
+
 @end

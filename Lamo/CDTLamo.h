@@ -28,6 +28,7 @@
 - (void)seamlesslyCloseTopApp;
 - (void)addTopBarToWrapperWindow;
 - (void)beginWindowModeForTopApplication;
+- (void)beginWindowModeForApplicationWithBundleID:(NSString *)bundleID;
 - (void)doPopAnimationForView:(UIView *)viewToPop withBase:(CGFloat)size;
 - (void)unwindowApplicationWithBundleID:(NSString *)bundleID;
 - (void)appWantsToOpen:(SBApplication *)app withBlock:(void(^)(void))completion;
@@ -46,5 +47,6 @@
 - (BOOL)isShowingSettings;
 - (NSDictionary *)mutableWindowDict;
 - (BOOL)SBHTMLInstalled;
+- (BOOL)didSucceedInForceTouchLaunchAtLocation:(CGPoint)touch;
 
 @end

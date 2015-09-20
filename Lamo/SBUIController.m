@@ -4,6 +4,7 @@
 #import "CDTLamoSettings.h"
 #import "CDTLamoMainTutorialController.h"
 #import "CDTLamoActivatorBinding.h"
+#import "CDTForceTouchManager.h"
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
@@ -166,6 +167,9 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     
     //register for activator events if needed
     [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];
+    
+    //setup force touch client
+    [CDTForceTouchManager sharedInstance];
     
 }
 
