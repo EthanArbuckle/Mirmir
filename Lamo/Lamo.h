@@ -11,6 +11,8 @@
 #define stringify(a) str(a)
 #define str(a) #a
 
+#define NSLog(fmt, ...) NSLog((@"[lamo] " fmt), ##__VA_ARGS__)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -38,6 +40,18 @@ typedef enum CDTLamoSnapPosition {
 - (id)applicationWithBundleIdentifier:(NSString *)bid;
 @end
 
+@interface FBRootWindow : UIWindow
+@end
+@interface FBDisplay : NSObject
+@end
+@interface FBDisplayManager : NSObject
++(FBDisplay*)mainDisplay;
+@end
+@interface FBSceneManager : NSObject
++(instancetype)sharedInstance;
+-(FBRootWindow*)_rootWindowForDisplay:(FBDisplay*)display createIfNecessary:(BOOL)createIfNecessary;
+@end
+
 @interface SBUIController : NSObject
 - (void)restoreContentAndUnscatterIconsAnimated:(BOOL)animated;
 - (void)activateApplicationAnimated:(id)application;
@@ -46,9 +60,6 @@ typedef enum CDTLamoSnapPosition {
 
 @interface FBWorkspaceEvent : NSObject
 + (instancetype)eventWithName:(NSString *)label handler:(id)handler;
-@end
-
-@interface FBSceneManager : NSObject
 @end
 
 @interface SBAppToAppWorkspaceTransaction

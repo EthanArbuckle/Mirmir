@@ -11,8 +11,6 @@
 		5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026311B22B02000257C45 /* CDTLamoSettings.m */; };
 		5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */; };
 		5F40C0A81B2D9E0000AC3711 /* SBIconController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F40C0A71B2D9E0000AC3711 /* SBIconController.m */; };
-		5F6B54911BAE5AE7003AFA31 /* CDTForceTouchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F6B54901BAE5AE7003AFA31 /* CDTForceTouchManager.m */; settings = {ASSET_TAGS = (); }; };
-		5F6B54961BAE6297003AFA31 /* libIOKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6B54951BAE6297003AFA31 /* libIOKit.dylib */; };
 		5F742F771B23B52B00E92C5D /* CDTLamoSettingsIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */; };
 		5F9A8AE61B466F56004B94AF /* CDTLamoWindowBarSizePane.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9A8AE51B466F56004B94AF /* CDTLamoWindowBarSizePane.m */; };
 		5F9ED4661B41C523007205EB /* CDTLamoActivatorBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F9ED4651B41C523007205EB /* CDTLamoActivatorBinding.m */; };
@@ -91,10 +89,6 @@
 		5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsViewController.m; sourceTree = "<group>"; };
 		5F1452651B39BD1A00A8D4D1 /* lamo_install.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = lamo_install.sh; sourceTree = "<group>"; };
 		5F40C0A71B2D9E0000AC3711 /* SBIconController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBIconController.m; sourceTree = "<group>"; };
-		5F6B548F1BAE5AE7003AFA31 /* CDTForceTouchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTForceTouchManager.h; sourceTree = "<group>"; };
-		5F6B54901BAE5AE7003AFA31 /* CDTForceTouchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTForceTouchManager.m; sourceTree = "<group>"; };
-		5F6B54941BAE5F0C003AFA31 /* iokit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = iokit; path = Lamo/iokit; sourceTree = "<group>"; };
-		5F6B54951BAE6297003AFA31 /* libIOKit.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libIOKit.dylib; path = Lamo/iokit/libIOKit.dylib; sourceTree = "<group>"; };
 		5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoSettingsIcon.m; sourceTree = "<group>"; };
 		5F81689A1B38E04100F99B4D /* lamo_staging */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lamo_staging; sourceTree = "<group>"; };
 		5F81689B1B38E25400F99B4D /* lamo_build_deb.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = lamo_build_deb.sh; sourceTree = "<group>"; };
@@ -169,7 +163,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F6B54961BAE6297003AFA31 /* libIOKit.dylib in Frameworks */,
 				5F9ED4851B42248C007205EB /* Social.framework in Frameworks */,
 				5FE039941AF37001004F9098 /* UIKit.framework in Frameworks */,
 				5FE039921AF36FEA004F9098 /* CoreGraphics.framework in Frameworks */,
@@ -216,7 +209,6 @@
 		5FB4541D1AF364350020FC56 = {
 			isa = PBXGroup;
 			children = (
-				5F6B54951BAE6297003AFA31 /* libIOKit.dylib */,
 				5F9ED4841B42248C007205EB /* Social.framework */,
 				5FE039931AF37001004F9098 /* UIKit.framework */,
 				5FE039911AF36FEA004F9098 /* CoreGraphics.framework */,
@@ -224,7 +216,6 @@
 				5FEBA71A1B1C1F6700BACB25 /* README.md */,
 				5F81689B1B38E25400F99B4D /* lamo_build_deb.sh */,
 				5F1452651B39BD1A00A8D4D1 /* lamo_install.sh */,
-				5F6B54941BAE5F0C003AFA31 /* iokit */,
 				5F9ED4671B41CA03007205EB /* activator_headers */,
 				5F81689A1B38E04100F99B4D /* lamo_staging */,
 				5FA91D791B371DFC00BBC90E /* Resources */,
@@ -332,8 +323,6 @@
 				5FEBA7441B210D0400BACB25 /* CDTLamoPanGestureRecognizer.h */,
 				5FDF09171B091CFC0094306F /* CDTLamoStateManager.h */,
 				5FDF09181B091CFC0094306F /* CDTLamoStateManager.m */,
-				5F6B548F1BAE5AE7003AFA31 /* CDTForceTouchManager.h */,
-				5F6B54901BAE5AE7003AFA31 /* CDTForceTouchManager.m */,
 				5FB454401AF364920020FC56 /* ZKSwizzle.h */,
 				5FB454411AF364920020FC56 /* ZKSwizzle.m */,
 			);
@@ -461,7 +450,6 @@
 				5FF127811AFB06C8001EE496 /* CDTLamoWindow.m in Sources */,
 				5F9ED46B1B41CD7C007205EB /* CDTLamoActivatorEventCloseAll.m in Sources */,
 				5FFC8B671B3F9B36009377F8 /* CDTLamoOverlayTutorialController.m in Sources */,
-				5F6B54911BAE5AE7003AFA31 /* CDTForceTouchManager.m in Sources */,
 				5FEBA7461B210D0400BACB25 /* CDTLamoPanGestureRecognizer.m in Sources */,
 				5FB454511AF3657C0020FC56 /* CDTLamoBarView.mm in Sources */,
 				5F9ED4801B41FA51007205EB /* CDTLamoCreditsPane.m in Sources */,
@@ -619,6 +607,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -645,6 +634,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = NO;
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

@@ -30,30 +30,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
 		_contextHostProvider = [[CDTContextHostProvider alloc] init];
 
 		//create dict to hold hosted apps
-		_windows = [[NSMutableDictionary alloc] init];
+        _windows = [[NSMutableDictionary alloc] init];
         
-        //create our own window on ios 7 & 9
-        if ((iOS7) || GTEiOS9) {
-            
-            _springboardWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-            [_springboardWindow setWindowLevel:9999];
-            [_springboardWindow setUserInteractionEnabled:NO];
-            //[_springboardWindow makeKeyAndVisible];
-        }
-        
-        if (iOS8) {
-            
-            //get fbrootwindow
-            for (id object in [[[NSClassFromString(@"FBSceneManager") sharedInstance] valueForKey:@"_displayToRootWindow"] allObjects]) {
-                
-                if ([object isKindOfClass:NSClassFromString(@"FBWindow")]) {
-                    
-                    _springboardWindow = (UIWindow *)object;
-                }
-            }
-            
-        }
-
 	}
 
 	return self;
@@ -175,6 +153,20 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 - (void)beginWindowModeForApplicationWithBundleID:(NSString *)bundleID {
     
+    if (!_springboardWindow) {
+
+        //get fbrootwindow
+        for (id object in [[[NSClassFromString(@"FBSceneManager") sharedInstance] valueForKey:@"_displayToRootWindow"] allObjects]) {
+            
+            if ([object isKindOfClass:NSClassFromString(@"FBRootWindow")]) {
+                
+                _springboardWindow = (UIWindow *)object;
+            }
+            
+        }
+        
+    }
+    
     SBApplication *appToWindow = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 
     //create the 'title bar' window that holds the gestures
@@ -187,14 +179,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
     //create live context host
 	UIView *contextHost = [_contextHostProvider hostViewForApplicationWithBundleID:bundleID];
-
-    //make sure the window isnt fucked
-    if (![contextHost isKindOfClass:NSClassFromString(@"FBWindowContextHostWrapperView")]) {
-        
-        //if not throw a message and stop
-        [[[UIAlertView alloc] initWithTitle:@"Whoopsies" message:@"Failed to enter window mode for the application :-(" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil] show];
-        return;
-    }
     
     CGFloat barHeight = [[CDTLamoSettings sharedSettings] windowBarHeight];
     
@@ -225,7 +209,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	//add it to dict
 	[_windows setValue:appWindow forKey:bundleID];
 
-	//add context window to springboard window
+    //add context window to springboard window
     [_springboardWindow addSubview:appWindow];
 
     //animate it popping in
@@ -319,7 +303,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	//get bundle id
 	NSString *bundleID = [app valueForKey:@"_bundleIdentifier"];
 
-	//close the window if its currently context hosted
+    //close the window if its currently context hosted
 	if ([_windows valueForKey:bundleID]) {
         
         [[(CDTLamoWindow *)[_windows valueForKey:bundleID] hostingCheckTimer] invalidate];
@@ -331,8 +315,8 @@ static SBAppToAppWorkspaceTransaction *transaction;
 		
         //restore statusbar
         [_contextHostProvider setStatusBarHidden:@([window statusBarHidden]) onApplicationWithBundleID:bundleID];
-        
-		//remove the view
+
+        //remove the view
 		[window removeFromSuperview];
         
         //remove value from dict

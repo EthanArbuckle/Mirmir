@@ -4,7 +4,6 @@
 #import "CDTLamoSettings.h"
 #import "CDTLamoMainTutorialController.h"
 #import "CDTLamoActivatorBinding.h"
-#import "CDTForceTouchManager.h"
 
 ZKSwizzleInterface($_Lamo_SBUIController, SBUIController, NSObject);
 
@@ -150,10 +149,18 @@ BOOL isInActivationZone(CGFloat xOrigin) {
 
 }
 
+- (void)activateApplication:(id)arg1 {
+
+    //an app is opening, make sure it close its window
+    [[CDTLamo sharedInstance] appWantsToOpen:arg1 withBlock:^{
+        ZKOrig(void, arg1);
+    }];
+}
+
 - (void)finishLaunching {
     
     ZKOrig(void);
-    
+
     //only create icon if sbhtml is not installed
     if (![[CDTLamo sharedInstance] SBHTMLInstalled]) {
     
@@ -167,9 +174,6 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     
     //register for activator events if needed
     [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];
-    
-    //setup force touch client
-    [CDTForceTouchManager sharedInstance];
     
 }
 
