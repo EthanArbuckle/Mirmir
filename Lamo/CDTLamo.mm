@@ -155,15 +155,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     if (!_springboardWindow) {
 
-        //get fbrootwindow
-        for (id object in [[[NSClassFromString(@"FBSceneManager") sharedInstance] valueForKey:@"_displayToRootWindow"] allObjects]) {
-            
-            if ([object isKindOfClass:NSClassFromString(@"FBRootWindow")]) {
-                
-                _springboardWindow = (UIWindow *)object;
-            }
-            
-        }
+        _springboardWindow = [[objc_getClass("FBSceneManager") sharedInstance] _rootWindowForDisplay:[objc_getClass("FBDisplayManager") mainDisplay] createIfNecessary:YES];
         
     }
     

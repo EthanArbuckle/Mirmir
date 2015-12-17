@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F099A781C22338F0081AE75 /* SBMainSwitcherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F099A771C22338F0081AE75 /* SBMainSwitcherViewController.m */; };
 		5F09D1D51B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F09D1D41B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m */; };
 		5F1026321B22B02000257C45 /* CDTLamoSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026311B22B02000257C45 /* CDTLamoSettings.m */; };
 		5F1026351B22B5AD00257C45 /* CDTLamoSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1026341B22B5AD00257C45 /* CDTLamoSettingsViewController.m */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5F099A771C22338F0081AE75 /* SBMainSwitcherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBMainSwitcherViewController.m; sourceTree = "<group>"; };
 		5F09D1D31B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoActivatorEventPassthrough.h; sourceTree = "<group>"; };
 		5F09D1D41B4B575D00B07C93 /* CDTLamoActivatorEventPassthrough.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTLamoActivatorEventPassthrough.m; sourceTree = "<group>"; };
 		5F1026301B22B02000257C45 /* CDTLamoSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTLamoSettings.h; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				5F40C0A71B2D9E0000AC3711 /* SBIconController.m */,
 				5FE9009B1B26DE0B00ACCB1C /* SBNotificationCenterController.m */,
 				5F742F761B23B52B00E92C5D /* CDTLamoSettingsIcon.m */,
+				5F099A771C22338F0081AE75 /* SBMainSwitcherViewController.m */,
 			);
 			name = Hooks;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				5FFC8B601B3E61C6009377F8 /* CDTLamoSensitivityPane.m in Sources */,
 				5F9ED4831B41FF49007205EB /* CDTLamoCreditsDevCell.m in Sources */,
 				5FDF09191B091CFC0094306F /* CDTLamoStateManager.m in Sources */,
+				5F099A781C22338F0081AE75 /* SBMainSwitcherViewController.m in Sources */,
 				5F9ED4711B41DE68007205EB /* CDTLamoActivatorCloseAllButCurrent.m in Sources */,
 				5F9ED4741B41E1A4007205EB /* CDTLamoActivatorEventReorientate.m in Sources */,
 				5FB454421AF364920020FC56 /* ZKSwizzle.m in Sources */,

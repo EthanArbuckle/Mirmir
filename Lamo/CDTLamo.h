@@ -5,6 +5,7 @@
 #import "CDTLamoWindow.h"
 #import "CDTLamoSettings.h"
 #import <dlfcn.h>
+#import <objc/runtime.h>
 
 @interface CDTLamo : NSObject
 

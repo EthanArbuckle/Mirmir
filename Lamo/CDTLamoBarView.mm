@@ -92,7 +92,7 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
-    
+
     if ([panGesture state] == UIGestureRecognizerStateEnded) {
         
         //check if we're primed to snap
