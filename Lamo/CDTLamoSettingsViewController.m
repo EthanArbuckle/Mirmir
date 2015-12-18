@@ -61,6 +61,15 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    //kickstart app so it has a FBScene before its attempted to be hosted
+    if (NEED_IPAD_HAX)
+        [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.Maps"];
+    else
+        [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 7;
@@ -327,7 +336,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     //stop hosting
     if (NEED_IPAD_HAX) {
         [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
@@ -357,6 +366,7 @@
             CDTLamoDefaultWindowPane *windowSize = [[CDTLamoDefaultWindowPane alloc] init];
             [windowSize setTitle:@"Default Window Size"];
             [[self navigationController] pushViewController:windowSize animated:YES];
+
         }
         else if ([indexPath row] == 1) {
             

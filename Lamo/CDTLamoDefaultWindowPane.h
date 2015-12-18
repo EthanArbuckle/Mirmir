@@ -11,9 +11,11 @@
 #import "CDTLamoWindow.h"
 #import "CDTContextHostProvider.h"
 
+@class CDTLamoWindow;
+
 @interface CDTLamoDefaultWindowPane : UITableViewController
 
-@property (nonatomic, retain) UIView *previewWindow;
+@property (nonatomic, retain) CDTLamoWindow *previewWindow;
 
 - (void)handleSliderChanged:(UISlider *)slider;
 

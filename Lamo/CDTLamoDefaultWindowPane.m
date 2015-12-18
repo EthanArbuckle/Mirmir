@@ -17,10 +17,11 @@
 - (id)init {
     
     if (self = [super init]) {
-        
+
         //setup tableview
         (void)[[self tableView] initWithFrame:[[self tableView] frame] style:UITableViewStyleGrouped];
         [[self tableView] setScrollEnabled:NO];
+
     }
     
     return self;
@@ -90,31 +91,31 @@
     }
     
     else if ([indexPath row] == 1) {
-        
+
         //create homescreen layout
         SBHomeScreenPreviewView *preview = [NSClassFromString(@"SBHomeScreenPreviewView") preview];
         [preview setTransform:CGAffineTransformMakeScale(.7, .7)];
         [preview setFrame:CGRectMake((kScreenWidth / 2) - ((kScreenWidth * .7) / 2), 10, kScreenWidth, kScreenHeight)];
         [preview setClipsToBounds:YES];
         [preview setUserInteractionEnabled:NO];
-        
+
         //fuck this. gotta make a view to hide shit from the preview
         UIView *hidingView = [[UIView alloc] initWithFrame:CGRectMake((kScreenWidth / 2) + ((kScreenWidth * .7) / 2), 0, 200, (kScreenHeight * .7) + 40)];
         [hidingView setBackgroundColor:[UIColor whiteColor]];
-        
         [cell addSubview:preview];
         [cell addSubview:hidingView];
-        
+
         //create lamo window
         _previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [_previewWindow setBackgroundColor:[UIColor grayColor]];
+
         CDTLamoBarView *barView = [[CDTLamoBarView alloc] init];
         [barView setFrame:CGRectMake(0, -20, kScreenWidth, 20)];
         [(CDTLamoWindow *)_previewWindow setBarView:barView];
         [_previewWindow addSubview:barView];
         [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
-        
+
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -126,7 +127,7 @@
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
         [_previewWindow addSubview:contextView];
-        
+
         [preview addSubview:_previewWindow];
     }
     

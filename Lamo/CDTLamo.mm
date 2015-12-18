@@ -638,6 +638,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+    [settingsWindow setWindowLevel:_stackedWindowLevel++];
     
     //create settings view controller
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
@@ -654,9 +655,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
     
     //add it to dict
     [_windows setValue:settingsWindow forKey:@"com.cortexdevteam.lamosetting"];
-    
-    //add window to springboard window
-    [[self fbRootWindow] addSubview:settingsWindow];
     
     //animate it popping in
     [self doPopAnimationForView:settingsWindow withBase:1];

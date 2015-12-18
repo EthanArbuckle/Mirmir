@@ -41,7 +41,7 @@
 
 	//get our fancy new hosting view
 	UIView *hostView = [[self contextManagerForApplication:sbapplication] hostViewForRequester:[(SBApplication *)sbapplication bundleIdentifier] enableAndOrderFront:YES];
-    
+
     //now that new host is created, cycle through all other ones (including new) and reenable hosting for ipads.
     if (NEED_IPAD_HAX) {
         
@@ -91,11 +91,13 @@
 }
 
 - (FBScene *)FBSceneForApplication:(id)sbapplication {
-	return [(SBApplication *)sbapplication mainScene];
+
+    return [(SBApplication *)sbapplication mainScene];
 }
 
 - (FBWindowContextHostManager *)contextManagerForApplication:(id)sbapplication {
-	return [[self FBSceneForApplication:sbapplication] contextHostManager];
+
+    return [[self FBSceneForApplication:sbapplication] contextHostManager];
 }
 
 - (FBSMutableSceneSettings *)sceneSettingsForApplication:(id)sbapplication {
