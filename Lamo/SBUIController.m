@@ -182,11 +182,6 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     //show tutorial when we unlock if havent shown before
     if (![[[(NSNotification *)changed userInfo] valueForKey:@"kSBNotificationKeyState"] boolValue]) {
         
-        if (iOS7) {
-            
-            [[[CDTLamo sharedInstance] springboardWindow] makeKeyAndVisible];
-        }
-        
         if (![[CDTLamoSettings sharedSettings] hasShownTutorial]) {
             
             //wait a bit before showing
@@ -197,7 +192,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
                 [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Lamo Tutorial"];
                 [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
                 [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
-                [[[CDTLamo sharedInstance] springboardWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
+                [[[CDTLamo sharedInstance] fbRootWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
                 [(CDTLamoMainTutorialController *)[[CDTLamo sharedInstance] tutorialController] addBarButtons];
                 
                 //fade it in
@@ -209,15 +204,6 @@ BOOL isInActivationZone(CGFloat xOrigin) {
                 //set as shown
                 [[CDTLamoSettings sharedSettings] setHasShownTutorial:YES];
             });
-        }
-    }
-    
-    else {
-        
-        //locking, hide springboard window on iOS 7
-        if (iOS7) {
-            
-            [[[CDTLamo sharedInstance] springboardWindow] removeFromSuperview];
         }
     }
     

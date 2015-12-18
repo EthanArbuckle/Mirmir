@@ -17,7 +17,7 @@ ZKSwizzleInterface($_Lamo_SBNotificationCenterController, SBNotificationCenterCo
 
 - (void)_showNotificationCenterGestureBeganWithGestureRecognizer:(id)arg1 {
    
-    CGPoint location = [arg1 locationInView:[[CDTLamo sharedInstance] springboardWindow]];
+    CGPoint location = [arg1 locationInView:[[CDTLamo sharedInstance] fbRootWindow]];
     
     if (location.x <= 100 && [[UIApplication sharedApplication] _accessibilityFrontMostApplication] && [[CDTLamoSettings sharedSettings] isEnabled]) {
         
@@ -53,7 +53,7 @@ ZKSwizzleInterface($_Lamo_SBNotificationCenterController, SBNotificationCenterCo
 
 - (void)_showNotificationCenterGestureChangedWithGestureRecognizer:(id)arg1 duration:(double)arg2 {
     
-    CGPoint location = [arg1 locationInView:[[CDTLamo sharedInstance] springboardWindow]];
+    CGPoint location = [arg1 locationInView:[[CDTLamo sharedInstance] fbRootWindow]];
     
     //stop our touches from getting jacked
     if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
@@ -81,7 +81,7 @@ ZKSwizzleInterface($_Lamo_SBNotificationCenterController, SBNotificationCenterCo
 
 - (void)_showNotificationCenterGestureEndedWithGestureRecognizer:(id)arg1 {
     
-    CGPoint location = [arg1 locationInView:[[CDTLamo sharedInstance] springboardWindow]];
+    CGPoint location = [arg1 locationInView:[[CDTLamo sharedInstance] fbRootWindow]];
     
     //touch ended and we were tracking
     if ([[CDTLamo sharedInstance] wrapperViewIsTracking] && [[CDTLamo sharedInstance] sharedScalingWrapperView] && [[CDTLamoSettings sharedSettings] isEnabled]) {
@@ -99,6 +99,18 @@ ZKSwizzleInterface($_Lamo_SBNotificationCenterController, SBNotificationCenterCo
         
         //or restore it to normal
         else {
+            
+            //find bar window and remove it
+            if (GTEiOS9) {
+                
+                for (UIView *subview in [[[[CDTLamo sharedInstance] sharedScalingWrapperView] subviews][1] subviews]) {
+                    
+                    if ([subview isKindOfClass:[CDTLamoBarView class]]) {
+
+                        [subview removeFromSuperview];
+                    }
+                }
+            }
             
             [UIView animateWithDuration:0.3 animations:^{
                 

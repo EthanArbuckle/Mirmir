@@ -10,7 +10,7 @@
 #import "CDTLamoBarView.h"
 #import "CDTContextHostProvider.h"
 
-@interface CDTLamoWindow : UIView
+@interface CDTLamoWindow : UIWindow
 
 @property (nonatomic, retain) NSString *identifier;
 @property (nonatomic, retain) UIView *barView;

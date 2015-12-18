@@ -19,7 +19,7 @@
 @property (nonatomic, retain) UINavigationController *tutorialNavigationController;
 
 @property (nonatomic, retain) NSMutableDictionary *windows;
-@property (nonatomic, retain) UIWindow *springboardWindow;
+@property (nonatomic, readwrite) NSInteger stackedWindowLevel;
 
 @property BOOL wrapperViewIsTracking;
 
@@ -44,10 +44,11 @@
 - (void)presentSettingsController;
 - (void)snapAllClose:(BOOL)animated;
 - (void)removeKeyFromDict:(NSString *)key;
-- (UIView *)topmostApplicationWindow;
+- (UIWindow *)topmostApplicationWindow;
 - (BOOL)isShowingSettings;
 - (NSDictionary *)mutableWindowDict;
 - (BOOL)SBHTMLInstalled;
 - (BOOL)didSucceedInForceTouchLaunchAtLocation:(CGPoint)touch;
+- (FBRootWindow *)fbRootWindow;
 
 @end

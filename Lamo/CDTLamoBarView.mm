@@ -114,15 +114,20 @@
         _offset = [[[panGesture view] superview] frame].origin;
         
         //bring it to front
-        [[[[panGesture view] superview] superview] bringSubviewToFront:[[panGesture view] superview]];
+        if ([(UIWindow *)[self superview] windowLevel] < [[CDTLamo sharedInstance] stackedWindowLevel]) {
+            
+            NSInteger newLevel = [[CDTLamo sharedInstance] stackedWindowLevel] + 1;
+            [[CDTLamo sharedInstance] setStackedWindowLevel:newLevel];
+            [(UIWindow *)[self superview] setWindowLevel:newLevel];
+        }
         
     } else
         
         if ([panGesture state] == UIGestureRecognizerStateChanged) {
             
-            CGPoint translation = [panGesture translationInView:[[CDTLamo sharedInstance] springboardWindow]];
+            CGPoint translation = [panGesture translationInView:[[CDTLamo sharedInstance] fbRootWindow]];
             
-            CGPoint snapLocation = [panGesture locationInView:[[CDTLamo sharedInstance] springboardWindow]];
+            CGPoint snapLocation = [panGesture locationInView:[[CDTLamo sharedInstance] fbRootWindow]];
             
             if (snapLocation.x <= 5) { //left
                 

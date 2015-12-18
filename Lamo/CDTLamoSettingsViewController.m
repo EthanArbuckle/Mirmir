@@ -405,7 +405,7 @@
             [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Mímir Tutorial"];
             [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
             [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
-            [[[CDTLamo sharedInstance] springboardWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
+            [[[CDTLamo sharedInstance] fbRootWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
             [(CDTLamoMainTutorialController *)[[CDTLamo sharedInstance] tutorialController] addBarButtons];
             
             //fade it in and fade settings controller out

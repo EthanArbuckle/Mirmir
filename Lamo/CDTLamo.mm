@@ -1,5 +1,6 @@
 #import "CDTLamo.h"
 
+
 @implementation CDTLamo
 
 static SBWorkspaceApplicationTransitionContext *transitionContext;
@@ -22,7 +23,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (id)init {
 
 	if (self = [super init]) {
-
+        
+        _stackedWindowLevel = 9999;
+        
 		//not tracking initially
 		_wrapperViewIsTracking = NO;
 
@@ -59,13 +62,9 @@ static SBAppToAppWorkspaceTransaction *transaction;
         
         //window arrangment changed a bit on ios 9
         if (GTEiOS9) {
-            
+
             _sharedScalingWrapperView = [_sharedScalingWrapperView superview];
-        }
-        
-        if (iOS8) {
-            
-            _springboardWindow = [[[appContextManager valueForKey:@"_hostView"] superview] window];
+
         }
         
     }
@@ -136,9 +135,16 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	CDTLamoBarView *wrapperBarView = [[CDTLamoBarView alloc] init];
     [wrapperBarView setTitle:[[self topmostApplication] valueForKey:@"_displayName"]];
 
-	//make it sit on top of the app
-	[wrapperBarView setFrame:CGRectMake(0, -[[CDTLamoSettings sharedSettings] windowBarHeight], kScreenWidth, [[CDTLamoSettings sharedSettings] windowBarHeight])];
-
+    if (GTEiOS9) {
+        
+        [wrapperBarView setFrame:CGRectMake(0, 0, kScreenWidth, [[CDTLamoSettings sharedSettings] windowBarHeight])];
+        [[_sharedScalingWrapperView subviews][1] addSubview:wrapperBarView];
+        return;
+    }
+    
+    //ios 8 and under
+    //make it sit on top of the app
+    [wrapperBarView setFrame:CGRectMake(0, -[[CDTLamoSettings sharedSettings] windowBarHeight], kScreenWidth, [[CDTLamoSettings sharedSettings] windowBarHeight])];
 	[_sharedScalingWrapperView addSubview:wrapperBarView];
 
 }
@@ -152,12 +158,6 @@ static SBAppToAppWorkspaceTransaction *transaction;
 }
 
 - (void)beginWindowModeForApplicationWithBundleID:(NSString *)bundleID {
-    
-    if (!_springboardWindow) {
-
-        _springboardWindow = [[objc_getClass("FBSceneManager") sharedInstance] _rootWindowForDisplay:[objc_getClass("FBDisplayManager") mainDisplay] createIfNecessary:YES];
-        
-    }
     
     SBApplication *appToWindow = [[NSClassFromString(@"SBApplicationController") sharedInstance] applicationWithBundleIdentifier:bundleID];
 
@@ -180,6 +180,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [appWindow setIdentifier:bundleID];
     [appWindow setBarView:gestureView];
     [appWindow setHostedContextView:contextHost];
+    [appWindow setWindowLevel:_stackedWindowLevel++];
     
     if ([appToWindow respondsToSelector:@selector(statusBarHidden)]) {
         
@@ -202,7 +203,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	[_windows setValue:appWindow forKey:bundleID];
 
     //add context window to springboard window
-    [_springboardWindow addSubview:appWindow];
+    //[_springboardWindow addSubview:appWindow];
 
     //animate it popping in
     [self doPopAnimationForView:appWindow withBase:[[CDTLamoSettings sharedSettings] defaultWindowSize]];
@@ -280,7 +281,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
         [self triggerPortraitForApplication:appToHost];
         
 		//remove the view
-		[window removeFromSuperview];
+		[window setHidden:YES];
         
         //remove value from dict
         [[(CDTLamoWindow *)[_windows valueForKey:bundleID] hostingCheckTimer] invalidate];
@@ -309,7 +310,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
         [_contextHostProvider setStatusBarHidden:@([window statusBarHidden]) onApplicationWithBundleID:bundleID];
 
         //remove the view
-		[window removeFromSuperview];
+		[window setHidden:YES];
         
         //remove value from dict
         [_windows removeObjectForKey:bundleID];
@@ -376,7 +377,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
                 
             } completion:^(BOOL finished) {
                 
-                [window removeFromSuperview];
+                [window setHidden:YES];
                 
                 //remove value from dict
                 [_windows removeObjectForKey:bundleID];
@@ -655,8 +656,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     [_windows setValue:settingsWindow forKey:@"com.cortexdevteam.lamosetting"];
     
     //add window to springboard window
-    [_springboardWindow addSubview:settingsWindow];
-    [_springboardWindow setUserInteractionEnabled:YES];
+    [[self fbRootWindow] addSubview:settingsWindow];
     
     //animate it popping in
     [self doPopAnimationForView:settingsWindow withBase:1];
@@ -688,7 +688,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
                 
                 //remove the view
-                [window removeFromSuperview];
+                [window setHidden:YES];
                 
                 //remove value from dict
                 [_windows removeObjectForKey:bundleID];
@@ -707,7 +707,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
             
             //remove the view
-            [window removeFromSuperview];
+            [window setHidden:YES];
             
             //remove value from dict
             [_windows removeObjectForKey:bundleID];
@@ -726,10 +726,21 @@ static SBAppToAppWorkspaceTransaction *transaction;
     }
 }
 
-- (UIView *)topmostApplicationWindow {
+- (UIWindow *)topmostApplicationWindow {
     
     //return the top application
-    return [[_springboardWindow subviews] lastObject];
+    NSInteger windowLevel = 0;
+    UIWindow *topWindow;
+    for (UIWindow *window in [_windows allValues]) {
+        
+        if ([window windowLevel] > windowLevel) {
+            
+            topWindow = window;
+            windowLevel = [window windowLevel];
+        }
+    }
+                              
+    return topWindow;
 }
 
 - (BOOL)isShowingSettings {
@@ -821,6 +832,12 @@ static SBAppToAppWorkspaceTransaction *transaction;
     }
 
     return NO;
+}
+
+- (FBRootWindow *)fbRootWindow {
+    
+    //get and return the instance of FBRootWindow
+    return [[objc_getClass("FBSceneManager") sharedInstance] _rootWindowForDisplay:[objc_getClass("FBDisplayManager") mainDisplay] createIfNecessary:YES];
 }
 
 @end 

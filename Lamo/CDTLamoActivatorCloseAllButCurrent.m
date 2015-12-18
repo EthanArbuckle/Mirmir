@@ -25,7 +25,7 @@
 - (void)activator:(LAActivator *)activator receiveEvent:(LAEvent *)event {
     
     //cycle subviews and end all that arent current top window
-    for (UIView *subview in [[[CDTLamo sharedInstance] springboardWindow] subviews]) {
+    for (UIWindow *subview in [[[CDTLamo sharedInstance] mutableWindowDict] allValues]) {
         
         //make sure its not top
         if (subview != [[CDTLamo sharedInstance] topmostApplicationWindow]) {

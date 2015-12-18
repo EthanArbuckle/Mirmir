@@ -20,6 +20,8 @@
 - (id)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
+                
+        [self makeKeyAndVisible];
         
         //setup host provider
         _contextProvider = [[CDTContextHostProvider alloc] init];
