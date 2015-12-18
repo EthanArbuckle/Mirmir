@@ -633,18 +633,17 @@ static SBAppToAppWorkspaceTransaction *transaction;
 }
 
 - (void)presentSettingsController {
-    
+    return;
     //create settings window
     CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
     [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
-    [settingsWindow setWindowLevel:_stackedWindowLevel++];
     
     //create settings view controller
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
     _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
     [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
-    [_settingsController setTitle:@"Mímir"];
+    [_settingsController setTitle:@"Mírmir"];
     [settingsWindow addSubview:[_settingsNavigationController view]];
     
     //create the 'title bar' window that holds the gestures
@@ -771,71 +770,16 @@ static SBAppToAppWorkspaceTransaction *transaction;
     return NO;
 }
 
-- (BOOL)didSucceedInForceTouchLaunchAtLocation:(CGPoint)touch {
+- (UIWindow *)fbRootWindow {
     
-    //touch is location anywhere on the screen. we need to decide if its on an icon, and if so launch that app's window.
-    //returning YES does a short vibrate, NO does nothing
-    
-    //close if device is locked, or an app is open
-    if ([self topmostApplication] || [[[NSClassFromString(@"SBLockScreenManager") sharedInstance] valueForKey:@"_isUILocked"] boolValue]) {
-
-        return NO;
-    }
-    
-    NSMutableArray* iconsToCheck = [[NSMutableArray alloc] init];
+    if (!_auxWindow) {
         
-    //if they are not inside a folder view, -currentFolderIconList will be nil
-    if ([[NSClassFromString(@"SBIconController") sharedInstance] currentFolderIconList]) {
-
-        [iconsToCheck addObjectsFromArray:[[[NSClassFromString(@"SBIconController") sharedInstance] currentFolderIconList] icons]];
+        _auxWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        [_auxWindow setBackgroundColor:[UIColor clearColor]];
+        [_auxWindow setUserInteractionEnabled:NO];
     }
     
-    else {
-        
-        //if they're not in sa folder then we also check the dock icons
-        [iconsToCheck addObjectsFromArray:[[[NSClassFromString(@"SBIconController") sharedInstance] currentRootIconList] icons]];
-        [iconsToCheck addObjectsFromArray:[[[NSClassFromString(@"SBIconController") sharedInstance] dockListView] icons]];
-    }
-    
-    for (SBIcon* icon in iconsToCheck) {
-            
-        //get existing SBIconView for this SBIcon
-        UIView *iconView = [[NSClassFromString(@"SBIconViewMap") homescreenMap] mappedIconViewForIcon:icon];
-                    
-        //this call is wasted on every icon which is not in the dock
-        CGRect convertedFrame = [iconView.superview convertRect:iconView.frame toView:[[UIApplication sharedApplication] keyWindow]];
-                    
-        if (CGRectContainsPoint(convertedFrame, touch)) {
-            
-            //make sure it doesnt conflict with another app window
-            for (CDTLamoWindow *window in [_windows allValues]) {
-                
-                if (CGRectContainsPoint([window frame], touch) || [[icon applicationBundleID] isEqualToString:[window identifier]]) {
-                    
-                    return NO;
-                }
-            }
-            
-            //make sure its not in the nc, cc, or app switcher
-            if ([[NSClassFromString(@"SBUIController") sharedInstance] isAppSwitcherShowing] || [[NSClassFromString(@"SBControlCenterController") sharedInstance] isVisible] || [[NSClassFromString(@"SBNotificationCenterController") sharedInstance] isVisible]) {
-                
-                return NO;
-            }
-            
-            //start the app in its window
-            [self beginWindowModeForApplicationWithBundleID:[icon applicationBundleID]];
-            
-            return YES;
-        }
-    }
-
-    return NO;
-}
-
-- (FBRootWindow *)fbRootWindow {
-    
-    //get and return the instance of FBRootWindow
-    return [[objc_getClass("FBSceneManager") sharedInstance] _rootWindowForDisplay:[objc_getClass("FBDisplayManager") mainDisplay] createIfNecessary:YES];
+    return _auxWindow;
 }
 
 @end 

@@ -232,7 +232,7 @@
         const CGFloat kMaxScale = 1.0;
         const CGFloat kMinScale = .4;
         
-        CGFloat newScale = 1 -  (_lastScale - [gestureRecognizer scale]);
+        CGFloat newScale = 1 -  (1 - [gestureRecognizer scale]);
         newScale = MIN(newScale, kMaxScale / currentScale);
         newScale = MAX(newScale, kMinScale / currentScale);
         CGAffineTransform transform = CGAffineTransformScale([[[gestureRecognizer view] superview] transform], newScale, newScale);

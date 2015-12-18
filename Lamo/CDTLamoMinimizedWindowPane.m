@@ -105,6 +105,7 @@
         [cell addSubview:preview];
         [cell addSubview:hidingView];
         
+        
         //create fake lamo window
         _previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [_previewWindow setBackgroundColor:[UIColor grayColor]];
@@ -115,6 +116,7 @@
         [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
         
+        /*
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -128,6 +130,8 @@
         [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];
+         
+         */
     }
     
     return cell;

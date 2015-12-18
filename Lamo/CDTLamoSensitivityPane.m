@@ -107,6 +107,7 @@
         [previewWindow setBackgroundColor:[UIColor grayColor]];
         [previewWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
         
+        /*
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -118,6 +119,8 @@
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
         [previewWindow addSubview:contextView];
+        
+         */
         
         //create zone overlay
         _activationZone = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [[CDTLamoSettings sharedSettings] activationTriggerRadius])];

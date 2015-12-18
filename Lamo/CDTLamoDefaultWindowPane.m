@@ -115,7 +115,7 @@
         [_previewWindow addSubview:barView];
         [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
-
+/*
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -128,7 +128,7 @@
         }
         [_previewWindow addSubview:contextView];
 
-        [preview addSubview:_previewWindow];
+        [preview addSubview:_previewWindow]; */
     }
     
     return cell;

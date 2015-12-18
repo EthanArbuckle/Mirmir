@@ -21,6 +21,8 @@
 @property (nonatomic, retain) NSMutableDictionary *windows;
 @property (nonatomic, readwrite) NSInteger stackedWindowLevel;
 
+@property (nonatomic, retain) UIWindow *auxWindow;
+
 @property BOOL wrapperViewIsTracking;
 
 + (id)sharedInstance;
@@ -48,7 +50,6 @@
 - (BOOL)isShowingSettings;
 - (NSDictionary *)mutableWindowDict;
 - (BOOL)SBHTMLInstalled;
-- (BOOL)didSucceedInForceTouchLaunchAtLocation:(CGPoint)touch;
-- (FBRootWindow *)fbRootWindow;
+- (UIWindow *)fbRootWindow;
 
 @end

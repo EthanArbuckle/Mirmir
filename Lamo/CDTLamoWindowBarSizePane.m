@@ -114,7 +114,8 @@
         [(CDTLamoWindow *)_previewWindow setBarView:_barView];
         [_previewWindow addSubview:_barView];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
-        
+      
+        /*
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -128,6 +129,8 @@
         [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];
+         
+         */
     }
     
     return cell;
