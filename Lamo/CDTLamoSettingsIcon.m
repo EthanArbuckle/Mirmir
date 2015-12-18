@@ -26,7 +26,7 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
 }
 
 - (NSString *)displayName {
-    
+
     if ([[self valueForKey:@"_leafIdentifier"] isEqualToString:@"lamo"]) {
         
         return @"Mímir";
@@ -34,6 +34,16 @@ ZKSwizzleInterface($_Lamo_SBLeafIcon, SBLeafIcon, UIView);
 
     return ZKOrig(NSString *);
     
+}
+
+- (id)displayNameForLocation:(int)arg1 {
+    
+    if ([[self valueForKey:@"_leafIdentifier"] isEqualToString:@"lamo"]) {
+        
+        return @"Mímir";
+    }
+    
+    return ZKOrig(NSString *);
 }
 
 -(id)generateIconImage:(int)ifmage {
