@@ -127,11 +127,10 @@
             contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
-        [_previewWindow addSubview:contextView];
+        [_previewWindow addSubview:contextView]; */
         
         [preview addSubview:_previewWindow];
          
-         */
     }
     
     return cell;

@@ -39,7 +39,7 @@ ZKSwizzleInterface($_Lamo_SBNotificationCenterController, SBNotificationCenterCo
     //getting pissed off at notification center stealing my window pans
     if ([[CDTLamo sharedInstance] shouldBlockNotificationCenter]) {
         
-        [self _showNotificationsGestureCancelled];
+        [self _showNotificationCenterGestureCancelled];
         return;
     }
     
@@ -47,7 +47,7 @@ ZKSwizzleInterface($_Lamo_SBNotificationCenterController, SBNotificationCenterCo
 
 }
 
-- (void)_showNotificationsGestureCancelled {
+- (void)_showNotificationCenterGestureCancelled {
     ZKOrig(void);
 }
 

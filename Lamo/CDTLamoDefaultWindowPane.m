@@ -115,7 +115,8 @@
         [_previewWindow addSubview:barView];
         [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
-/*
+
+        /*
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -126,9 +127,9 @@
             contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
-        [_previewWindow addSubview:contextView];
-
-        [preview addSubview:_previewWindow]; */
+        [_previewWindow addSubview:contextView]; */
+        
+        [preview addSubview:_previewWindow];
     }
     
     return cell;

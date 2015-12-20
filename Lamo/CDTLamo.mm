@@ -633,7 +633,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 }
 
 - (void)presentSettingsController {
-    return;
+    
     //create settings window
     CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
     [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
