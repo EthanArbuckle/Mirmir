@@ -11,8 +11,11 @@
 #import "CDTLamoWindow.h"
 #import "CDTContextHostProvider.h"
 
+@class CDTLamoWindow;
+
 @interface CDTLamoSensitivityPane : UITableViewController
 
+@property (nonatomic, retain) CDTLamoWindow *previewWindow;
 @property (nonatomic, retain) UIView *activationZone;
 
 @end

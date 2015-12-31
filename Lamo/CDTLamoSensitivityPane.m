@@ -29,6 +29,9 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
+    [_previewWindow setHidden:YES];
+    _previewWindow = NULL;
+    
     //stop hosting
     if (NEED_IPAD_HAX) {
         [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
@@ -102,12 +105,13 @@
         [preview setClipsToBounds:YES];
         [preview setUserInteractionEnabled:NO];
         
+        [cell addSubview:preview];
+    
         //create fake lamo window
-        CDTLamoWindow *previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        [previewWindow setBackgroundColor:[UIColor grayColor]];
-        [previewWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
-        
-        /*
+        _previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+        [_previewWindow setBackgroundColor:[UIColor grayColor]];
+        [_previewWindow setTransform:CGAffineTransformMakeScale(.6, .6)];
+       
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -118,18 +122,16 @@
             contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
-        [previewWindow addSubview:contextView];
         
-         */
+        [_previewWindow addSubview:contextView];
         
         //create zone overlay
         _activationZone = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [[CDTLamoSettings sharedSettings] activationTriggerRadius])];
         [_activationZone setBackgroundColor:[UIColor redColor]];
         [_activationZone setAlpha:0.7];
         
-        [preview addSubview:previewWindow];
+        [preview addSubview:_previewWindow];
         [preview addSubview:_activationZone];
-        [cell addSubview:preview];
         
         //only show a portion of homescreen preview, let cell cut the rest
         [cell setClipsToBounds:YES];

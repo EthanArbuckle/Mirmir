@@ -30,6 +30,9 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
+    [_previewWindow setHidden:YES];
+    _previewWindow = NULL;
+    
     //stop hosting
     if (NEED_IPAD_HAX) {
         [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
@@ -116,7 +119,7 @@
         [barView setTitle:@"Mímir"];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] defaultWindowSize], [[CDTLamoSettings sharedSettings] defaultWindowSize])];
 
-        /*
+ 
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -127,7 +130,7 @@
             contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
-        [_previewWindow addSubview:contextView]; */
+        [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];
     }

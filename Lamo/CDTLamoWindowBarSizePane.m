@@ -30,6 +30,9 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
+    [_previewWindow setHidden:YES];
+    _previewWindow = NULL;
+    
     //stop hosting
     if (NEED_IPAD_HAX) {
         [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.Maps"];
@@ -105,7 +108,7 @@
         
         [cell addSubview:preview];
         [cell addSubview:hidingView];
-        
+   
         //create fake lamo window
         _previewWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         [_previewWindow setBackgroundColor:[UIColor grayColor]];
@@ -115,7 +118,6 @@
         [_previewWindow addSubview:_barView];
         [_previewWindow setTransform:CGAffineTransformMakeScale([[CDTLamoSettings sharedSettings] minimizedWindowSize], [[CDTLamoSettings sharedSettings] minimizedWindowSize])];
       
-        /*
         //create app
         UIView *contextView;
         if (NEED_IPAD_HAX) {
@@ -126,7 +128,7 @@
             contextView = [[CDTContextHostProvider new]  hostViewForApplicationWithBundleID:@"com.apple.weather"];
             [[CDTContextHostProvider new]  setStatusBarHidden:@(1) onApplicationWithBundleID:@"com.apple.weather"];
         }
-        [_previewWindow addSubview:contextView]; */
+        [_previewWindow addSubview:contextView];
         
         [preview addSubview:_previewWindow];
          
