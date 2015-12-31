@@ -187,12 +187,13 @@ BOOL isInActivationZone(CGFloat xOrigin) {
             //wait a bit before showing
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             
-                //presents
+                //present
                 [[CDTLamo sharedInstance] setTutorialController:[[CDTLamoMainTutorialController alloc] init]];
-                [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Lamo Tutorial"];
+                [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Mímir Tutorial"];
                 [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
                 [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
-                [[[CDTLamo sharedInstance] fbRootWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
+                [[CDTLamo sharedInstance] setTutorialWindow:[[CDTLamoWindow alloc] init]];
+                [[[CDTLamo sharedInstance] tutorialWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
                 [(CDTLamoMainTutorialController *)[[CDTLamo sharedInstance] tutorialController] addBarButtons];
                 
                 //fade it in
