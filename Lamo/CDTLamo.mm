@@ -637,29 +637,35 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 - (void)presentSettingsController {
     
+    //just in case lamo
+    if (_settingsWindow) {
+        [_settingsWindow setHidden:YES];
+        _settingsWindow = NULL;
+    }
+    
     //create settings window
-    CDTLamoWindow *settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
-    [settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
-    [settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
+    _settingsWindow = [[CDTLamoWindow alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight + 20)];
+    [_settingsWindow setIdentifier:@"com.cortexdevteam.lamosetting"];
+    [_settingsWindow setActiveOrientation:(UIInterfaceOrientation *)UIInterfaceOrientationPortrait];
     
     //create settings view controller
     _settingsController = [[CDTLamoSettingsViewController alloc] init];
     _settingsNavigationController = [[UINavigationController alloc] initWithRootViewController:_settingsController];
     [[_settingsNavigationController view] setFrame:CGRectMake(0, 20, kScreenWidth, kScreenHeight)];
     [_settingsController setTitle:@"Mírmir"];
-    [settingsWindow addSubview:[_settingsNavigationController view]];
+    [_settingsWindow addSubview:[_settingsNavigationController view]];
     
     //create the 'title bar' window that holds the gestures
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
     //[gestureView setTitle:@"Mímir Settings"];
     [gestureView setFrame:CGRectMake(0, 0, kScreenWidth, 20)];
-    [settingsWindow addSubview:gestureView];
+    [_settingsWindow addSubview:gestureView];
     
     //add it to dict
-    [_windows setValue:settingsWindow forKey:@"com.cortexdevteam.lamosetting"];
+    [_windows setValue:_settingsWindow forKey:@"com.cortexdevteam.lamosetting"];
     
     //animate it popping in
-    [self doPopAnimationForView:settingsWindow withBase:1];
+    [self doPopAnimationForView:_settingsWindow withBase:1];
 
 }
 

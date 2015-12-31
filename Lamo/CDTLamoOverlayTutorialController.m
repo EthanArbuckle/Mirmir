@@ -88,13 +88,16 @@
     //animate it out
     [UIView animateWithDuration:0.3 animations:^{
         
-        [[[self navigationController] view] setAlpha:0];
+        [[[CDTLamo sharedInstance] tutorialWindow] setAlpha:0];
         
     } completion:^(BOOL finished) {
         
         //remove it
         [[[self navigationController] view] removeFromSuperview];
-        
+        [[[CDTLamo sharedInstance] tutorialWindow] setHidden:YES];
+        [[CDTLamo sharedInstance] setTutorialWindow:NULL];
+        [_appWindow setHidden:YES];
+        _appWindow = NULL;
         
     }];
     
@@ -105,6 +108,7 @@
     else {
         [[CDTContextHostProvider new] stopHostingForBundleID:@"com.apple.weather"];
     }
+    
 }
 
 - (void)progressStep {

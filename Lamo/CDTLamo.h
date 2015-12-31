@@ -7,6 +7,8 @@
 #import <dlfcn.h>
 #import <objc/runtime.h>
 
+@class CDTLamoWindow;
+
 @interface CDTLamo : NSObject
 
 @property (nonatomic, retain) UIView *sharedScalingWrapperView;
@@ -15,6 +17,8 @@
 //these just need to be retained
 @property (nonatomic, retain) UIViewController *settingsController;
 @property (nonatomic, retain) UINavigationController *settingsNavigationController;
+@property (nonatomic, retain) CDTLamoWindow *settingsWindow;
+@property (nonatomic, retain) CDTLamoWindow *tutorialWindow;
 @property (nonatomic, retain) UIViewController *tutorialController;
 @property (nonatomic, retain) UINavigationController *tutorialNavigationController;
 

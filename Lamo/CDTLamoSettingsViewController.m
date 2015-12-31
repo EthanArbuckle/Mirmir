@@ -415,7 +415,8 @@
             [[[CDTLamo sharedInstance] tutorialController] setTitle:@"Mímir Tutorial"];
             [[CDTLamo sharedInstance] setTutorialNavigationController:[[UINavigationController alloc] initWithRootViewController:[[CDTLamo sharedInstance] tutorialController]]];
             [[[[CDTLamo sharedInstance] tutorialNavigationController] view] setAlpha:0];
-            [[[CDTLamo sharedInstance] fbRootWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
+            [[CDTLamo sharedInstance] setTutorialWindow:[[CDTLamoWindow alloc] init]];
+            [[[CDTLamo sharedInstance] tutorialWindow] addSubview:[[[CDTLamo sharedInstance] tutorialNavigationController] view]];
             [(CDTLamoMainTutorialController *)[[CDTLamo sharedInstance] tutorialController] addBarButtons];
             
             //fade it in and fade settings controller out
@@ -426,8 +427,9 @@
                 
             } completion:^(BOOL finished) {
                 
-                [[[[[CDTLamo sharedInstance] settingsNavigationController] view] superview] removeFromSuperview];
                 [[CDTLamo sharedInstance] removeKeyFromDict:@"com.cortexdevteam.lamosetting"];
+                [[[[CDTLamo sharedInstance] settingsNavigationController] view] removeFromSuperview];
+                [[CDTLamo sharedInstance] setSettingsWindow:NULL];
                                 
             }];
 

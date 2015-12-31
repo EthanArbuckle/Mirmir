@@ -22,8 +22,8 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
         
         //create blur
-        _UIBackdropView *blur = [(_UIBackdropView *)[NSClassFromString(@"_UIBackdropView") alloc] initWithStyle:1];
-        [[self view] addSubview:blur];
+        //_UIBackdropView *blur = [(_UIBackdropView *)[NSClassFromString(@"_UIBackdropView") alloc] initWithStyle:1];
+       // [[self view] addSubview:blur];
         
         
         //create instruction label
@@ -116,13 +116,16 @@
     //animate it out
     [UIView animateWithDuration:0.3 animations:^{
         
-        [[[self navigationController] view] setAlpha:0];
+        [[[CDTLamo sharedInstance] tutorialWindow] setAlpha:0];
         
     } completion:^(BOOL finished) {
         
         //remove it
         [[[self navigationController] view] removeFromSuperview];
-        
+        [[[CDTLamo sharedInstance] tutorialWindow] setHidden:YES];
+        [[CDTLamo sharedInstance] setTutorialWindow:NULL];
+        [_windowPreview setHidden:YES];
+        _windowPreview = NULL;
         
     }];
     
@@ -133,6 +136,7 @@
     else {
         [_contextProvider stopHostingForBundleID:@"com.apple.weather"];
     }
+    
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture {
