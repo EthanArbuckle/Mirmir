@@ -248,7 +248,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 - (void)unwindowApplicationWithBundleID:(NSString *)bundleID {
     
     //get window instance, if exists
-    CDTLamoWindow *window;
+    __block CDTLamoWindow *window;
     if ([_windows valueForKey:bundleID]) {
         
         window = [_windows valueForKey:bundleID];
@@ -282,6 +282,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
         
 		//remove the view
 		[window setHidden:YES];
+        window = NULL;
         
         //remove value from dict
         [[(CDTLamoWindow *)[_windows valueForKey:bundleID] hostingCheckTimer] invalidate];
@@ -311,6 +312,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
         //remove the view
 		[window setHidden:YES];
+        window = NULL;
         
         //remove value from dict
         [_windows removeObjectForKey:bundleID];
@@ -342,7 +344,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 	NSString *bundleID = [appToOpen valueForKey:@"_bundleIdentifier"];
 
     //get window so we can remove it
-    CDTLamoWindow *window;
+    __block CDTLamoWindow *window;
     if ([_windows valueForKey:bundleID]) {
         
         window = [_windows valueForKey:bundleID];
@@ -378,6 +380,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
             } completion:^(BOOL finished) {
                 
                 [window setHidden:YES];
+                window = NULL;
                 
                 //remove value from dict
                 [_windows removeObjectForKey:bundleID];
@@ -665,7 +668,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     //cycle through all windows and close them
     for (NSString *bundleID in [_windows allKeys]) {
         
-        CDTLamoWindow *window = [_windows objectForKey:bundleID];
+        __block CDTLamoWindow *window = [_windows objectForKey:bundleID];
         
         if (animated) {
             
@@ -686,6 +689,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
                 
                 //remove the view
                 [window setHidden:YES];
+                window = NULL;
                 
                 //remove value from dict
                 [_windows removeObjectForKey:bundleID];
@@ -705,6 +709,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
             
             //remove the view
             [window setHidden:YES];
+            window = NULL;
             
             //remove value from dict
             [_windows removeObjectForKey:bundleID];

@@ -228,6 +228,7 @@ BOOL isInActivationZone(CGFloat xOrigin) {
             //remove it
             [[CDTLamo sharedInstance] removeKeyFromDict:@"com.cortexdevteam.lamosetting"];
             [[[[CDTLamo sharedInstance] settingsNavigationController] view] removeFromSuperview];
+
         }];
     }
     
