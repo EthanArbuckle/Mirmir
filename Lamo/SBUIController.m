@@ -174,12 +174,10 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     }
     
     //register for activator events if needed
-    [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];
-    NSLog(@"we are running");
+    [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];    
     
-    [[CDTLamo sharedInstance] presentSettingsController];
-    });
-    
+    return ZKOrig(id);
+
 }
 
 - (void)_deviceLockStateChanged:(id)changed {
