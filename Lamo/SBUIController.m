@@ -157,9 +157,10 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     }];
 }
 
-- (void)finishLaunching {
+- (id)init {
     
-    ZKOrig(void);
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
     //only create icon if sbhtml is not installed
     if (![[CDTLamo sharedInstance] SBHTMLInstalled]) {
@@ -174,6 +175,10 @@ BOOL isInActivationZone(CGFloat xOrigin) {
     
     //register for activator events if needed
     [[CDTLamoActivatorBinding sharedBinding] setupActivatorActions];
+    NSLog(@"we are running");
+    
+    [[CDTLamo sharedInstance] presentSettingsController];
+    });
     
 }
 

@@ -133,7 +133,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
 
 	//create the bar
 	CDTLamoBarView *wrapperBarView = [[CDTLamoBarView alloc] init];
-    [wrapperBarView setTitle:[[self topmostApplication] valueForKey:@"_displayName"]];
+    [wrapperBarView setTitle:[[self topmostApplication] displayName]];
 
     if (GTEiOS9) {
         
@@ -164,7 +164,7 @@ static SBAppToAppWorkspaceTransaction *transaction;
     //create the 'title bar' window that holds the gestures
     //make this before we close the app so we can access topmost app and get the name
     CDTLamoBarView *gestureView = [[CDTLamoBarView alloc] init];
-    [gestureView setTitle:[appToWindow valueForKey:@"_displayName"]];
+    [gestureView setTitle:[appToWindow displayName]];
     
     //close the app now that we grabbed its bundle id
 	[self seamlesslyCloseTopApp];
